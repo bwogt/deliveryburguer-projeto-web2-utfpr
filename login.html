@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Bruno Jose dos Santos Wogt">
+    <link rel="stylesheet" href="assets/libraries/materialize/materialize/css/materialize.css">
+    <link rel="stylesheet" href="assets/resources/styles/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Home page</title>
+</head>
+
+<body>
+    <div class="navbar-fixed">
+        <nav class="orange">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#home" class="brand-logo">Restaurante.com</a>
+                    <a href="#" data-activates="slide-out" class="sidenav-trigger">
+                        <i class="material-icons">Menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a href="index.html">Início</a>
+                        </li>
+                        <li>
+                            <a href="pedido.html">Pedido</a>
+                        </li>
+                        <li>
+                            <a href="login.html">Entrar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main>
+        <div class="container">
+            <div>
+                <p>Usuário logado: </p>
+                <button>Sair</button>
+            </div>
+
+            <div>
+                <form action="#">
+                    Email: <input type="text" name="email-adress"><br>
+                    Senha: <input type="text" name="key"><br>
+                    <button>Entrar</button>
+                </form>
+            </div>
+
+            <div>
+                <form action="#">
+                    Nome: <input type="text" name="name-user"><br>
+                    Data de Nascimento: <input type="text" name="date-of-birth"><br>
+                    Endereco: <input type="text" name="adress-user"><br>
+                    Cidade: <input type="text" name="city-user"><br>
+                    Email: <input type="text" name="email-adress"><br>
+                    Senha: <input type="text" name="key"><br>
+                    Confirme a senha: <input type="text" name="key-confirm"><br>
+                    <button>Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+
+<footer class="section orange white-text center">
+    <p class="flow-text">Restaurante.com 2019</p>
+</footer>
+
+<script src="assets/libraries/jquery/jquery-3.4.1.min.js"></script>
+<script src="assets/libraries/materialize/materialize/js/materialize.js"></script>
+</body>
+
+</html>
