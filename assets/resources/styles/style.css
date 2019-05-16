@@ -1,14 +1,35 @@
 
-/*Esconde a div de usuário logado
+/*Esconde a div de usuário logado*/
 #usuario-logado{
     display: none;
 }
 
-/*Esconde a div de cadastro por padrão
+/*Esconde a div de cadastro por padrão*/
 #usuario-cadastro{
     display: none;
 }
-*/
+
+/*Tamanho e margem do card de pedido*/
+.card.horizontal{
+    width: 300px;
+    margin-left: 5%;
+    margin-right: 20%;
+}
+
+/*Tamanho e margem do botão de remover pedido*/
+.card-action > button{
+    width: 130%;
+    text-align: left;
+    margin-left: 0px;
+}
+
+/*Total dos pedidos*/
+#total-compra{
+    color: green;
+    font-style: italic;
+    font-weight: bold;
+}
+/*Font e estilo dos cabeçalhos h1*/
 h1{
     font-family: 'Franklin Gothic Medium';
     font-style: italic;
@@ -37,6 +58,12 @@ h1{
     font-weight: bold;
 }
 
+.card-content p:nth-last-child(2){
+    font-style: italic;
+    margin-top: 15%;
+    font-weight: bold;
+}
+
 /*espaçamento entre os botões*/
 .card-content > button{ 
     width: 100%;
@@ -44,6 +71,7 @@ h1{
     margin-bottom: 2%;
 }
 
+/*margim do botão de enviar no login*/
 #enviar-login{
    margin-right: 10px;
 }

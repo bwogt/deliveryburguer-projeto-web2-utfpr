@@ -9,35 +9,69 @@
     <link rel="stylesheet" href="assets/libraries/materialize/materialize/css/materialize.css">
     <link rel="stylesheet" href="assets/resources/styles/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Home page</title>
+    <title>Pedidos</title>
 </head>
+
 <body>
-        <div class="navbar-fixed">
-                <nav class="orange">
-                    <div class="container">
-                        <div class="nav-wrapper">
-                            <a href="#home" class="brand-logo">Restaurante.com</a>
-                            <a href="#" data-activates="slide-out" class="sidenav-trigger">
-                                <i class="material-icons">Menu</i>
-                            </a>
-                            <ul class="right hide-on-med-and-down">
-                                <li>
-                                    <a href="index.html">Início</a>
-                                </li>
-                                <li>
-                                    <a href="pedido.html">Pedido</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Entrar</a>
-                                </li>
-                            </ul>
+    <div class="navbar-fixed">
+        <nav class="black">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#home" class="brand-logo">DeliveryBurguer</a>
+                    <a href="#" data-activates="slide-out" class="sidenav-trigger">
+                        <i class="material-icons">Menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a href="index.html">Início</a>
+                        </li>
+                        <li>
+                            <a href="pedido.html">Pedido</a>
+                        </li>
+                        <li>
+                            <a href="login.html">Entrar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main>
+        <section>
+            <div class="container">
+                <div>
+                    <h1>Pedido</h1>
+                    <div class="row">
+                        <div class="col s12 m4">
+                            <div class="card horizontal">
+                                <div class="card-image">
+                                    <img src="assets/resources/images/hb-triplo.png">
+                                    <div class="card-action">
+                                        <button id="button-remove" class="btn waves-effect waves-light red">Remover
+                                    </div>
+                                </div>
+                                <div class="card-stacked">
+                                    <div class="card-content">
+                                        <p>Hamburguer triplo.</p>
+                                        <p id="total-pedido"></p>
+                                        <p id="valor-total-pedido"></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </nav>
+                </div>
             </div>
-</body>
-<footer class="section orange white-text center">
-        <p class="flow-text">Restaurante.com 2019</p>
+         </section>
+       
+         <div class="container">
+            <h2 id="total-compra">Total: R$</h2>
+        </div>
+    </main>
+
+    <footer class="section black white-text center">
+        <p>DeliveryBurguer 2019</p>
     </footer>
     <script src="assets/libraries/jquery/jquery-3.4.1.min.js"></script>
     <script src="assets/libraries/materialize/materialize/js/materialize.js"></script>
