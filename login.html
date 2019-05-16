@@ -14,10 +14,10 @@
 
 <body>
     <div class="navbar-fixed">
-        <nav class="orange">
+        <nav class="black">
             <div class="container">
                 <div class="nav-wrapper">
-                    <a href="#home" class="brand-logo">Restaurante.com</a>
+                    <a href="#home" class="brand-logo">DeliveryBurguer</a>
                     <a href="#" data-activates="slide-out" class="sidenav-trigger">
                         <i class="material-icons">Menu</i>
                     </a>
@@ -39,23 +39,24 @@
 
     <main>
         <div class="container">
+            <h1>Acesse sua conta</h1>
             <div class="row">
                 <div class="col s12">
-                    <h1>Entrar</h1>
                     <div id="usuario-logado">
                         <p>Usuário logado: </p>
-                        <button>Sair</button>
+                        <button class="waves-effect waves-light btn red"><i class="material-icons right">clear</i>Sair</button>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col s12">
+                <div class="col s12 m12">
                     <div id="usuario-login">
                         <form action="#">
                             Email: <input type="text" name="email-adress"><br>
                             Senha: <input type="text" name="key"><br>
-                            <button>Entrar</button>
+                            <button id="enviar-login" class="waves-effect waves-light btn green"><i class="material-icons right">blankcheck_circle</i>Entrar</button>
+                            <button  class="waves-effect waves-light btn orange"><i class="material-icons right">person_add</i>Criar uma conta</button>
                         </form>
                     </div>
                 </div>
@@ -72,7 +73,7 @@
                             Email: <input type="text" name="email-adress"><br>
                             Senha: <input type="text" name="key"><br>
                             Confirme a senha: <input type="text" name="key-confirm"><br>
-                            <button>Cadastrar</button>
+                            <button class="waves-effect waves-light btn green"><i class="material-icons right">blankcheck_circle</i>Cadastrar</button>
                         </form>
                     </div>
                 </div>
@@ -80,8 +81,8 @@
         </div>
     </main>
 
-    <footer class="section orange white-text center">
-        <p>Restaurante.com 2019</p>
+    <footer class="section black white-text center">
+        <p>DeliveryBurguer 2019</p>
     </footer>
     <script src="assets/libraries/jquery/jquery-3.4.1.min.js"></script>
     <script src="assets/libraries/materialize/materialize/js/materialize.js"></script>

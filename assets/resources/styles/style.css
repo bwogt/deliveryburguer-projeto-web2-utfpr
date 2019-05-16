@@ -1,14 +1,14 @@
 
-/*Esconde a div de usuário logado*/
+/*Esconde a div de usuário logado
 #usuario-logado{
     display: none;
 }
 
-/*Esconde a div de cadastro por padrão*/
+/*Esconde a div de cadastro por padrão
 #usuario-cadastro{
     display: none;
 }
-
+*/
 h1{
     font-family: 'Franklin Gothic Medium';
     font-style: italic;
@@ -42,6 +42,10 @@ h1{
     width: 100%;
     margin-top: 10%;
     margin-bottom: 2%;
+}
+
+#enviar-login{
+   margin-right: 10px;
 }
 
 /*css do materialize para manter o rodape no fim*/
