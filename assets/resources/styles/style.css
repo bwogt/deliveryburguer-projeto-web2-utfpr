@@ -9,6 +9,10 @@
     display: none;
 }
 
+/*Por padrão o contéudo dos cards são ocultos*/
+.card-content{
+    display: none;
+}
 /*Tamanho e margem do card de pedido*/
 .card.horizontal{
     width: 300px;
