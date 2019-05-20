@@ -19,7 +19,6 @@
                 <div class="nav-wrapper">
                     <a href="#home" class="brand-logo">DeliveryBurguer</a>
                     <a href="#" data-activates="slide-out" class="sidenav-trigger">
-                        <i class="material-icons">Menu</i>
                     </a>
                     <ul class="right hide-on-med-and-down">
                         <li>
@@ -48,10 +47,10 @@
                                 <p>Hamburguer tradicional R$12.90</p>
                                 <img src="assets/resources/images/hb-tradicional.png"
                                     alt="Imagem de uma hamburguer tradicional">
-                                <a class="btn-floating halfway-fab waves-effect waves-light red">
-                                    <i class="material-icons">arrow_upward</i></a>
+                                <a id="button-hamb1" class="btn-floating halfway-fab waves-effect waves-light red">
+                                    <i class="material-icons">arrow_downward</i></a>
                             </div>
-                            <div class="card-content">
+                            <div id="card-content-hamb1"  class="card-content">
                                 <p>Hamburguer Tradicional, Queijo, Alface, Pickles, Tomate, Cebola e molho especial.</p>
                                 <p>Seu pedido: 0 </p>
                                 <button class="btn waves-effect waves-light green">Adicionar
@@ -69,10 +68,10 @@
                             <div class="card-image">
                                 <p>Cheese Burger R$15.90</p>
                                 <img src="assets/resources/images/hb-cheedar.png" alt="Imagem de uma Cheese burguer">
-                                <a class="btn-floating halfway-fab waves-effect waves-light red">
-                                    <i class="material-icons">arrow_upward</i></a>
+                                <a id="button-hamb2" class="btn-floating halfway-fab waves-effect waves-light red">
+                                    <i class="material-icons">arrow_downward</i></a>
                             </div>
-                            <div class="card-content">
+                            <div id="card-content-hamb2" class="card-content">
                                 <p>Duplo Hamburguer Tradicional, Queijo Cheddar e molho especial.</p>
                                 <p>Seu pedido: 0 </p>
                                 <button class="btn waves-effect waves-light green">Adicionar
@@ -90,10 +89,10 @@
                             <div class="card-image">
                                 <p>Hamburguer Triplo R$20.00</p>
                                 <img src="assets/resources/images/hb-triplo.png" alt="Imagem de uma hamburguer duplo">
-                                <a class="btn-floating halfway-fab waves-effect waves-light red">
-                                    <i class="material-icons">arrow_upward</i></a>
+                                <a id="button-hamb3" class="btn-floating halfway-fab waves-effect waves-light red">
+                                    <i class="material-icons">arrow_downward</i></a>
                             </div>
-                            <div class="card-content">
+                            <div id="card-content-hamb3" class="card-content">
                                 <p>Triplo Hamburguer Tradicional, Queijo, Alface, Pickles, Tomate, Cebola e molho especial.
                                 </p>
                                 <p>Seu pedido: 0 </p>
@@ -117,10 +116,10 @@
                                 <p>Refrigerante Lata R$4.00</p>
                                 <img src="assets/resources/images/refri-lata.jpg"
                                     alt="Imagem de uma lata de refrigerante">
-                                <a class="btn-floating halfway-fab waves-effect waves-light red">
-                                    <i class="material-icons">arrow_upward</i></a>
+                                <a id="button-drink1" class="btn-floating halfway-fab waves-effect waves-light red">
+                                    <i class="material-icons">arrow_downward</i></a>
                             </div>
-                            <div class="card-content">
+                            <div id="card-content-drink1" class="card-content">
                                 <p>Lata de 350Ml.</p>
                                 <p>Seu pedido: 0 </p>
                                 <button class="btn waves-effect waves-light green">Adicionar
@@ -139,10 +138,10 @@
                                 <p>Refrigerante 2L R$7.00</p>
                                 <img src="assets/resources/images/refri-garrafa.jpg" 
                                 alt="Imagem de uma garrafa de refrigerante">
-                                <a class="btn-floating halfway-fab waves-effect waves-light red">
-                                    <i class="material-icons">arrow_upward</i></a>
+                                <a id="button-drink2" class="btn-floating halfway-fab waves-effect waves-light red">
+                                    <i class="material-icons">arrow_downward</i></a>
                             </div>
-                            <div class="card-content">
+                            <div id="card-content-drink2" class="card-content">
                                 <p>Garrafa 2L.</p>
                                 <p>Seu pedido: 0 </p>
                                 <button class="btn waves-effect waves-light green">Adicionar
@@ -160,10 +159,10 @@
                             <div class="card-image">
                                 <p>Cerveja Litrão R$11.00</p>
                                 <img src="assets/resources/images/cerveja-litrao.jpg" alt="Imagem de uma garrafa de cerveja">
-                                <a class="btn-floating halfway-fab waves-effect waves-light red">
-                                    <i class="material-icons">arrow_upward</i></a>
+                                <a id="button-drink3" class="btn-floating halfway-fab waves-effect waves-light red">
+                                    <i class="material-icons">arrow_downward</i></a>
                             </div>
-                            <div class="card-content">
+                            <div id="card-content-drink3" class="card-content">
                                 <p> Garrafa 1L.
                                 </p>
                                 <p>Seu pedido: 0 </p>
@@ -182,8 +181,10 @@
     <footer class="section black white-text center">
         <p>DeliveryBurguer 2019</p>
     </footer>
+    
     <script src="assets/libraries/jquery/jquery-3.4.1.min.js"></script>
     <script src="assets/libraries/materialize/materialize/js/materialize.js"></script>
+    <script src="assets/resources/scripts/index.js"></script>
 </body>
 
 </html>
