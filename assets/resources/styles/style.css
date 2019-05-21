@@ -1,15 +1,17 @@
 
 /*Esconde a div de usuário logado*/
-#usuario-logado{
+#div-current-user{
     display: none;
 }
 
+/*Botão de adicionar no carrinho*/
 #button-buy-item{
     display: none;
 }
 
+
 /*Esconde a div de cadastro por padrão*/
-#usuario-cadastro{
+#div-create-account{
     display: none;
 }
 
