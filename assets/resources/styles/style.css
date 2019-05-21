@@ -4,6 +4,10 @@
     display: none;
 }
 
+#button-buy-item{
+    display: none;
+}
+
 /*Esconde a div de cadastro por padrão*/
 #usuario-cadastro{
     display: none;
