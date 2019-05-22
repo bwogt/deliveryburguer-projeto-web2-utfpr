@@ -39,24 +39,26 @@
 
     <main>
         <div class="container">
-            <h1>Acesse sua conta</h1>
+            <h1 id="title-pag-login">Acesse sua conta</h1>
             <div class="row">
                 <div class="col s12">
-                    <div id="usuario-logado">
-                        <p>Usuário logado: </p>
-                        <button class="waves-effect waves-light btn red"><i class="material-icons right">clear</i>Sair</button>
+                    <div id="div-current-user">
+                        <button id="button-logoff" class="waves-effect waves-light btn red"><i
+                                class="material-icons right">clear</i>Sair</button>
                     </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col s12">
-                    <div id="usuario-login">
+                    <div id="div-login">
                         <form action="#">
-                            Email: <input type="text" name="email-adress"><br>
-                            Senha: <input type="text" name="key"><br>
-                            <button id="enviar-login" class="waves-effect waves-light btn green"><i class="material-icons right">blankcheck_circle</i>Entrar</button>
-                            <button  class="waves-effect waves-light btn orange"><i class="material-icons right">person_add</i>Criar uma conta</button>
+                            Email: <input type="text" name="input-login-email"><br>
+                            Senha: <input type="text" name="input-login-password"><br>
+                            <button id="button-login" class="waves-effect waves-light btn green"><i
+                                    class="material-icons right">blankcheck_circle</i>Entrar</button>
+                            <button id="button-new-account" class="waves-effect waves-light btn orange"><i
+                                    class="material-icons right">person_add</i>Criar uma conta</button>
                         </form>
                     </div>
                 </div>
@@ -64,16 +66,33 @@
 
             <div class="row">
                 <div class="col s12">
-                    <div id="usuario-cadastro">
-                        <form action="#">
-                            Nome: <input type="text" name="name-user"><br>
-                            Data de Nascimento: <input type="text" name="date-of-birth"><br>
-                            Endereco: <input type="text" name="adress-user"><br>
-                            Cidade: <input type="text" name="city-user"><br>
-                            Email: <input type="text" name="email-adress"><br>
-                            Senha: <input type="text" name="key"><br>
-                            Confirme a senha: <input type="text" name="key-confirm"><br>
-                            <button class="waves-effect waves-light btn green"><i class="material-icons right">blankcheck_circle</i>Cadastrar</button>
+                    <div id="div-create-account">
+                        <form id='teste-form'>
+                            <p>
+                                Nome: <input type="text" name="input-name-user">
+                            </p>
+                            <p>
+                                Data de Nascimento: <input type="text" name="input-date-of-birth">
+                            </p>
+                            <p>
+                                Endereco: <input type="text" name="input-adress-user">
+                            </p>
+                            <p>
+                                Cidade: <input type="text" name="input-city-user">
+                            </p>
+                            <p>
+                                Email: <input type="text" name="input-email-adress">
+                            </p>
+                            <p>
+                                Senha: <input type="text" name="input-password">
+                            </p>
+                            <p>
+                                Confirme a senha: <input type="text" name="input-password-confirm">
+                            </p>
+                            <button id="button-create-new-account" class="waves-effect waves-light btn blue"><i
+                                    class="material-icons right">blankcheck_circle</i>Cadastrar</button>
+                            <button id="button-cancel-new-account" class="waves-effect waves-light btn red"><i
+                                    class="material-icons right">cancel</i>Cancelar</button>
                         </form>
                     </div>
                 </div>
@@ -86,6 +105,7 @@
     </footer>
     <script src="assets/libraries/jquery/jquery-3.4.1.min.js"></script>
     <script src="assets/libraries/materialize/materialize/js/materialize.js"></script>
+    <script src="assets/resources/scripts/login.js"></script>
 </body>
 
 </html>
