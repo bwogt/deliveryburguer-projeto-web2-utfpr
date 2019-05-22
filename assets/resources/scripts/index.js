@@ -1,6 +1,7 @@
 //Module Pattern
 + function () {
-   //espera o html ser carreado
+    //Utilização de Jquery
+    //espera o html ser carreado
    $(document).ready(function(){
     
     //exibe e oculta o conteudo do card hamburguer e bebidas - acesso pelo id
