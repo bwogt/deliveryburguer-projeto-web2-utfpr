@@ -1,6 +1,15 @@
-
-/*Esconde a div de usuário logado*/
+/*display default div usuário logado*/
 #div-current-user{
+    display: none;
+}
+
+/*display default div login*/
+#div-login{
+    display: none;
+}
+
+/*display default div de cadastro*/
+#div-create-account{
     display: none;
 }
 
@@ -9,9 +18,8 @@
     display: none;
 }
 
-
-/*Esconde a div de cadastro por padrão*/
-#div-create-account{
+/*Botão de remover item*/
+#button-remove-unit-hamb1{
     display: none;
 }
 

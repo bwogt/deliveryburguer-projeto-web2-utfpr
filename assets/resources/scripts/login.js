@@ -1,5 +1,59 @@
 //Module Pattern
 + function () {
+    //Função para limpar inputs dos forms da tela de login
+    //Utilização de arrow function
+    //Utilizado querySeletorAll
+    let clearInputsForms = () => {
+        let inpust_forms = document.querySelectorAll('input');
+
+        for (let i = 0; i < inpust_forms.length; i++) {
+            inpust_forms[i].value = '';
+        }
+    }
+
+    //tela de login
+    let screenLogin = function () {
+        document.getElementById('div-current-user').style.display = 'none';
+        document.getElementById('div-create-account').style.display = 'none';
+        clearInputsForms();
+        document.getElementById('div-login').style.display = 'block';
+        document.getElementById('title-pag-login').innerHTML = 'Acesse sua conta';
+    }
+
+    //tela de usuário atual
+    let screenCurrentUser = (user_online) => {
+        document.getElementById('div-login').style.display = 'none';
+        document.getElementById('div-current-user').style.display = 'block';
+        document.getElementById('title-pag-login').innerHTML = 'Usuário: ' + user_online;
+    }
+
+    //tela de cadastro
+    function screenCreateAccount() {
+        document.getElementById('div-login').style.display = 'none';
+        document.getElementById('div-create-account').style.display = 'block';
+        document.getElementById('title-pag-login').innerHTML = 'Cadastro novo usuário';
+    }
+
+    //sempre quando a página é carregada está função é executada
+    userIsOnline();
+
+    //Função para verificar se existe um usuário logado
+    function userIsOnline() {
+        let user_online = sessionStorage.getItem('display_name');
+
+        if ((user_online != null) && (user_online != undefined)) {
+            document.getElementById('a-menu-login').textContent = user_online;
+            screenCurrentUser(user_online);
+
+        }
+        else {
+            document.getElementById('a-menu-login').textContent = 'Entrar';
+            screenLogin();
+        }
+    }
+
+
+
     //evita o envio do formulário;
     //acessa o form através da tag e posição;
     document.getElementsByTagName('form')[0].onsubmit = function (e) {
@@ -21,13 +75,16 @@
         //verifica se email e senha são idênticas ao do objeto usuário salvo no local storage
         if (typed_email == registration_email) {
             if (typed_password == registration_password) {
-                //esconder div de login e exibir a do usuário logado
-                document.getElementById('div-login').style.display = 'none';
-                document.getElementById('div-current-user').style.display = 'block';
-                //Exibe o nome do usuário logado
-                document.getElementById('title-pag-login').innerHTML = 'Usuário: ' + user_data.name;
-                clearInputsForms();
+               
+                let first_name = user_data.name;
+                first_name = first_name.split(" ");
+                first_name = first_name[0];
+                
+                screenCurrentUser(first_name);
+                sessionStorage.setItem('display_name', first_name);
 
+                userIsOnline();
+                clearInputsForms();
             }
             else {
                 alert('Senha incorreta');
@@ -41,17 +98,17 @@
 
     //quando o botão de sair é clicado esconde-se a div de usuário logado e exibe a de login
     document.getElementById('button-logoff').onclick = function () {
-        backLoginSreen();
+        //remove o usuário logado
+        sessionStorage.removeItem('display_name');
+        userIsOnline();
+        screenLogin();
     }
 
     /*  Quando o botão de novo cadastro é acionado a div de login é escondida e a de 
         cadastro é exibida - Também é mudado o titulo <h1> da página;
     */
     document.getElementById('button-new-account').onclick = function () {
-        document.getElementById('div-login').style.display = 'none';
-        document.getElementById('div-create-account').style.display = 'block';
-        document.getElementById('title-pag-login').innerHTML = 'Cadastro novo usuário';
-
+        screenCreateAccount();
     }
 
     //evento capturado quando o botão de novo usuário é acionado
@@ -72,42 +129,21 @@
             adress: adress_user,
             city: city_user,
             email: email_user,
-            password: password_user
+            password: password_user,
+            pedidos: []
         }
 
         //armazenado no local storage utilizando JSON;
         localStorage.setItem("user1", JSON.stringify(user));
 
 
-        backLoginSreen();
-    }
-
-    /*  
-        Função anônima
-        Esconde a barra de cadastro após o cadastro ser feito;
-        Muda para tela de login e muda o titulo;
-    */
-    let backLoginSreen = function () {
-        document.getElementById('div-current-user').style.display = 'none';
-        document.getElementById('div-create-account').style.display = 'none';
-        document.getElementById('div-login').style.display = 'block';
-        document.getElementById('title-pag-login').innerHTML = 'Acesse sua conta';
+        //volta para a tela de login
+        screenLogin();
     }
 
     //cancela a criação de um novo usuário e volta para tela de login
     document.getElementById('button-cancel-new-account').onclick = function () {
-        backLoginSreen();
-    }
-
-    //Função para limpar inputs dos forms da tela de login
-    //Utilização de arrow function
-    //Utilizado querySeletorAll
-    let clearInputsForms = () => {
-        let inpust_forms = document.querySelectorAll('input');
-
-        for (let i = 0; i < inpust_forms.length; i++) {
-            inpust_forms[i].value = '';
-        }
+        screenLogin();
     }
 
 }()
