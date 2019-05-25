@@ -13,9 +13,9 @@
 
     //tela de login
     let screenLogin = function () {
-        clearInputsForms();
         document.getElementById('div-current-user').style.display = 'none';
         document.getElementById('div-create-account').style.display = 'none';
+        clearInputsForms();
         document.getElementById('div-login').style.display = 'block';
         document.getElementById('title-pag-login').innerHTML = 'Acesse sua conta';
     }
@@ -129,7 +129,8 @@
             adress: adress_user,
             city: city_user,
             email: email_user,
-            password: password_user
+            password: password_user,
+            pedidos: []
         }
 
         //armazenado no local storage utilizando JSON;
