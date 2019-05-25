@@ -52,8 +52,6 @@
         }
     }
 
-
-
     //evita o envio do formulário;
     //acessa o form através da tag e posição;
     document.getElementsByTagName('form')[0].onsubmit = function (e) {
