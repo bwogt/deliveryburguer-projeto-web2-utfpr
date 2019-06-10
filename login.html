@@ -24,7 +24,7 @@
                             <a href="index.html">Início</a>
                         </li>
                         <li>
-                            <a href="pedido.html">Pedido</a>
+                            <a id="a-carrinho" href="pedido.html">Pedido</a>
                         </li>
                         <li>
                             <a id="a-menu-login" href="login.html">Entrar</a>
@@ -50,9 +50,10 @@
             <div class="row">
                 <div class="col s12">
                     <div id="div-login">
-                        <form action="#">
-                            Email: <input type="text" name="input-login-email"><br>
-                            Senha: <input type="text" name="input-login-password"><br>
+                        <form>
+                            Email:<input type="text" name="input-login-email"><br>
+
+                            Senha: <input type="password" name="input-login-password"><br>
                             <button id="button-login" class="waves-effect waves-light btn green"><i
                                     class="material-icons right">blankcheck_circle</i>Entrar</button>
                             <button id="button-new-account" class="waves-effect waves-light btn orange"><i
@@ -65,27 +66,28 @@
             <div class="row">
                 <div class="col s12">
                     <div id="div-create-account">
-                        <form id='teste-form'>
+                        <form id="form-create-user">
                             <p>
-                                Nome: <input type="text" name="input-name-user">
+                                Nome: <input type="text" name="input-name-user" value="teste"
+                                    pattern="^([A-Z]([a-z]|[á-ú]){1,15}\s)+(([A-Z]|[a-z])([a-z]|[á-ú]){1,15}\s?)+$" required>
                             </p>
                             <p>
-                                Data de Nascimento: <input type="text" name="input-date-of-birth">
+                                CEP: <input type="number" name="input-adress-user" pattern="^\d{5}-?\d{3}$" required>
                             </p>
                             <p>
-                                Endereco: <input type="text" name="input-adress-user">
+                                Número: <input type="number" name="input-adress-number-user" min="1" max="10000" required>
                             </p>
                             <p>
-                                Cidade: <input type="text" name="input-city-user">
+                                Cidade: <input type="text" name="input-city-user"
+                                    pattern="^([A-Z]([a-z]|[á-ú]){5,15}\s?)|([A-Z]([a-z]|[á-ú]){1,15}\s)(([A-Z]|[a-z])([a-z]|[á-ú]){1,15}\s?)*"
+                                    required>
                             </p>
                             <p>
-                                Email: <input type="text" name="input-email-adress">
+                                Email: <input type="email" name="input-email-adress"
+                                    pattern="^[a-z]{2,20}\d?@[a-z]{0,6}.com(.?[a-z]{0,4}?)$" required>
                             </p>
                             <p>
-                                Senha: <input type="text" name="input-password">
-                            </p>
-                            <p>
-                                Confirme a senha: <input type="text" name="input-password-confirm">
+                                Senha: <input type="password" name="input-register-password" pattern="^\d{4,8}$" required>
                             </p>
                             <button id="button-create-new-account" class="waves-effect waves-light btn blue"><i
                                     class="material-icons right">blankcheck_circle</i>Cadastrar</button>
