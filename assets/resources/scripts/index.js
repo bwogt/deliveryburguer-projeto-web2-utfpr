@@ -15,8 +15,9 @@
         }
 
         class Product {
-            constructor(id_produto) {
+            constructor(id_produto, button_click) {
                 this.id_produto = id_produto;
+                this.button_click = button_click;
                 this.amount = 0;
             }
 
@@ -37,101 +38,271 @@
             }
         }
 
-        //exibe e oculta o conteudo do card hamburguer e bebidas - acesso pelo id
-        $('#button-hamb1').click(function () {
-            $('#card-content-hamb1').slideToggle('fast');
-        })
-
-
+        /****************descobrir um modo de unificar o adicionar, remover e comprar */
         //variáveis de controle do pedido
-        let cont_hamb1 = 0;
-        let hamburguer1 = new Product(1);
+        let product_unit = 0;
+        let id_card_content;
+        let existe_teste = false;
+       // let hamburguer1 = new Product(1);
+        //let hamburguer2 = new Product(2);
 
-        //incrementa a quantidade no pedido - tipo do hamburguer tradicional
-        //verifica se atingiu o limite do pedido (6 unidades) do mesmo tipo de hamburguer
-        $('#button-add-unit-hamb1').click(function () {
-            $('#button-remove-unit-hamb1').css('display', 'block');
-
-            if (cont_hamb1 < 0) {
-                cont_hamb1 = 1;
-            } else {
-                cont_hamb1++;
-            }
-
-            if (cont_hamb1 <= 6) {
-                $('#card-content-hamb1 > +p').text('Seu pedido: ' + cont_hamb1);
-                hamburguer1.adiciona();
-
-                if (cont_hamb1 > 0) {
-                    $('#button-buy-item').css('display', 'block');
+        //exibe e oculta o conteudo do card de produtos
+        $('.btn-floating').click(function () {    
+            let id_button_current = '#' + $(this).attr('id');
+            let divide_id = id_button_current.split('-');
+            //******encontrar um meio de modificar o product unit a cada vez que o botão flutuante for clicado
+            if(current_order == undefined){
+                product_unit = 0;
+            }else{
+                for(i in current_order.order_list){
+                    alert(current_order.order_list[i].button_click);
                 }
             }
-            else {
-                cont_hamb1 = 6;
-                window.alert('Limite máximo atingido... (6 unidades)')
+            
+            
+           
+            
+            $(id_button_buy).css('display', 'none');
+            $(id_button_remove).css('display', 'none');
+            $(id_card_content).text('Seu pedido: ' + product_unit);
+
+            
+
+            switch (divide_id[2]) {
+                case 'hamb1':
+                    $('.card-content').slideUp('fast')
+                    $('#card-content-hamb1').slideToggle('fast');
+                   break;
+
+                case 'hamb2':
+                    $('.card-content').slideUp('fast')
+                    $('#card-content-hamb2').slideToggle('fast');
+                    break;
+
+                case 'hamb3':
+                    $('.card-content').slideUp('fast');
+                    $('#card-content-hamb3').slideToggle('fast');
+                    break;
+
+                case 'drink1':
+                    $('.card-content').slideUp('fast');
+                    $('#card-content-drink1').slideToggle('fast');
+                    break;
+
+                case 'drink2':
+                    $('.card-content').slideUp('fast');
+                    $('#card-content-drink2').slideToggle('fast');
+                    break;
+
+                case 'drink3':
+                    $('.card-content').slideUp('fast');
+                    $('#card-content-drink3').slideToggle('fast');
+                    break;
+
+                default:
+                    break;
             }
         })
 
+        //Armazena o id do botão clicado
+        let id_button_add;
+        let id_button_remove;
+        let id_button_buy;
+        let produto;
+        let new_id_produto = 1;
+        let existe_produto = false;
+        let lista_produtos = [];
+
+        //Identifica qual botão foi clicado
+        //Realiza uma ação referente ao botão clicado
+        $('.card-content > button').click(function () {
+            let id_button = '#' + $(this).attr('id');
+            let aux = id_button;
+            let divide_button_id = id_button.split('-');
+            let existe_produto = false;
+            let produto_atual;
+
+            //div pai dos botões (adicionar, remover, comprar)
+            id_card_content = '#' + $(this).closest('div').attr('id');
+
+            switch(divide_button_id[1]){
+                case 'add':
+                    id_button_add = id_button;
+                    aux  += ' + button';
+                    id_button_remove = '#' + $(aux).attr('id');
+                    aux = id_button_remove + ' + button';
+                    id_button_buy = '#' + $(aux).attr('id');
+                    id_card_content += '> +p';
+
+                    if((lista_produtos == null) || (lista_produtos == '')){
+                        produto = new Product(new_id_produto, id_button_add);
+                        lista_produtos.push(produto);
+                        existe_produto = true;
+                        new_id_produto++;
+                    }else{
+                        for(i in lista_produtos){
+                            if(lista_produtos[i].button_click == id_button_add){
+                                existe_produto = true;
+                                produto = lista_produtos[i];
+                            }
+                        }
+                    }
+                    
+                    if(existe_produto){
+                        adicionar(produto);
+                    }else{
+                        produto = new Product(new_id_produto, id_button_add);
+                        lista_produtos.push(produto);
+                        adicionar(produto);
+                        existe_produto = true;
+                        new_id_produto++;
+                    }
+
+                    existe_produto = false;
+
+                    break;
+                
+                case 'remove':
+                    id_button_remove = id_button;
+                    id_card_content += '> +p';
+                    
+                    remover(produto);
+                // remover(hamburguer1);
+                    break;
+
+                case 'buy':
+                    id_button_buy = id_button;
+                    comprarHamburguer(produto);
+                    break;
+                
+                default:
+                    break;
+            }
+            
+        
+            
+            
+        })
+        
+        //Função para alterar exibição de quantidade do produto
+        function adicionar(produto) {
+            $(id_button_remove).css('display', 'block');
+            $(id_button_buy).css('display', 'block');
+            product_unit++;
+
+            if (product_unit <= 6) {
+                $(id_card_content).text('Seu pedido: ' + product_unit);
+                produto.adiciona();
+            }
+            else {
+                product_unit = 6;
+                window.alert('Limite máximo atingido... (6 unidades)')
+            }
+        }
+
+        //decrementa a quantidade exibida no card do produto
+        //cancela efeitos de notificação de produto no carrinho
+        function remover(produto) {
+            if (product_unit > 0) {
+                product_unit--;
+                produto.remove();
+                $(id_card_content).text('Seu pedido: ' + product_unit);
+            }
+
+            if (product_unit == 0) {
+                clearInterval(chave1);
+                clearInterval(chave2);
+                animation = false;
+
+                $(id_button_buy).css('display', 'none');
+                $(id_button_remove).css('display', 'none');
+                $(id_card_content).text('Seu pedido: ' + product_unit);
+
+                document.getElementById('teste').innerHTML='shopping_cart';
+
+                if (current_order != undefined) {
+                    removeProductList(produto);
+                    sessionStorage.setItem('pedido', JSON.stringify(current_order));
+                }
+            }
+
+        }
+
+        //Função de animação de notificação
+        //Determina o icone de sino tocando
+        //verificar*************
         function notificacao1() {
             document.getElementById('teste').innerHTML = 'notifications_active';
         }
 
+        //Função de animação de notificação
+        //Determina o icone de sino default
+        //verificar*************
         function notificacao2() {
             document.getElementById('teste').innerHTML = 'notifications';
         }
 
-        //decrementa a quantidade exibida no card do produto - tipo do hamburguer tradicional
-        $('#button-remove-unit-hamb1').click(function () {
-            if (cont_hamb1 > 0) {
-                cont_hamb1--;
-                hamburguer1.remove();
-                $('#card-content-hamb1 > +p').text('Seu pedido: ' + cont_hamb1);
-            }
-
-            if (cont_hamb1 == 0) {
-                $('#button-buy-item').css('display', 'none');
-                $('#button-remove-unit-hamb1').css('display', 'none');
-                $('#card-content-hamb1 > +p').text('Seu pedido: ' + cont_hamb1);
-
-                clearInterval(chave1);
-                clearInterval(chave2);
-                document.getElementById('teste').innerHTML = 'shopping_cart';
-
-                if (new_order != undefined) {
-                    new_order.order_list.splice(0, 1);
-                    sessionStorage.setItem('pedido', JSON.stringify(new_order));
-                }
-            }
-
-        })
-
+        //Variáveis de controle de criação de objetos pedido e produto
+        let current_order;
         let create_order = false;
-        let new_order;
+        let is_empety_order_list = true;
+        let animation = false;
         let chave1;
         let chave2;
+        let id_div_button;
 
-        $('#button-buy-item').click(function () {
+        //Cria um objeto pedido caso não exista um criado
+        //Modifica o icone no menu de carrinho
+        function comprarHamburguer(produto){
+            let existe = false;
             if (create_order == false) {
-                new_order = new Order();
+                current_order = new Order();
                 create_order = true;
             }
 
-            chave1 = setInterval(notificacao1, 500);
-            chave2 = setInterval(notificacao2, 1000);
-        })
-
-        let existe = false;
-
-        $('#card-content-hamb1 > #button-buy-item').click(function () {
-            if (!existe) {
-                new_order.adiciona(hamburguer1);
-                existe = true;
-            } else {
-                new_order.order_list.splice(0, 1);
-                new_order.adiciona(hamburguer1);
+            if (animation == false) {
+                chave1 = setInterval(notificacao1, 500);
+                chave2 = setInterval(notificacao2, 1000);
+                animation = true;
             }
 
-            sessionStorage.setItem('pedido', JSON.stringify(new_order));
-        })
+            if (is_empety_order_list) {
+                current_order.adiciona(produto);
+               //order.adiciona(produto);
+                sessionStorage.setItem('pedido', JSON.stringify(current_order));
+                is_empety_order_list = false;
+            } else {
+                for(let i in current_order.order_list){
+                    if(current_order.order_list[i].id_produto == produto.id_produto){
+                        removeProductList(produto);
+                        //order.adiciona(produto);
+                        current_order.adiciona(produto);
+                        existe = true;
+                    }
+                }
+
+                if(existe == false){
+                    //current_order.adiciona(produto);
+                    current_order.adiciona(produto);
+                    existe = false;
+                }
+
+                //armazena o pedido no sesseionStorage;
+                sessionStorage.setItem('pedido', JSON.stringify(current_order));
+            }
+        }
+        
+        //Remove o produto da lista de pedido
+        function removeProductList(produto) {
+            //converte os dados salvos no sessionStorage
+            let list = JSON.parse(sessionStorage.getItem('pedido'));
+            
+            //verifica se existe um produto no pedido com o id do produto atual
+            for (let i = 0; i < list.order_list.length; i++) {
+                if (list.order_list[i].id_produto == produto.id_produto) {
+                    current_order.order_list.splice(i, 1);
+                }
+            } 
+        }
     });
 }();

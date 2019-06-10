@@ -15,12 +15,12 @@
 }
 
 /*Botão de adicionar no carrinho*/
-#button-remove-unit-hamb1{
+.btn.remove{
     display: none;
 }
 
 /*Botão de adicionar no carrinho*/
-#button-buy-item{
+.btn.buy{
     display: none;
 }
 
