@@ -3,6 +3,7 @@
     //Utilização de Jquery
     //espera o html ser carreado
     $(document).ready(function () {
+        
         //classe que representa um pedido
         class Order {
             constructor() {
@@ -21,14 +22,6 @@
                 this.amount = 0;
             }
 
-            get idProduto() {
-                return this.id_produto;
-            }
-
-            set idProduto(id_produto) {
-                this.id_produto = id_produto;
-            }
-
             adiciona() {
                 this.amount += 1;
             }
@@ -38,36 +31,56 @@
             }
         }
 
-        /****************descobrir um modo de unificar o adicionar, remover e comprar */
         //variáveis de controle do pedido
+        let current_order;
         let product_unit = 0;
         let id_card_content;
-        let existe_teste = false;
-       // let hamburguer1 = new Product(1);
-        //let hamburguer2 = new Product(2);
-
+        let id_button_add;
+        let id_button_remove;
+        let id_button_buy;
+      
         //exibe e oculta o conteudo do card de produtos
         $('.btn-floating').click(function () {    
-            let id_button_current = '#' + $(this).attr('id');
-            let divide_id = id_button_current.split('-');
-            //******encontrar um meio de modificar o product unit a cada vez que o botão flutuante for clicado
-            if(current_order == undefined){
+            let existe_no_pedido = false;
+            let id_button_floating = '#' + $(this).attr('id');
+            let divide_id = id_button_floating.split('-');
+            
+            //id´s do contéudo e dos botões de cada produto
+            id_card_content = '#' + $(this).parent().siblings().attr('id');
+            id_button_add= '#' + $(id_card_content).find('button').attr('id');
+            id_button_remove = '#' + $(id_button_add).next().attr('id');
+            id_button_buy = '#' + $(id_button_remove).next().attr('id');
+            
+            let application_web = JSON.parse(sessionStorage.getItem('pedido'))
+           
+            //verifica se o produto existe no pedido
+            if((application_web == null) || (application_web.order_list.length == 0)){
                 product_unit = 0;
             }else{
-                for(i in current_order.order_list){
-                    alert(current_order.order_list[i].button_click);
+                for(let i in application_web.order_list){
+                    if(application_web.order_list[i].button_click == id_button_add){
+                        product_unit = application_web.order_list[i].amount;
+                        existe_no_pedido = true;
+                    }
                 }
             }
             
-            
+            //se existir exibe os botões de remover e comprar
+            if(existe_no_pedido){
+                $(id_button_buy).css('display', 'block');
+                $(id_button_remove).css('display', 'block');    
+            }else{
+                //se não existe quantidade torna-se zero e oculta-se os botões de remover e comprar
+                product_unit = 0;
+                $(id_button_buy).css('display', 'none');
+                $(id_button_remove).css('display', 'none');
+            }
            
-            
-            $(id_button_buy).css('display', 'none');
-            $(id_button_remove).css('display', 'none');
-            $(id_card_content).text('Seu pedido: ' + product_unit);
-
-            
-
+           let aux_id_card_content = $(id_card_content).find(' > p')[1];
+           $(aux_id_card_content).text('Seu pedido: ' + product_unit);
+           
+           //Procura pelo botão flutuante que foi clicado
+           //Oculta divs aberts e exibe a que foi clicada
             switch (divide_id[2]) {
                 case 'hamb1':
                     $('.card-content').slideUp('fast')
@@ -105,12 +118,8 @@
         })
 
         //Armazena o id do botão clicado
-        let id_button_add;
-        let id_button_remove;
-        let id_button_buy;
         let produto;
         let new_id_produto = 1;
-        let existe_produto = false;
         let lista_produtos = [];
 
         //Identifica qual botão foi clicado
@@ -120,7 +129,7 @@
             let aux = id_button;
             let divide_button_id = id_button.split('-');
             let existe_produto = false;
-            let produto_atual;
+            
 
             //div pai dos botões (adicionar, remover, comprar)
             id_card_content = '#' + $(this).closest('div').attr('id');
@@ -134,7 +143,7 @@
                     id_button_buy = '#' + $(aux).attr('id');
                     id_card_content += '> +p';
 
-                    if((lista_produtos == null) || (lista_produtos == '')){
+                    if(lista_produtos.length == 0){
                         produto = new Product(new_id_produto, id_button_add);
                         lista_produtos.push(produto);
                         existe_produto = true;
@@ -154,34 +163,31 @@
                         produto = new Product(new_id_produto, id_button_add);
                         lista_produtos.push(produto);
                         adicionar(produto);
-                        existe_produto = true;
                         new_id_produto++;
                     }
 
-                    existe_produto = false;
-
                     break;
-                
-                case 'remove':
+                 case 'remove':
                     id_button_remove = id_button;
                     id_card_content += '> +p';
                     
+                    for(let i in lista_produtos){
+                        if(lista_produtos[i].button_click == id_button_add){
+                            produto = lista_produtos[i];
+                        }
+                    }
+
                     remover(produto);
-                // remover(hamburguer1);
                     break;
 
                 case 'buy':
                     id_button_buy = id_button;
-                    comprarHamburguer(produto);
+                    comprarProduto(produto);
                     break;
                 
                 default:
                     break;
-            }
-            
-        
-            
-            
+            }    
         })
         
         //Função para alterar exibição de quantidade do produto
@@ -203,26 +209,46 @@
         //decrementa a quantidade exibida no card do produto
         //cancela efeitos de notificação de produto no carrinho
         function remover(produto) {
+            let teste_remove;
+            console.log('id produto atual '+produto.id_produto)
+            
             if (product_unit > 0) {
                 product_unit--;
-                produto.remove();
+                
+                if(current_order == undefined){
+                    produto.remove();
+                }else{
+                   for(let i in current_order.order_list){
+                        if(current_order.order_list[i].button_click == id_button_add){
+                            produto.remove();
+                            teste_remove = JSON.parse(sessionStorage.getItem('pedido'));
+                            teste_remove.order_list[i].amount = product_unit;
+                            current_order.order_list[i].amount = product_unit;
+                    
+                            sessionStorage.setItem('pedido', JSON.stringify(teste_remove));
+                        }
+                    }
+                }
                 $(id_card_content).text('Seu pedido: ' + product_unit);
             }
 
-            if (product_unit == 0) {
-                clearInterval(chave1);
-                clearInterval(chave2);
-                animation = false;
-
+            if (product_unit <= 0) {
                 $(id_button_buy).css('display', 'none');
                 $(id_button_remove).css('display', 'none');
                 $(id_card_content).text('Seu pedido: ' + product_unit);
 
-                document.getElementById('teste').innerHTML='shopping_cart';
-
                 if (current_order != undefined) {
                     removeProductList(produto);
                     sessionStorage.setItem('pedido', JSON.stringify(current_order));
+                }
+
+                teste_remove = JSON.parse(sessionStorage.getItem('pedido'));
+                
+                if(teste_remove.order_list.length == 0){
+                    clearInterval(chave1);
+                    clearInterval(chave2);
+                    animation = false;
+                    document.getElementById('teste').innerHTML='shopping_cart';
                 }
             }
 
@@ -243,7 +269,6 @@
         }
 
         //Variáveis de controle de criação de objetos pedido e produto
-        let current_order;
         let create_order = false;
         let is_empety_order_list = true;
         let animation = false;
@@ -253,7 +278,10 @@
 
         //Cria um objeto pedido caso não exista um criado
         //Modifica o icone no menu de carrinho
-        function comprarHamburguer(produto){
+        function comprarProduto(produto){
+            /*
+            Encontrar e resolver o bug do produto sobreescrevendo outro
+            */
             let existe = false;
             if (create_order == false) {
                 current_order = new Order();
@@ -268,7 +296,6 @@
 
             if (is_empety_order_list) {
                 current_order.adiciona(produto);
-               //order.adiciona(produto);
                 sessionStorage.setItem('pedido', JSON.stringify(current_order));
                 is_empety_order_list = false;
             } else {
@@ -294,9 +321,9 @@
         
         //Remove o produto da lista de pedido
         function removeProductList(produto) {
+            console.log('removido produto de id: '+produto.id_produto)
             //converte os dados salvos no sessionStorage
             let list = JSON.parse(sessionStorage.getItem('pedido'));
-            
             //verifica se existe um produto no pedido com o id do produto atual
             for (let i = 0; i < list.order_list.length; i++) {
                 if (list.order_list[i].id_produto == produto.id_produto) {
