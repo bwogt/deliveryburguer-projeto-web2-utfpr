@@ -39,14 +39,15 @@
 
     //Função para verificar se existe um usuário logado
     function userIsOnline() {
+      ////// corrigir o usuário logado para compra
         let user_online = sessionStorage.getItem('display_name');
 
         if ((user_online != null) && (user_online != undefined)) {
             document.getElementById('a-menu-login').textContent = user_online;
             screenCurrentUser(user_online);
-
         }
         else {
+            sessionStorage.setItem('logado', false);
             document.getElementById('a-menu-login').textContent = 'Entrar';
             screenLogin();
         }
@@ -130,6 +131,7 @@
                 
                 screenCurrentUser(first_name);
                 sessionStorage.setItem('display_name', first_name);
+                sessionStorage.setItem('logado', true);
 
                 userIsOnline();
                 clearInputsForms();
@@ -149,7 +151,10 @@
     //quando o botão de sair é clicado esconde-se a div de usuário logado e exibe a de login
     document.getElementById('button-logoff').onclick = function () {
         //remove o usuário logado
+       //
         sessionStorage.removeItem('display_name');
+        sessionStorage.setItem('logado', false);
+        sessionStorage.removeItem('pedido');
         //recarrega a página do servidor
         window.location.reload(true);
     }
@@ -180,8 +185,7 @@
             adress_number: adress_number,
             city: city_user,
             email: email_user,
-            password: password_user,
-            pedidos: []
+            password: password_user
         }
 
         //armazenado no local storage utilizando JSON;

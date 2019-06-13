@@ -24,10 +24,10 @@
                             <a href="index.html">Início</a>
                         </li>
                         <li>
-                            <a href="pedido.html">Pedido</a>
+                            <a href="pedido.html">Carrinho</a>
                         </li>
                         <li>
-                            <a href="login.html">Entrar</a>
+                            <a id="a-menu-login" href="login.html">Entrar</a>
                         </li>
                     </ul>
                 </div>
@@ -41,31 +41,85 @@
                 <div>
                     <h1>Pedido</h1>
                     <div class="row">
-                        <div class="col s12 m4">
-                            <div class="card horizontal">
-                                <div class="card-image">
-                                    <img src="assets/resources/images/hb-triplo.png">
-                                    <div class="card-action">
-                                        <button id="button-remove" class="btn waves-effect waves-light red">Remover
-                                    </div>
-                                </div>
-                                <div class="card-stacked">
-                                    <div class="card-content">
-                                        <p>Hamburguer triplo.</p>
-                                        <p id="total-pedido"></p>
-                                        <p id="valor-total-pedido"></p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col s6 m6">
+                            <p id='p-produtos'></p>
                         </div>
                     </div>
                 </div>
             </div>
-         </section>
-       
-         <div class="container">
-            <h2 id="total-compra">Total: R$</h2>
-        </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m12">
+                        <h2 id="total-compra">Total: R$</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m12">
+                        <h1>Endereço de Entrega</h1>
+                        <p id="p-endereco-entrega"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div id="div-meio-pagamento" class="col s12 m12">
+                        <h1>Meio de Pagamento</h1>
+                        <button id='button-payment-money' class="waves-effect waves-light btn green">
+                            <i class="material-icons right">attach_money</i>Dinheiro</button>
+                        <button id='button-payment-card' class="waves-effect waves-light btn orange">
+                            <i class="material-icons right">credit_card</i>Cartão</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m12">
+                        <div>
+                            <form id="form-card">
+                                <p>
+                                    Nome do titular do cartão:
+                                    <input type="text" required>
+                                    Número do cartão:
+                                    <input type="number" pattern='^\d{4}-?\d{4}\d{6}-?\d{2}?$' required>
+                                    Código verificador:
+                                    <input type="number" pattern='^\d{3}$' required>
+                                    <button class="waves-effect waves-light btn green">
+                                        <i class="material-icons right">check</i>Comprar</button>
+                                    <button class="waves-effect waves-light btn red">
+                                        <i class="material-icons right">cancel</i>Cancelar</button>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m12">
+                        <button id='button-finalize-purchase' class="waves-effect waves-light btn blue">
+                            <i class="material-icons right">check</i>Finalizar Compra</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div id="div-compra-finalizada" class="col s12 m12">
+                        <h1>Obrigado por comprar conosco! Seu pedido já está em rota de entrega :p</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer class="section black white-text center">
@@ -73,6 +127,8 @@
     </footer>
     <script src="assets/libraries/jquery/jquery-3.4.1.min.js"></script>
     <script src="assets/libraries/materialize/materialize/js/materialize.js"></script>
+    <script src="assets/resources/scripts/pedido.js"></script>
+
 </body>
 
 </html>

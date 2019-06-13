@@ -1,4 +1,5 @@
 
+
 /*display default div usuário logado*/
 #div-current-user{
     display: none;
@@ -95,14 +96,57 @@ h1{
    margin-right: 10px;
 }
 
+#form-card{
+    display: none;
+}
+
+#button-finalize-purchase{
+    display: none;
+}
+
+#p-produtos{
+    font-size: 20px;
+    font-style: italic;
+}
+
+#p-produtos span{
+   color: red
+}
+
+#p-endereco-entrega{
+    font-size: 30px;
+    margin: 20px;
+    font-style: italic;
+}
+#button-payment-money{
+    width: 200px;
+    margin: 20px;
+}
+
+#button-payment-card{
+    width: 200px;
+    margin: 20px;
+}
+
+#button-finalize-purchase{
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#div-compra-finalizada{
+    display: none;
+}
 /*css do materialize para manter o rodape no fim*/
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-  }
+}
 
-  /*css do materialize para manter o rodape no fim*/
-  main {
+/*css do materialize para manter o rodape no fim*/
+main {
     flex: 1 0 auto;
-  }
+}
+
