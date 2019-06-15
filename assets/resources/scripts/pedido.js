@@ -1,6 +1,7 @@
 +function(){
     let logado1 = sessionStorage.getItem('logado');
-   
+    let existe_pedido = JSON.parse(sessionStorage.getItem('pedido'));
+
     if(logado1 == 'false'){
         alert('É necessário estar logado para acessar seu carrinho... \nVocê sera redirecionado para a página de login');
         window.location.href = 'login.html'
@@ -11,7 +12,7 @@
 
         document.getElementById('a-menu-login').textContent = nome_usuario;
     }
-
+    
     let produtos = JSON.parse(sessionStorage.getItem('pedido'));
     let total_pedido = 0; 
     
@@ -29,7 +30,7 @@
                 exibicao = `Hamburguer Tradicional<br> Queijo, Alface, Pickles, Tomate, Cebola e molho especial.<br>`;
                 exibicao += `Preço unitario: R$12.90<br>`;
                 exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
-                exibicao += `Total: ${total_produto}`;
+                exibicao += `Total R$: ${total_produto}`;
 
                 document.getElementById('total-compra').innerHTML = 'Total: R$'+total_pedido;
                 document.getElementById('p-produtos').innerHTML = exibicao;
@@ -42,58 +43,58 @@
                 exibicao = `Duplo Hamburguer Tradicional<br> Queijo Cheddar e molho especial.<br>`;
                 exibicao += `Preço unitario: R$15.90<br>`;
                 exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
-                exibicao += `Total: ${total_produto}`;
+                exibicao += `Total R$: ${total_produto}`;
                 
                 document.getElementById('total-compra').innerHTML = 'Total: R$'+total_pedido;
                 document.getElementById('p-produtos').innerHTML += '<br><br>' + exibicao;
                 break;
             
             case '#button-add-unit-hamb3': 
-            total_produto = parseInt(produtos.order_list[i].amount) * 12.90;
+            total_produto = parseInt(produtos.order_list[i].amount) * 20.00;
             total_pedido += total_produto;
 
                 exibicao = `Triplo Hamburguer Tradicional<br> Queijo, Alface, Pickles, Tomate, Cebola e molho especial.<br>`;
                 exibicao += `Preço unitario: R$20.00<br>`;
                 exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
-                exibicao += `Total: ${total_produto}`;
+                exibicao += `Total R$: ${total_produto}`;
 
                 document.getElementById('total-compra').innerHTML = 'Total: R$'+total_pedido;
                 document.getElementById('p-produtos').innerHTML += '<br><br>' + exibicao;
                 break;
 
             case '#button-add-unit-drink1': 
-            total_produto = parseInt(produtos.order_list[i].amount) * 12.90;
+            total_produto = parseInt(produtos.order_list[i].amount) * 4.00;
             total_pedido += total_produto;
 
-                exibicao = `Refigerante<br> Lata de 350Ml.<br>`;
+                exibicao = `Refrigerante<br> Lata de 350Ml.<br>`;
                 exibicao += `Preço unitario: R$4.00<br>`;
                 exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
-                exibicao += `Total: ${total_produto}`;
+                exibicao += `Total R$: ${total_produto}`;
                 
                 document.getElementById('total-compra').innerHTML = 'Total: R$'+total_pedido;
                 document.getElementById('p-produtos').innerHTML += '<br><br>' + exibicao;
                 break;
 
             case '#button-add-unit-drink2': 
-            total_produto = parseInt(produtos.order_list[i].amount) * 12.90;
+            total_produto = parseInt(produtos.order_list[i].amount) * 7.00;
             total_pedido += total_produto;
 
                 exibicao = `Refrigerante<br> Garrafa 2L.<br>`;
                 exibicao += `Preço unitario: R$7.00<br>`;
                 exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
-                exibicao += `Total: ${total_produto}`;
+                exibicao += `Total R$: ${total_produto}`;
                 
                 document.getElementById('total-compra').innerHTML = 'Total: R$'+total_pedido;
                 document.getElementById('p-produtos').innerHTML += '<br><br>' + exibicao;
                 break;
 
             case '#button-add-unit-drink3': 
-            total_produto = parseInt(produtos.order_list[i].amount) * 12.90;
+            total_produto = parseInt(produtos.order_list[i].amount) * 11.00;
             total_pedido += total_produto;
                 exibicao = `Cerveja<br> Garrafa 1l.<br>`;
                 exibicao += `Preço unitario: R$11.00<br>`;
                 exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
-                exibicao += `Total: ${total_produto}`;
+                exibicao += `Total R$: ${total_produto}`;
                 
                 document.getElementById('total-compra').innerHTML = 'Total: R$'+total_pedido;
                 document.getElementById('p-produtos').innerHTML += '<br><br>' + exibicao;

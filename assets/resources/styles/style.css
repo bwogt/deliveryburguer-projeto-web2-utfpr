@@ -135,6 +135,10 @@ h1{
     text-align: center;
 }
 
+#div-carrinho-vazio{
+    display: none;
+}
+
 #div-compra-finalizada{
     display: none;
 }
