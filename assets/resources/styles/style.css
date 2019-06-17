@@ -135,8 +135,21 @@ h1{
     text-align: center;
 }
 
+#div-carrinho-vazio{
+    display: none;
+}
+
 #div-compra-finalizada{
     display: none;
+}
+
+.carrinho-inicio{
+    display: none;
+}
+
+.carrinho-inicio-vazio{
+    display: none;
+    text-align: center;
 }
 /*css do materialize para manter o rodape no fim*/
 body {
