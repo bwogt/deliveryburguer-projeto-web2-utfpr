@@ -151,11 +151,30 @@ h1{
     display: none;
     text-align: center;
 }
+
+footer{
+    margin-top: 80px;
+}
+
+footer > i {
+    padding-left: 20px;
+}
+
+#div-compra-finalizada > h1{
+    text-align: center;
+}
+
+#div-compra-finalizada > img{
+    width: 40%;
+    margin-left: 30%;
+}
+
 /*css do materialize para manter o rodape no fim*/
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    
 }
 
 /*css do materialize para manter o rodape no fim*/

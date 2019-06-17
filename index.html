@@ -17,7 +17,8 @@
         <nav class="black">
             <div class="container">
                 <div class="nav-wrapper">
-                    <a href="index.html" class="brand-logo">DeliveryBurguer</a>
+                    <a href="index.html" class="brand-logo" onMouseOver="
+                    startAnimation(this)">DeliveryBurguer</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                         <i class="material-icons">menu</i>
                     </a>
@@ -238,12 +239,45 @@
     </main>
 
     <footer class="section black white-text center">
-        <p>DeliveryBurguer 2019</p>
+        <i class="material-icons">local_phone</i>+55 (42)99999-9999
+        <i class="material-icons">email</i>atendimento@deliveryburguer.com
+        <p>© DeliveryBurguer 2019</p>
     </footer>
 
     <script src="assets/libraries/jquery/jquery-3.4.1.min.js"></script>
     <script src="assets/libraries/materialize/materialize/js/materialize.js"></script>
     <script src="assets/resources/scripts/index.js"></script>
+    <script>
+
+        function startAnimation(obj) {
+            if(window.innerWidth >= 633){
+                setTimeout(function () {
+                    obj.innerHTML += '<i class="material-icons right">store</i>'
+                }, 500);
+                
+                setTimeout(function () {
+                    obj.innerHTML = 'DeliveryBurguer';
+                    obj.innerHTML += '<i class="material-icons right">local_shipping</i>'
+                }, 1000);
+
+                setTimeout(function () {
+                    obj.innerHTML = 'DeliveryBurguer';
+                    obj.innerHTML += '<i class="material-icons right">person_pin_circle</i>'
+                }, 1500);
+
+                setTimeout(function () {
+                    obj.innerHTML = 'DeliveryBurguer';
+                    obj.innerHTML += '<i class="material-icons right">check</i>'
+                }, 2000);
+                setTimeout(function () {
+                    obj.innerHTML = 'Rápido e saboroso!';
+                }, 2500);
+                setTimeout(function () {
+                    obj.innerHTML = 'DeliveryBurguer';
+                }, 3500);
+            }
+        }
+    </script>
 
 </body>
 
