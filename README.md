@@ -23,13 +23,13 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
   - [x] Nomes de arquivos minúsculos e separados por hífen (dashed-case)
 
 **Caixas de Diálogo**
-  - [ ] prompt
+  - [x] prompt
   - [x] alert
-  - [ ] confirm
+  - [x] confirm
   
 **Temporizadores**
   - [x] setInterval
-  - [ ] setTimeout
+  - [x] setTimeout
   
 **Funções**
   - [ ] Função anônima com argumento
@@ -37,7 +37,7 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
   - [ ] Função anônima com retorno
   - [x] Função auto-executável
   - [x] Função com nome
-  - [ ] Função aninhada/local - declarar uma função dentro de outra
+  - [x] Função aninhada/local - declarar uma função dentro de outra
   - [ ] Passagem de uma função como parâmetro
   - [x] Função Flecha - Arrow Function
 
