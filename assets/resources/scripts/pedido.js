@@ -23,7 +23,21 @@
             elementos_pedido[i].style.display = 'block';
         }
 
-        cupomDeDesconto();
+        //Função aninhada
+        +function cupomDeDesconto() {
+            let has_a_cupom = window.confirm('Você possui um cupom de desconto? ');
+    
+            if (has_a_cupom) {
+                let cupom = window.prompt('Digite seu cupom');
+    
+                if (cupom === 'ganhei5') {
+                    window.alert('Você ganhou R$5,00 de desconto na sua compra! ')
+                    desconto = 5;
+                } else {
+                    let resposta = window.alert('Cupom inválido... ou fora da promoção');
+                }
+            }
+        }();
     }
 
     if (logado1 == 'false') {
@@ -32,27 +46,13 @@
     } else {
         let nome_usuario = sessionStorage.getItem('display_name');
         if (nome_usuario != null) {
+            //midificar aqui
             $('.a-menu-login').html('<i class="material-icons left">person_pin</i>' + nome_usuario);
         }
     }
 
     let produtos = JSON.parse(sessionStorage.getItem('pedido'));
     let total_pedido = 0;
-
-    function cupomDeDesconto() {
-        let has_a_cupom = window.confirm('Você possui um cupom de desconto? ');
-
-        if (has_a_cupom) {
-            let cupom = window.prompt('Digite seu cupom');
-
-            if (cupom === 'ganhei5') {
-                window.alert('Você ganhou R$5,00 de desconto na sua compra! ')
-                desconto = 5;
-            } else {
-                let resposta = window.alert('Cupom inválido... ou fora da promoção');
-            }
-        }
-    }
 
     //verifica quais produtos estão no pedido
     //calcula o total 
