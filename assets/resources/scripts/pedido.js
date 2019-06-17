@@ -1,4 +1,14 @@
 +function () {
+    //ativa o sidenav mobile
+    $(document).ready(function () {
+        $('.sidenav').sidenav();
+    });
+
+    //Função para retornar o id do elemento
+    function $id(id) {
+        return document.getElementById(id);
+    }
+
     let logado1 = sessionStorage.getItem('logado');
     let existe_pedido = JSON.parse(sessionStorage.getItem('pedido'));
     let desconto = 0;
@@ -20,11 +30,10 @@
         alert('É necessário estar logado para acessar seu carrinho... \nVocê sera redirecionado para a página de login');
         window.location.href = 'login.html';
     } else {
-        let nome_usuario = JSON.parse(localStorage.getItem('user1'));
-        nome_usuario = nome_usuario.name.split(' ');
-        nome_usuario = nome_usuario[0];
-
-        document.getElementById('a-menu-login').textContent = nome_usuario;
+        let nome_usuario = sessionStorage.getItem('display_name');
+        if (nome_usuario != null) {
+            $('.a-menu-login').html('<i class="material-icons left">person_pin</i>' + nome_usuario);
+        }
     }
 
     let produtos = JSON.parse(sessionStorage.getItem('pedido'));
@@ -40,31 +49,10 @@
                 window.alert('Você ganhou R$5,00 de desconto na sua compra! ')
                 desconto = 5;
             } else {
-                let resposta = window.confirm('Cupom inválido...\nDeseja ganhar um cupom?');
-                if (resposta) {
-                    let email = prompt('Informe um email para recerber promoções: ');
-                    if ((email == null) || (email == '')) {
-                        window.alert('Nada informado...')
-                    } else {
-                        window.confirm('Você ganhou R$5,00 de desconto na sua compra! ');
-                        desconto = 5;
-                    }
-                }
-            }
-        } else {
-            let resposta = window.confirm('Deseja ganhar um cupom?');
-            if (resposta) {
-                let email = window.prompt('Informe um email para recerber promoções: ');
-                if ((email == null) || (email == '')) {
-                    window.alert('Nada informado...')
-                } else {
-                    window.confirm('Você ganhou R$5,00 de desconto na sua compra! ');
-                    desconto = 5;
-                }
+                let resposta = window.alert('Cupom inválido... ou fora da promoção');
             }
         }
     }
-
 
     //verifica quais produtos estão no pedido
     //calcula o total 
@@ -84,7 +72,7 @@
                 exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
                 exibicao += `Total R$: ${total_produto.toFixed(2)}`;
 
-                document.getElementById('p-produtos').innerHTML = exibicao;
+                $id('p-produtos').innerHTML = exibicao;
                 break;
 
             case '#button-add-unit-hamb2':
@@ -96,7 +84,7 @@
                 exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
                 exibicao += `Total R$: ${total_produto.toFixed(2)}`;
 
-                document.getElementById('p-produtos').innerHTML += '<br><br>' + exibicao;
+                $id('p-produtos').innerHTML += '<br><br>' + exibicao;
                 break;
 
             case '#button-add-unit-hamb3':
@@ -108,7 +96,7 @@
                 exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
                 exibicao += `Total sem desconto R$: ${total_produto.toFixed(2)}`;
 
-                document.getElementById('p-produtos').innerHTML += '<br><br>' + exibicao;
+                $id('p-produtos').innerHTML += '<br><br>' + exibicao;
                 break;
 
             case '#button-add-unit-drink1':
@@ -120,7 +108,7 @@
                 exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
                 exibicao += `Total R$: ${total_produto.toFixed(2)}`;
 
-                document.getElementById('p-produtos').innerHTML += '<br><br>' + exibicao;
+                $id('p-produtos').innerHTML += '<br><br>' + exibicao;
                 break;
 
             case '#button-add-unit-drink2':
@@ -132,7 +120,7 @@
                 exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
                 exibicao += `Total R$: ${total_produto.toFixed(2)}`;
 
-                document.getElementById('p-produtos').innerHTML += '<br><br>' + exibicao;
+                $id('p-produtos').innerHTML += '<br><br>' + exibicao;
                 break;
 
             case '#button-add-unit-drink3':
@@ -143,7 +131,7 @@
                 exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
                 exibicao += `Total R$: ${total_produto.toFixed(2)}`;
 
-                document.getElementById('p-produtos').innerHTML += '<br><br>' + exibicao;
+                $id('p-produtos').innerHTML += '<br><br>' + exibicao;
                 break;
         }
     }
@@ -151,12 +139,12 @@
     //calcula o desconto do total
     total_pedido = total_pedido - desconto;
     //exibe total
-    if(desconto > 0){
-        document.getElementById('total-compra').innerHTML = 'Total com desconto: R$' + total_pedido.toFixed(2);
-    }else{
-        document.getElementById('total-compra').innerHTML = 'Total: R$' + total_pedido.toFixed(2);
+    if (desconto > 0) {
+        $id('total-compra').innerHTML = 'Total com desconto: R$' + total_pedido.toFixed(2);
+    } else {
+        $id('total-compra').innerHTML = 'Total: R$' + total_pedido.toFixed(2);
     }
-    
+
     //Recupera o endereço e o imprime
     let usuario = JSON.parse(localStorage.getItem('user1'));
     let endereco_entrega = `Cep: ${usuario.adress}, `;
@@ -164,10 +152,10 @@
     endereco_entrega += `Cidade: ${usuario.city}`;
 
     //exibe endereço para entrega
-    document.getElementById('p-endereco-entrega').innerHTML = endereco_entrega;
+    $id('p-endereco-entrega').innerHTML = endereco_entrega;
 
-    document.getElementById('button-payment-money').onclick = function () {
-        document.getElementById('button-finalize-purchase').style.display = 'block';
+    $id('button-payment-money').onclick = function () {
+        $id('button-finalize-purchase').style.display = 'block';
         document.forms[0].style.display = 'none';
     }
 
@@ -178,17 +166,17 @@
             elementos_pedido[i].style.display = 'none';
         }
 
-        document.getElementById('div-compra-finalizada').style.display = 'block';
+        $id('div-compra-finalizada').style.display = 'block';
         sessionStorage.removeItem('pedido');
     }
 
-    document.getElementById('button-finalize-purchase').onclick = function () {
+    $id('button-finalize-purchase').onclick = function () {
         finalizarCompra();
     }
 
-    document.getElementById('button-payment-card').onclick = function () {
+    $id('button-payment-card').onclick = function () {
         document.forms[0].style.display = 'block';
-        document.getElementById('button-finalize-purchase').style.display = 'none';
+        $id('button-finalize-purchase').style.display = 'none';
     }
 
     document.forms[0].onsubmit = function (e) {

@@ -13,29 +13,54 @@
 </head>
 
 <body>
-    <div class="navbar-fixed">
+    <div class="navbar">
         <nav class="black">
             <div class="container">
                 <div class="nav-wrapper">
                     <a href="index.html" class="brand-logo">DeliveryBurguer</a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
                     <ul class="right hide-on-med-and-down">
                         <li>
                             <a href="index.html">
-                                <i class="material-icons left">restaurant</i>Início</a>
+                                <i class="material-icons left">restaurant</i>Início
+                            </a>
                         </li>
                         <li>
-                            <a href="pedido.html">
-                                <i id="i-icon-cart" class="material-icons left">shopping_cart</i>Carrinho</a>
+                            <a class="i-icon-cart" href="pedido.html">
+                                <i class="material-icons left">shopping_cart</i>Carrinho
+                            </a>
                         </li>
                         <li>
-                            <a id="a-menu-login" href="login.html"></a>
+                            <a class="a-menu-login" href="login.html">
+                                <i class="material-icons left">person_pin</i>Entrar
+                            </a>
                         </li>
+                        <li>
+                    </ul>
+                    <ul class="sidenav" id="mobile-demo">
+                        <li>
+                            <a href="index.html">
+                                <i class="material-icons left">restaurant</i>Início
+                            </a>
+                        </li>
+                        <li>
+                            <a class="i-icon-cart" href="pedido.html">
+                                <i class="material-icons left">shopping_cart</i>Carrinho
+                            </a>
+                        </li>
+                        <li>
+                            <a class="a-menu-login" href="login.html">
+                                <i class="material-icons left">person_pin</i>Entrar
+                            </a>
+                        </li>
+                        <li>
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
-
     <main>
         <div class="container">
             <h1 id="title-pag-login">Acesse sua conta</h1>
@@ -68,15 +93,18 @@
                 <div class="col s12">
                     <div id="div-create-account">
                         <form id="form-create-user">
+                            <p>ATENÇÃO, Todos os campos são de preenchimento obrigatório!</p><br>
                             <p>
                                 Nome: <input type="text" name="input-name-user" value="teste"
-                                    pattern="^([A-Z]([a-z]|[á-ú]){1,15}\s)+(([A-Z]|[a-z])([a-z]|[á-ú]){1,15}\s?)+$" required>
+                                    pattern="^([A-Z]([a-z]|[á-ú]){1,15}\s)+(([A-Z]|[a-z])([a-z]|[á-ú]){1,15}\s?)+$"
+                                    required>
                             </p>
                             <p>
-                                CEP: <input  type="text" name="input-adress-user" pattern="^\d{5}-?\d{3}$" required>
+                                CEP: <input type="text" name="input-adress-user" pattern="^\d{5}-?\d{3}$" required>
                             </p>
                             <p>
-                                Número: <input type="number" name="input-adress-number-user" min="1" max="10000" required>
+                                Número: <input type="number" name="input-adress-number-user" min="1" max="10000"
+                                    required>
                             </p>
                             <p>
                                 Cidade: <input type="text" name="input-city-user"
@@ -88,7 +116,8 @@
                                     pattern="^[a-z]{2,20}\d?@[a-z]{0,6}.com(.?[a-z]{0,4}?)$" required>
                             </p>
                             <p>
-                                Senha: <input type="password" name="input-register-password" pattern="^\d{4,8}$" required>
+                                Senha: <input type="password" name="input-register-password" pattern="^\d{4,8}$"
+                                    required>
                             </p>
                             <button id="button-create-new-account" class="waves-effect waves-light btn blue"><i
                                     class="material-icons right">blankcheck_circle</i>Cadastrar</button>

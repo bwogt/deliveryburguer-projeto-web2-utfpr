@@ -2,12 +2,20 @@
 + function () {
     //Utilização de Jquery
     //espera o html ser carreado
-    $(document).ready(function () {
+$(document).ready(function () {
+    //ativa o sidenav mobile
+    $('.sidenav').sidenav();
+
+        //exibe nome do usuário
         let nome_usuario = sessionStorage.getItem('display_name');
         if (nome_usuario != null) {
-             $('#a-menu-login').text(nome_usuario);
-        } 
+            $('.a-menu-login').html('<i class="material-icons left">person_pin</i>' + nome_usuario);
+        }
 
+        let msg_coupon = 'Parabéns curioso :p , você ganhou R$5,00 de desconto!\n';
+        msg_coupon += 'use o cupom "ganhei5" no seu carrinho.';
+        
+        setTimeout(console.log(msg_coupon),1);
         //classe que representa um pedido
         class Order {
             constructor() {
@@ -58,7 +66,7 @@
             
             //pedido armazenado no sessionStorage
             let order_in_session_storage= JSON.parse(sessionStorage.getItem('pedido'));
-           
+
             //verifica se o product existe no pedido
             if((order_in_session_storage === null) || (order_in_session_storage.order_list.length === 0)){
                 product_unit = 0;
@@ -70,6 +78,7 @@
                     }
                 }
             }
+
             
             //se existir exibe os botões de remover e comprar
             if(exists_on_request){
@@ -251,7 +260,8 @@
                     clearInterval(animation_key1);
                     clearInterval(animation_key2);
                     animation = false;
-                    document.getElementById('i-icon-cart').innerHTML='shopping_cart';
+                    
+                    $('.i-icon-cart').html('<i class="material-icons left">shopping_cart</i>'+'Carrinho');
                 }
             }
 
@@ -260,13 +270,13 @@
         //Função de animação de notificação
         //Determina o icone de sino tocando
         function animationNotificationActive() {
-            document.getElementById('i-icon-cart').innerHTML = 'notifications_active';
+             $('.i-icon-cart').html('<i class="material-icons left">notifications_active</i>'+'Carrinho');
         };
 
         //Função de animação de notificação
         //Determina o icone de sino default
         function animationNotificationDisabled() {
-            document.getElementById('i-icon-cart').innerHTML = 'notifications';
+             $('.i-icon-cart').html('<i class="material-icons left">notifications</i>'+'Carrinho');
         };
 
         //Variáveis de controle de criação de objetos pedido e produto

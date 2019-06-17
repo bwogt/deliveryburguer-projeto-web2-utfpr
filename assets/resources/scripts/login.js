@@ -1,5 +1,15 @@
 //Module Pattern
 + function () {
+    //ativa o sidenav mobile
+    $(document).ready(function () {
+        $('.sidenav').sidenav();
+    });
+
+    //Função para retornar o id do elemento
+    function $id(id) {
+        return document.getElementById(id);
+    }
+
     //Função para limpar inputs dos forms da tela de login
     //Utilização de arrow function
     //Utilizado querySeletorAll
@@ -13,25 +23,26 @@
 
     //tela de login
     let screenLogin = function () {
-        document.getElementById('div-current-user').style.display = 'none';
-        document.getElementById('div-create-account').style.display = 'none';
+        $id('div-current-user').style.display = 'none';
+        $id('div-create-account').style.display = 'none';
         clearInputsForms();
-        document.getElementById('div-login').style.display = 'block';
-        document.getElementById('title-pag-login').innerHTML = 'Acesse sua conta';
+        $id('div-login').style.display = 'block';
+        $id('title-pag-login').innerHTML = 'Acesse sua conta';
     }
 
     //tela de usuário atual
+    //Arrow function com passgem de parametro
     let screenCurrentUser = (user_online) => {
-        document.getElementById('div-login').style.display = 'none';
-        document.getElementById('div-current-user').style.display = 'block';
-        document.getElementById('title-pag-login').innerHTML = 'Usuário: ' + user_online;
+        $id('div-login').style.display = 'none';
+        $id('div-current-user').style.display = 'block';
+        $id('title-pag-login').innerHTML = 'Usuário: ' + user_online;
     }
 
     //tela de cadastro
     function screenCreateAccount() {
-        document.getElementById('div-login').style.display = 'none';
-        document.getElementById('div-create-account').style.display = 'block';
-        document.getElementById('title-pag-login').innerHTML = 'Cadastro novo usuário';
+        $id('div-login').style.display = 'none';
+        $id('div-create-account').style.display = 'block';
+        $id('title-pag-login').innerHTML = 'Cadastro novo usuário';
     }
 
     //sempre quando a página é carregada está função é executada
@@ -39,20 +50,27 @@
 
     //Função para verificar se existe um usuário logado
     function userIsOnline() {
-      ////// corrigir o usuário logado para compra
+        //Nome do usuário no sessionStorage
         let user_online = sessionStorage.getItem('display_name');
 
-        if ((user_online != null) && (user_online != undefined)) {
-            document.getElementById('a-menu-login').textContent = user_online;
+        //verifica se tem usuário logado 
+        if (user_online != null) {
+            let tags_user = document.getElementsByClassName('a-menu-login');
+
+            //modifica o nome em toda a classe a-menu-login
+            for (let i in tags_user) {
+                document.getElementsByClassName('a-menu-login')[i].innerHTML = '<i class="material-icons left">person_pin</i>' + user_online;
+            }
+
             screenCurrentUser(user_online);
         }
         else {
             sessionStorage.setItem('logado', false);
-            document.getElementById('a-menu-login').textContent = 'Entrar';
+            document.getElementsByClassName('a-menu-login').textContent = 'Entrar';
             screenLogin();
         }
     }
-    
+
     //evita o envio do formulário;
     //acessa o form através da tag e posição;
     document.getElementsByTagName('form')[0].onsubmit = function (e) {
@@ -62,73 +80,73 @@
     document.getElementsByTagName('form')[1].onsubmit = function (e) {
         e.preventDefault();
     };
-   
+
     //validação tradicional login - input email
-    document.querySelector('input[name="input-login-email"]').onblur = function(){ 
+    document.querySelector('input[name="input-login-email"]').onblur = function () {
         let valor = this.value;
         let first_com = valor.indexOf('.com');
         let first_at = valor.indexOf('@');
         let cont_at = 0;
         let valido = true;
 
-        if(this.value == '' || null){
+        if (this.value == '' || null) {
             valido = false;
         }
 
-        for(let i = 0; i < valor.length; i++){
-            if(valor[i] == '@'){
+        for (let i = 0; i < valor.length; i++) {
+            if (valor[i] == '@') {
                 cont_at++;
             }
         }
 
-        if((cont_at == 0) || (cont_at > 1)){
+        if ((cont_at == 0) || (cont_at > 1)) {
             valido = false;
         }
 
-        if(!((valor.charAt(valor.length - 4) == '.') && (first_com == valor.length - 4))){
-           valido = false;
+        if (!((valor.charAt(valor.length - 4) == '.') && (first_com == valor.length - 4))) {
+            valido = false;
         }
 
-        if(valido == false){
+        if (valido == false) {
             this.value = 'example@example.com';
-            let mensagem = `Campo email não pode ser vazio\nSeu email precisa conter um "@"\n`+
-            `Seu email precisa conter um ".com" no final`;
+            let mensagem = `Campo email não pode ser vazio\nSeu email precisa conter um "@"\n` +
+                `Seu email precisa conter um ".com" no final`;
             alert(mensagem);
             this.setAttribute('style', 'border-bottom: 1px solid red');
             this.focus();
-            
-        }else{
-            if(this.value != 'example@example.com'){
+
+        } else {
+            if (this.value != 'example@example.com') {
                 this.setAttribute('style', 'border-bottom: 1px solid green');
             }
         }
     }
 
     //validação tradicional login - input senha
-    document.querySelector('input[name="input-login-password"]').onblur = function(){ 
-        if(this.value == '' || null){
+    document.querySelector('input[name="input-login-password"]').onblur = function () {
+        if (this.value == '' || null) {
             this.focus();
             this.setAttribute('style', 'border-bottom: 1px solid red');
         }
     }
-    
+
 
     //evento de click no botão login
-    document.getElementById('button-login').onclick = function () {
+    $id('button-login').onclick = function () {
         let user_data = JSON.parse(localStorage.getItem("user1"));
         let registration_email = user_data.email;
         let typed_email = document.querySelector('input[name="input-login-email"]').value;
         let registration_password = user_data.password
-        let typed_password = document.querySelector('input[name="input-login-password"]').value;    
-        
+        let typed_password = document.querySelector('input[name="input-login-password"]').value;
+
         //verifica se email e senha são idênticas ao do objeto usuário salvo no local storage
         if (typed_email == registration_email) {
             if (typed_password == registration_password) {
-               
+
                 let first_name = user_data.name;
                 first_name = first_name.split(" ");
                 first_name = first_name[0];
-                
+
                 screenCurrentUser(first_name);
                 sessionStorage.setItem('display_name', first_name);
                 sessionStorage.setItem('logado', true);
@@ -149,9 +167,9 @@
     }
 
     //quando o botão de sair é clicado esconde-se a div de usuário logado e exibe a de login
-    document.getElementById('button-logoff').onclick = function () {
+    $id('button-logoff').onclick = function () {
         //remove o usuário logado
-       //
+        //
         sessionStorage.removeItem('display_name');
         sessionStorage.setItem('logado', false);
         sessionStorage.removeItem('pedido');
@@ -162,13 +180,13 @@
     /*  Quando o botão de novo cadastro é acionado a div de login é escondida e a de 
         cadastro é exibida - Também é mudado o titulo <h1> da página;
     */
-    document.getElementById('button-new-account').onclick = function () {
+    $id('button-new-account').onclick = function () {
         screenCreateAccount();
 
     }
-    
+
     //evento capturado quando o botão de novo usuário é acionado
-    document.getElementById('form-create-user').onsubmit = function () {
+    $id('form-create-user').onsubmit = function () {
 
         //após o click no botão é pego o valor de cada input através do queryseletor usando o name;
         let name_user = document.querySelector('input[name="input-name-user"]').value;
@@ -191,66 +209,66 @@
         //armazenado no local storage utilizando JSON;
         localStorage.setItem("user1", JSON.stringify(user));
 
-        
+
 
         //recarrega a página do servidor
         window.location.reload(true);
-        
+
     }
 
     //cancela a criação de um novo usuário e volta para tela de login
-    document.getElementById('button-cancel-new-account').onclick = function () {
+    $id('button-cancel-new-account').onclick = function () {
         //recarrega a página do servidor
         window.location.reload(true);
     }
 
-    document.querySelector('input[name="input-name-user"]').addEventListener('invalid', function(){
-        if(this.validity.valueMissing){
-           this.setCustomValidity('Digite seu nome completo utilizando as regras do exemplo');
-           this.value = 'Use Maiúsculo nas iniciais ex: [J]osé, e minúsculo em conectores ex: [de]/[dos], ex: José Fernando, José de Paula'
-        }else{
+    document.querySelector('input[name="input-name-user"]').addEventListener('invalid', function () {
+        if (this.validity.valueMissing) {
+            this.setCustomValidity('Digite seu nome completo utilizando as regras do exemplo');
+            this.value = 'Use Maiúsculo nas iniciais ex: [J]osé, e minúsculo em conectores ex: [de]/[dos], ex: José Fernando, José de Paula'
+        } else {
             this.setCustomValidity('');
         }
     })
 
-    document.querySelector('input[name="input-adress-user"]').addEventListener('invalid', function(){
-        if(this.validity.valueMissing){
-           this.setCustomValidity('Seu CEP deve conter 8 dígitos, ex: 85070000 ou 85070-000');
-        }else{
+    document.querySelector('input[name="input-adress-user"]').addEventListener('invalid', function () {
+        if (this.validity.valueMissing) {
+            this.setCustomValidity('Seu CEP deve conter 8 dígitos, ex: 85070000 ou 85070-000');
+        } else {
             this.setCustomValidity('');
         }
     })
 
-    document.querySelector('input[name="input-adress-number-user"]').addEventListener('invalid', function(){
-        if(this.validity.valueMissing){
-           this.setCustomValidity('Digite o número da sua residência, ex: 1024');
-        }else{
+    document.querySelector('input[name="input-adress-number-user"]').addEventListener('invalid', function () {
+        if (this.validity.valueMissing) {
+            this.setCustomValidity('Digite o número da sua residência, ex: 1024');
+        } else {
             this.setCustomValidity('');
         }
     })
 
-    document.querySelector('input[name="input-city-user"]').addEventListener('invalid', function(){
-        if(this.validity.valueMissing){
-           this.setCustomValidity('Digite o nome da sua cidade utilizando as regras do exemplo');
-           this.value = 'Use Maiúsculo nas iniciais ex: [G]uarapuava, e minúsculo em conectores ex: [de]/[dos], ex: Guarapuava, São Paulo'
-        }else{
+    document.querySelector('input[name="input-city-user"]').addEventListener('invalid', function () {
+        if (this.validity.valueMissing) {
+            this.setCustomValidity('Digite o nome da sua cidade utilizando as regras do exemplo');
+            this.value = 'Use Maiúsculo nas iniciais ex: [G]uarapuava, e minúsculo em conectores ex: [de]/[dos], ex: Guarapuava, São Paulo'
+        } else {
             this.setCustomValidity('');
         }
     })
 
-    document.querySelector('input[name="input-email-adress"]').addEventListener('invalid', function(){
-        if(this.validity.valueMissing){
-           this.setCustomValidity('Informe um email valido igual ao do exemplo');
-           this.value = 'Deve ser minúsculo conter um @ no meio e ".com" no fim, ex: teste@teste.com'
-        }else{
+    document.querySelector('input[name="input-email-adress"]').addEventListener('invalid', function () {
+        if (this.validity.valueMissing) {
+            this.setCustomValidity('Informe um email valido igual ao do exemplo');
+            this.value = 'Deve ser minúsculo conter um @ no meio e ".com" no fim, ex: teste@teste.com'
+        } else {
             this.setCustomValidity('');
         }
     })
 
-    document.querySelector('input[name="input-register-password"]').addEventListener('invalid', function(){
-        if(this.validity.valueMissing){
-           this.setCustomValidity('Mínimo 4 dígitos máximo 8');
-        }else{
+    document.querySelector('input[name="input-register-password"]').addEventListener('invalid', function () {
+        if (this.validity.valueMissing) {
+            this.setCustomValidity('Mínimo 4 dígitos máximo 8');
+        } else {
             this.setCustomValidity('');
         }
     })
