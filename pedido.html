@@ -17,14 +17,14 @@
         <nav class="black">
             <div class="container">
                 <div class="nav-wrapper">
-                    <a href="#home" class="brand-logo">DeliveryBurguer</a>
-                    <a href="#" data-activates="slide-out" class="sidenav-trigger"></a>
+                    <a href="index.html" class="brand-logo">DeliveryBurguer</a>
                     <ul class="right hide-on-med-and-down">
                         <li>
-                            <a href="index.html">Início</a>
+                            <a href="index.html"><i class="material-icons left">restaurant</i>Início</a>
                         </li>
                         <li>
-                            <a href="pedido.html">Carrinho</a>
+                            <a href="pedido.html">
+                                <i id="i-icon-cart" class="material-icons left">shopping_cart</i>Carrinho</a>
                         </li>
                         <li>
                             <a id="a-menu-login" href="login.html">Entrar</a>
@@ -37,20 +37,28 @@
 
     <main>
         <section>
-            <div class="container">
-                <div>
-                    <h1>Pedido</h1>
-                    <div class="row">
-                        <div class="col s6 m6">
-                            <p id='p-produtos'></p>
-                        </div>
+            <div class="container carrinho-inicio-vazio">
+                <div class="row">
+                    <div class="col s12 m12">
+                        <h1 id='testeteste'>Seu carrinho está vazio :(</h1>
                     </div>
                 </div>
             </div>
         </section>
 
         <section>
-            <div class="container">
+            <div class="container carrinho-inicio">
+                <div class="row">
+                    <div class="col s6 m6 ">
+                        <h1>Pedido</h1>
+                        <p id='p-produtos'></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container carrinho-inicio">
                 <div class="row">
                     <div class="col s12 m12">
                         <h2 id="total-compra">Total: R$</h2>
@@ -60,7 +68,7 @@
         </section>
 
         <section>
-            <div class="container">
+            <div class="container carrinho-inicio">
                 <div class="row">
                     <div class="col s12 m12">
                         <h1>Endereço de Entrega</h1>
@@ -71,7 +79,7 @@
         </section>
 
         <section>
-            <div class="container">
+            <div class="container carrinho-inicio">
                 <div class="row">
                     <div id="div-meio-pagamento" class="col s12 m12">
                         <h1>Meio de Pagamento</h1>
@@ -88,14 +96,19 @@
                                 <p>
                                     Nome do titular do cartão:
                                     <input type="text" required>
+                                </p>
+                                <p>
                                     Número do cartão:
-                                    <input type="number" pattern='^\d{4}-?\d{4}\d{6}-?\d{2}?$' required>
+                                    <input type="text" pattern="^\d{14}|\d{15}|\d{16}$" required>
+                                </p>
+                                <p>
                                     Código verificador:
-                                    <input type="number" pattern='^\d{3}$' required>
-                                    <button class="waves-effect waves-light btn green">
-                                        <i class="material-icons right">check</i>Comprar</button>
-                                    <button class="waves-effect waves-light btn red">
-                                        <i class="material-icons right">cancel</i>Cancelar</button>
+                                    <input type="text" pattern='^\d{3}$' required>
+                                </p>
+                                <button class="waves-effect waves-light btn green">
+                                    <i class="material-icons right">check</i>Comprar</button>
+                                <button class="waves-effect waves-light btn red">
+                                    <i class="material-icons right">cancel</i>Cancelar</button>
                                 </p>
                             </form>
                         </div>

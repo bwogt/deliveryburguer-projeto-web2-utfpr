@@ -142,6 +142,15 @@ h1{
 #div-compra-finalizada{
     display: none;
 }
+
+.carrinho-inicio{
+    display: none;
+}
+
+.carrinho-inicio-vazio{
+    display: none;
+    text-align: center;
+}
 /*css do materialize para manter o rodape no fim*/
 body {
     display: flex;

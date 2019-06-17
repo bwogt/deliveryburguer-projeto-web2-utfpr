@@ -3,33 +3,38 @@
     //Utilização de Jquery
     //espera o html ser carreado
     $(document).ready(function () {
-        
+        let nome_usuario = sessionStorage.getItem('display_name');
+        if (nome_usuario != null) {
+             $('#a-menu-login').text(nome_usuario);
+        } 
+
         //classe que representa um pedido
         class Order {
             constructor() {
                 this.order_list = [];
             }
 
-            adiciona(produto) {
-                this.order_list.push(produto);
+            add(product) {
+                this.order_list.push(product);
             }
-        }
+        };
 
+        //classe que representa um produto
         class Product {
-            constructor(id_produto, button_click) {
-                this.id_produto = id_produto;
+            constructor(id_product, button_click) {
+                this.id_product = id_product;
                 this.button_click = button_click;
                 this.amount = 0;
             }
 
-            adiciona() {
+            add() {
                 this.amount += 1;
             }
 
             remove() {
                 this.amount += - 1;
             }
-        }
+        };
 
         //variáveis de controle do pedido
         let current_order;
@@ -39,34 +44,35 @@
         let id_button_remove;
         let id_button_buy;
       
-        //exibe e oculta o conteudo do card de produtos
+        //exibe e oculta o conteudo do card de products
         $('.btn-floating').click(function () {    
-            let existe_no_pedido = false;
+            let exists_on_request = false;
             let id_button_floating = '#' + $(this).attr('id');
-            let divide_id = id_button_floating.split('-');
+            let break_id = id_button_floating.split('-');
             
-            //id´s do contéudo e dos botões de cada produto
+            //id´s do contéudo e dos botões de cada product
             id_card_content = '#' + $(this).parent().siblings().attr('id');
             id_button_add= '#' + $(id_card_content).find('button').attr('id');
             id_button_remove = '#' + $(id_button_add).next().attr('id');
             id_button_buy = '#' + $(id_button_remove).next().attr('id');
             
-            let application_web = JSON.parse(sessionStorage.getItem('pedido'))
+            //pedido armazenado no sessionStorage
+            let order_in_session_storage= JSON.parse(sessionStorage.getItem('pedido'));
            
-            //verifica se o produto existe no pedido
-            if((application_web == null) || (application_web.order_list.length == 0)){
+            //verifica se o product existe no pedido
+            if((order_in_session_storage === null) || (order_in_session_storage.order_list.length === 0)){
                 product_unit = 0;
             }else{
-                for(let i in application_web.order_list){
-                    if(application_web.order_list[i].button_click == id_button_add){
-                        product_unit = application_web.order_list[i].amount;
-                        existe_no_pedido = true;
+                for(let i in order_in_session_storage.order_list){
+                    if(order_in_session_storage.order_list[i].button_click == id_button_add){
+                        product_unit = order_in_session_storage.order_list[i].amount;
+                        exists_on_request = true;
                     }
                 }
             }
             
             //se existir exibe os botões de remover e comprar
-            if(existe_no_pedido){
+            if(exists_on_request){
                 $(id_button_buy).css('display', 'block');
                 $(id_button_remove).css('display', 'block');    
             }else{
@@ -76,19 +82,20 @@
                 $(id_button_remove).css('display', 'none');
             }
            
+           //armazena o primeiro filho do card_content atual
            let aux_id_card_content = $(id_card_content).find(' > p')[1];
            $(aux_id_card_content).text('Seu pedido: ' + product_unit);
            
            //Procura pelo botão flutuante que foi clicado
-           //Oculta divs aberts e exibe a que foi clicada
-            switch (divide_id[2]) {
+           //Oculta divs abertas e exibe a que foi clicada
+            switch (break_id[2]) {
                 case 'hamb1':
-                    $('.card-content').slideUp('fast')
+                    $('.card-content').slideUp('fast');
                     $('#card-content-hamb1').slideToggle('fast');
                    break;
 
                 case 'hamb2':
-                    $('.card-content').slideUp('fast')
+                    $('.card-content').slideUp('fast');
                     $('#card-content-hamb2').slideToggle('fast');
                     break;
 
@@ -115,117 +122,113 @@
                 default:
                     break;
             }
-        })
+        });
 
-        //Armazena o id do botão clicado
-        let produto;
-        let new_id_produto = 1;
-        let lista_produtos = [];
+        //Variavéis de controle do produto
+        let product;
+        let new_id_product = 1;
+        let list_products = [];
 
         //Identifica qual botão foi clicado
         //Realiza uma ação referente ao botão clicado
         $('.card-content > button').click(function () {
             let id_button = '#' + $(this).attr('id');
-            let aux = id_button;
             let divide_button_id = id_button.split('-');
-            let existe_produto = false;
+            let there_is_product = false;
             
-
             //div pai dos botões (adicionar, remover, comprar)
             id_card_content = '#' + $(this).closest('div').attr('id');
 
             switch(divide_button_id[1]){
                 case 'add':
                     id_button_add = id_button;
-                    aux  += ' + button';
-                    id_button_remove = '#' + $(aux).attr('id');
-                    aux = id_button_remove + ' + button';
-                    id_button_buy = '#' + $(aux).attr('id');
+                    id_button_remove = '#' + $(id_button_add).find('+button').attr('id');
+                    id_button_buy = '#' + $(id_button_remove).find('+button').attr('id');
                     id_card_content += '> +p';
 
-                    if(lista_produtos.length == 0){
-                        produto = new Product(new_id_produto, id_button_add);
-                        lista_produtos.push(produto);
-                        existe_produto = true;
-                        new_id_produto++;
+                    if(list_products.length === 0){
+                        product = new Product(new_id_product, id_button_add);
+                        list_products.push(product);
+                        there_is_product = true;
+                        new_id_product++;
                     }else{
-                        for(i in lista_produtos){
-                            if(lista_produtos[i].button_click == id_button_add){
-                                existe_produto = true;
-                                produto = lista_produtos[i];
+                        for(i in list_products){
+                            if(list_products[i].button_click === id_button_add){
+                                there_is_product = true;
+                                product = list_products[i];
                             }
                         }
                     }
                     
-                    if(existe_produto){
-                        adicionar(produto);
+                    if(there_is_product){
+                        addProduct(product);
                     }else{
-                        produto = new Product(new_id_produto, id_button_add);
-                        lista_produtos.push(produto);
-                        adicionar(produto);
-                        new_id_produto++;
+                        product = new Product(new_id_product, id_button_add);
+                        list_products.push(product);
+                        addProduct(product);
+                        new_id_product++;
                     }
 
                     break;
-                 case 'remove':
+                    case 'remove':
                     id_button_remove = id_button;
                     id_card_content += '> +p';
                     
-                    for(let i in lista_produtos){
-                        if(lista_produtos[i].button_click == id_button_add){
-                            produto = lista_produtos[i];
+                    for(let i in list_products){
+                        if(list_products[i].button_click == id_button_add){
+                            product = list_products[i];
                         }
                     }
 
-                    remover(produto);
+                    remover(product);
                     break;
 
                 case 'buy':
                     id_button_buy = id_button;
-                    comprarProduto(produto);
+                    buyProduct(product);
                     break;
                 
                 default:
                     break;
             }    
-        })
+        });
         
-        //Função para alterar exibição de quantidade do produto
-        function adicionar(produto) {
+        //Função para alterar exibição de quantidade do product
+        function addProduct(product) {
             $(id_button_remove).css('display', 'block');
             $(id_button_buy).css('display', 'block');
             product_unit++;
 
             if (product_unit <= 6) {
                 $(id_card_content).text('Seu pedido: ' + product_unit);
-                produto.adiciona();
+                product.add();
             }
             else {
                 product_unit = 6;
-                window.alert('Limite máximo atingido... (6 unidades)')
+                window.confirm('Limite máximo atingido... (6 unidades)')
             }
-        }
+        };
 
-        //decrementa a quantidade exibida no card do produto
-        //cancela efeitos de notificação de produto no carrinho
-        function remover(produto) {
-            let teste_remove;
-            console.log('id produto atual '+produto.id_produto)
+        //decrementa a quantidade exibida no card do product
+        //cancela efeitos de notificação de product no carrinho
+        function remover(product) {
+            let list_order;
+            console.log('id produto atual '+product.id_product)
             
             if (product_unit > 0) {
                 product_unit--;
                 
                 if(current_order == undefined){
-                    produto.remove();
+                    product.remove();
                 }else{
                    for(let i in current_order.order_list){
                         if(current_order.order_list[i].button_click == id_button_add){
-                            produto.remove();
-                            teste_remove = JSON.parse(sessionStorage.getItem('pedido'));
-                            teste_remove.order_list[i].amount = product_unit;
+                            product.remove();
+                            list_order = JSON.parse(sessionStorage.getItem('pedido'));
+                            list_order.order_list[i].amount = product_unit;
                             current_order.order_list[i].amount = product_unit;
                     
-                            sessionStorage.setItem('pedido', JSON.stringify(teste_remove));
+                            sessionStorage.setItem('pedido', JSON.stringify(list_order));
                         }
                     }
                 }
@@ -238,98 +241,89 @@
                 $(id_card_content).text('Seu pedido: ' + product_unit);
 
                 if (current_order != undefined) {
-                    removeProductList(produto);
+                    removeProductList(product);
                     sessionStorage.setItem('pedido', JSON.stringify(current_order));
                 }
 
-                teste_remove = JSON.parse(sessionStorage.getItem('pedido'));
+                list_order = JSON.parse(sessionStorage.getItem('pedido'));
                 
-                if(teste_remove.order_list.length == 0){
-                    clearInterval(chave1);
-                    clearInterval(chave2);
+                if(list_order.order_list.length == 0){
+                    clearInterval(animation_key1);
+                    clearInterval(animation_key2);
                     animation = false;
-                    document.getElementById('teste').innerHTML='shopping_cart';
+                    document.getElementById('i-icon-cart').innerHTML='shopping_cart';
                 }
             }
 
-        }
+        };
 
         //Função de animação de notificação
         //Determina o icone de sino tocando
-        //verificar*************
-        function notificacao1() {
-            document.getElementById('teste').innerHTML = 'notifications_active';
-        }
+        function animationNotificationActive() {
+            document.getElementById('i-icon-cart').innerHTML = 'notifications_active';
+        };
 
         //Função de animação de notificação
         //Determina o icone de sino default
-        //verificar*************
-        function notificacao2() {
-            document.getElementById('teste').innerHTML = 'notifications';
-        }
+        function animationNotificationDisabled() {
+            document.getElementById('i-icon-cart').innerHTML = 'notifications';
+        };
 
         //Variáveis de controle de criação de objetos pedido e produto
         let create_order = false;
         let is_empety_order_list = true;
         let animation = false;
-        let chave1;
-        let chave2;
-        let id_div_button;
+        let animation_key1;
+        let animation_key2;
 
         //Cria um objeto pedido caso não exista um criado
-        //Modifica o icone no menu de carrinho
-        function comprarProduto(produto){
-            /*
-            Encontrar e resolver o bug do produto sobreescrevendo outro
-            */
+        function buyProduct(product){
             let existe = false;
             if (create_order == false) {
                 current_order = new Order();
                 create_order = true;
             }
-
+           
+            //Modifica o icone no menu de carrinho
             if (animation == false) {
-                chave1 = setInterval(notificacao1, 500);
-                chave2 = setInterval(notificacao2, 1000);
+                animation_key1 = setInterval(animationNotificationActive, 500);
+                animation_key2 = setInterval(animationNotificationDisabled, 1000);
                 animation = true;
             }
 
             if (is_empety_order_list) {
-                current_order.adiciona(produto);
+                current_order.add(product);
                 sessionStorage.setItem('pedido', JSON.stringify(current_order));
                 is_empety_order_list = false;
             } else {
                 for(let i in current_order.order_list){
-                    if(current_order.order_list[i].id_produto == produto.id_produto){
-                        removeProductList(produto);
-                        //order.adiciona(produto);
-                        current_order.adiciona(produto);
+                    if(current_order.order_list[i].id_product == product.id_product){
+                        removeProductList(product);
+                        current_order.add(product);
                         existe = true;
                     }
                 }
 
                 if(existe == false){
-                    //current_order.adiciona(produto);
-                    current_order.adiciona(produto);
+                    current_order.add(product);
                     existe = false;
                 }
 
                 //armazena o pedido no sesseionStorage;
                 sessionStorage.setItem('pedido', JSON.stringify(current_order));
             }
-        }
+        };
         
-        //Remove o produto da lista de pedido
-        function removeProductList(produto) {
-            console.log('removido produto de id: '+produto.id_produto)
+        //Remove o product da lista de pedido
+        function removeProductList(product) {
             //converte os dados salvos no sessionStorage
             let list = JSON.parse(sessionStorage.getItem('pedido'));
-            //verifica se existe um produto no pedido com o id do produto atual
+            //verifica se existe um product no pedido com o id do product atual
             for (let i = 0; i < list.order_list.length; i++) {
-                if (list.order_list[i].id_produto == produto.id_produto) {
+                if (list.order_list[i].id_product == product.id_product) {
                     current_order.order_list.splice(i, 1);
                 }
             } 
-        }
+        };
     });
 }();
