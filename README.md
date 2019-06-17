@@ -56,21 +56,21 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
   - [x] Via seletores CSS usados na função querySelector() ou querySelectorAll()
 
 **Tratadores de Evento**
-  - [ ] Especificar o tratador de evento inline
+  - [x] Especificar o tratador de evento inline
   - [ ] Especificar o tratador de evento no carregamento da página HTML no modo tradicional - no onload
   - [ ] Especificar o tratador de evento no carregamento da página HTML com a função addEventListener - no onload
   - [ ] Usar o operador this em funções tratadoras de eventos.
 
 **Formulário**
-  - [ ] Validação de formulário com onsubmit usando os métodos tradicionais
+  - [x] Validação de formulário com onsubmit usando os métodos tradicionais
   - [ ] Validação de formulário com HTML5 API
-  - [ ] Customizar as mensagens nos balões de mensagem
+  - [x] Customizar as mensagens nos balões de mensagem
   - [ ] Usar os atributos de validação dos inputs
-  - [ ] Usar expressões regulares
+  - [x] Usar expressões regulares
   - [ ] Ler e escrever em elementos input com a propriedade value
-  - [ ] Alterar o conteúdo de elementos div ou p com a propriedade innerHTML ou textContent
+  - [x] Alterar o conteúdo de elementos div ou p com a propriedade innerHTML ou textContent
   - [ ] Manipulação de elemento de listagem, como checkbox, radio ou select
-  - [ ] Acesso aos elementos de um formulário via hierarquia (caminho) de objetos, ou seja, array forms e elements
+  - [x] Acesso aos elementos de um formulário via hierarquia (caminho) de objetos, ou seja, array forms e elements
 
 **Objetos Nativos**
   - [ ] Usar pelo menos 3 métodos de manipulação de array
