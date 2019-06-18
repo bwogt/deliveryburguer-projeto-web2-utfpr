@@ -1,4 +1,10 @@
+.oculta-conteudo{
+    display: none;
+}
 
+.exibe-conteudo{
+    display: block;
+}
 
 /*display default div usuário logado*/
 #div-current-user{
@@ -54,10 +60,18 @@ h1{
     font-family: 'Franklin Gothic Medium';
     font-style: italic;
 }
+
+section > h1{
+    font-size: 50px;
+    text-align: center;
+}
+
 /*Centraliza os cards dentro do container*/
 .card{
     width: 85%;
-    margin-left: 15%;
+    margin-left: 10%;
+    margin-bottom: 45px;
+    margin-top: 45px;
     font-size: auto;
 }
 
@@ -96,14 +110,6 @@ h1{
    margin-right: 10px;
 }
 
-#form-card{
-    display: none;
-}
-
-#button-finalize-purchase{
-    display: none;
-}
-
 #p-produtos{
     font-size: 20px;
     font-style: italic;
@@ -139,10 +145,28 @@ h1{
     display: none;
 }
 
-#div-compra-finalizada{
-    display: none;
+#div-compra-finalizada  h1{
+    text-align: center;
+    margin: 15px;
+    font-size: 50px;
 }
 
+#div-compra-finalizada  img{
+    text-align: center;
+    margin-left: 27%;
+    margin-right: 27%;
+    width: 40%;
+}
+
+#div-compra-finalizada  h1{
+    text-align: center;
+    margin: 15px;
+    font-size: 50px;
+}
+
+#id-button-finalize-purchase{
+    width: 100%;
+}
 .carrinho-inicio{
     display: none;
 }
@@ -167,6 +191,17 @@ footer > i {
 #div-compra-finalizada > img{
     width: 40%;
     margin-left: 30%;
+}
+
+#div-existe-pedido h1{
+    text-align: center;
+    font-size: 50px;
+}
+
+#div-login button{
+    width: 250px;
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 /*css do materialize para manter o rodape no fim*/

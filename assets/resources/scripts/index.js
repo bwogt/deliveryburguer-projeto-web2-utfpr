@@ -15,7 +15,9 @@ $(document).ready(function () {
         let msg_coupon = 'Parabéns curioso :p , você ganhou R$5,00 de desconto!\n';
         msg_coupon += 'use o cupom "ganhei5" no seu carrinho.';
         
+        //cupom de desconto exibido no console
         setTimeout(console.log(msg_coupon),1);
+
         //classe que representa um pedido
         class Order {
             constructor() {
