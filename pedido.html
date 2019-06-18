@@ -64,19 +64,19 @@
 
     <main>
         <section>
-            <div class="container carrinho-inicio-vazio">
+            <div id="div-existe-pedido" class="container oculta-conteudo">
                 <div class="row">
-                    <div class="col s12 m12">
-                        <h1 id='testeteste'>Seu carrinho está vazio :(</h1>
+                    <div class="col s12">
+                        <h1>Seu carrinho está vazio :(</h1>
                     </div>
                 </div>
             </div>
         </section>
 
         <section>
-            <div class="container carrinho-inicio">
+            <div class="container informacao-pedido oculta-conteudo">
                 <div class="row">
-                    <div class="col s6 m6 ">
+                    <div class="col s12">
                         <h1>Pedido</h1>
                         <p id='p-produtos'></p>
                     </div>
@@ -85,9 +85,9 @@
         </section>
 
         <section>
-            <div class="container carrinho-inicio">
+            <div class="container informacao-pedido oculta-conteudo">
                 <div class="row">
-                    <div class="col s12 m12">
+                    <div class="col s12">
                         <h2 id="total-compra">Total: R$</h2>
                     </div>
                 </div>
@@ -95,9 +95,9 @@
         </section>
 
         <section>
-            <div class="container carrinho-inicio">
+            <div id="div-endereco-entrega" class="container informacao-pedido oculta-conteudo">
                 <div class="row">
-                    <div class="col s12 m12">
+                    <div class="col s12">
                         <h1>Endereço de Entrega</h1>
                         <p id="p-endereco-entrega"></p>
                     </div>
@@ -106,9 +106,9 @@
         </section>
 
         <section>
-            <div class="container carrinho-inicio">
+            <div class="container informacao-pedido oculta-conteudo">
                 <div class="row">
-                    <div id="div-meio-pagamento" class="col s12 m12">
+                    <div id="div-meio-pagamento" class="col s12">
                         <h1>Meio de Pagamento</h1>
                         <button id='button-payment-money' class="waves-effect waves-light btn green">
                             <i class="material-icons right">attach_money</i>Dinheiro</button>
@@ -117,9 +117,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s12 m12">
+                    <div class="col s12">
                         <div>
-                            <form id="form-card">
+                            <form id="id-form-card" class="oculta-conteudo">
                                 <p>
                                     Nome do titular do cartão:
                                     <input type="text" required>
@@ -134,26 +134,29 @@
                                 </p>
                                 <button class="waves-effect waves-light btn green">
                                     <i class="material-icons right">check</i>Comprar</button>
-                                <button class="waves-effect waves-light btn red">
+                                <button id="form-button-cancel" class="waves-effect waves-light btn red">
                                     <i class="material-icons right">cancel</i>Cancelar</button>
                                 </p>
                             </form>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col s12 m12">
-                        <button id='button-finalize-purchase' class="waves-effect waves-light btn blue">
-                            <i class="material-icons right">check</i>Finalizar Compra</button>
-                    </div>
-                </div>
             </div>
         </section>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <button id="id-button-finalize-purchase" class="oculta-conteudo waves-effect waves-light btn blue">
+                        <i class="material-icons right">check</i>Finalizar Compra</button>
+                </div>
+            </div>
+        </div>
 
         <section>
-            <div class="container">
+            <div id="div-compra-finalizada" class="container oculta-conteudo">
                 <div class="row">
-                    <div id="div-compra-finalizada" class="col s12 m12">
+                    <div class="col s12 m12">
                         <h1>Obrigado por comprar conosco! Seu pedido já está em rota de entrega :p</h1>
                         <img src="assets/resources/images/entrega.jpg" alt="">
                     </div>

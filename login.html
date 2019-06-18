@@ -77,9 +77,9 @@
                 <div class="col s12">
                     <div id="div-login">
                         <form>
-                            Email:<input type="text" name="input-login-email"><br>
+                            <i class="material-icons">email</i>Email:<input type="text" name="input-login-email"><br>
 
-                            Senha: <input type="password" name="input-login-password"><br>
+                            <i class="material-icons">enhanced_encryption</i>Senha: <input type="password" name="input-login-password"><br>
                             <button id="button-login" class="waves-effect waves-light btn green"><i
                                     class="material-icons right">blankcheck_circle</i>Entrar</button>
                             <button id="button-new-account" class="waves-effect waves-light btn orange"><i
@@ -93,31 +93,36 @@
                 <div class="col s12">
                     <div id="div-create-account">
                         <form id="form-create-user">
-                            <p>ATENÇÃO, Todos os campos são de preenchimento obrigatório!</p><br>
+                            <p><i class="material-icons">warning</i> ATENÇÃO, Todos os campos são de preenchimento obrigatório!</p><br>
                             <p>
-                                Nome: <input type="text" name="input-name-user" value="teste"
+                                <i class="material-icons">person</i>Nome 
+                                Completo: <input type="text" name="input-name-user" placeholder="Fernanda de Paula"
                                     pattern="^([A-Z]([a-z]|[á-ú]){1,15}\s)+(([A-Z]|[a-z])([a-z]|[á-ú]){1,15}\s?)+$"
                                     required>
                             </p>
                             <p>
-                                CEP: <input type="text" name="input-adress-user" pattern="^\d{5}-?\d{3}$" required>
+                                <i class="material-icons">location_on</i>CEP: 
+                                <input type="text" name="input-adress-user" placeholder="85070700" pattern="^\d{5}-?\d{3}$" required>
                             </p>
                             <p>
-                                Número: <input type="number" name="input-adress-number-user" min="1" max="10000"
+                                <i class="material-icons">markunread_mailbox</i>Número da residência: 
+                                <input type="number" name="input-adress-number-user" placeholder="1024" min="1" max="10000"
                                     required>
                             </p>
                             <p>
-                                Cidade: <input type="text" name="input-city-user"
+                                <i class="material-icons">location_city</i>Cidade: 
+                                <input type="text" name="input-city-user" placeholder="Guarapuava"
                                     pattern="^([A-Z]([a-z]|[á-ú]){5,15}\s?)|([A-Z]([a-z]|[á-ú]){1,15}\s)(([A-Z]|[a-z])([a-z]|[á-ú]){1,15}\s?)*"
                                     required>
                             </p>
                             <p>
-                                Email: <input type="email" name="input-email-adress"
+                                <i class="material-icons">email</i>Email: 
+                                <input type="email" name="input-email-adress" placeholder="exemplo@exemplo.com"
                                     pattern="^[a-z]{2,20}\d?@[a-z]{0,6}.com(.?[a-z]{0,4}?)$" required>
                             </p>
                             <p>
-                                Senha: <input type="password" name="input-register-password" pattern="^\d{4,8}$"
-                                    required>
+                                <i class="material-icons">enhanced_encryption</i>Senha: 
+                                <input type="password" name="input-register-password" pattern="^\d{4,8}$" required>
                             </p>
                             <button id="button-create-new-account" class="waves-effect waves-light btn blue"><i
                                     class="material-icons right">blankcheck_circle</i>Cadastrar</button>
