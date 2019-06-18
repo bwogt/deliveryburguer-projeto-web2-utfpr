@@ -1,4 +1,5 @@
 # deliveryburguer-projeto-web2-utfpr
+Link do projeto no github pages: https://bruw.github.io/deliveryburguer-projeto-web2-utfpr/
 Este projeto objetiva a elaboração de um site abrangendo os conteúdos da disciplina de Desenvolvimento para Web II, 
 do curso de Tecnologia em Sistemas para Internet (TSI) da Universidade Tecnológica Federal do Paraná (UTFPR)
 
