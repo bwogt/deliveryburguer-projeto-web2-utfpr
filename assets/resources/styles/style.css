@@ -198,18 +198,19 @@ footer > i {
     font-size: 50px;
 }
 
-#div-login button{
-    width: 250px;
+.buttons-form-login{
+    width: 300px;
     margin-bottom: 15px;
     margin-top: 15px;
+    text-align: center;
 }
+
 
 /*css do materialize para manter o rodape no fim*/
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    
 }
 
 /*css do materialize para manter o rodape no fim*/
