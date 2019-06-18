@@ -7,38 +7,37 @@
         let existe_pedido = JSON.parse(sessionStorage.getItem('pedido'));
         let desconto = 0;
 
-        if (is_connected == 'false') {
+        if((is_connected == 'false') ||(is_connected == null)) {
             alert('É necessário estar logado para acessar seu carrinho... \nVocê sera redirecionado para a página de login');
             window.location.href = 'login.html';
         } else {
-            let nome_usuario = sessionStorage.getItem('display_name');
-
-            if (nome_usuario != null) {
-                $('.a-menu-login').html('<i class="material-icons left">person_pin</i>' + nome_usuario);
+            let name_user = sessionStorage.getItem('display_name');
+            if (name_user != null) {
+                $('.a-menu-login').html('<i class="material-icons left">person_pin</i>' + name_user);
             }
-        }
+            
+            if (existe_pedido == null){
+                $('#div-existe-pedido').removeClass('oculta-conteudo').addClass('exibe-conteudo');
+            } else {
+                $('#div-existe-pedido').removeClass('exibe-conteudo').addClass('oculta-conteudo');
+                $('.informacao-pedido').removeClass('oculta-conteudo').addClass('exibe-conteudo');
+                
+                //Função aninhada
+                +function cupomDeDesconto() {
+                    let has_a_cupom = window.confirm('Você possui um cupom de desconto? ');
 
-        if (existe_pedido == null){
-            $('#div-existe-pedido').removeClass('oculta-conteudo').addClass('exibe-conteudo');
-        } else {
-            $('#div-existe-pedido').removeClass('exibe-conteudo').addClass('oculta-conteudo');
-            $('.informacao-pedido').removeClass('oculta-conteudo').addClass('exibe-conteudo');
+                    if (has_a_cupom) {
+                        let cupom = window.prompt('Digite seu cupom');
 
-            //Função aninhada
-            +function cupomDeDesconto() {
-                let has_a_cupom = window.confirm('Você possui um cupom de desconto? ');
-
-                if (has_a_cupom) {
-                    let cupom = window.prompt('Digite seu cupom');
-
-                    if (cupom === 'ganhei5') {
-                        window.alert('Você ganhou R$5,00 de desconto na sua compra! ')
-                        desconto = 5;
-                    } else {
-                        let resposta = window.alert('Cupom inválido... ou fora da promoção');
+                        if (cupom === 'ganhei5') {
+                            window.alert('Você ganhou R$5,00 de desconto na sua compra! ')
+                            desconto = 5;
+                        } else {
+                            let resposta = window.alert('Cupom inválido... ou fora da promoção');
+                        }
                     }
-                }
-            }();
+                }();
+            }
         }
 
         let produtos = JSON.parse(sessionStorage.getItem('pedido'));
