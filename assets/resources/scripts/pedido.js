@@ -7,8 +7,18 @@
         let existe_pedido = JSON.parse(sessionStorage.getItem('pedido'));
         let desconto = 0;
 
+        if (is_connected == 'false') {
+            alert('É necessário estar logado para acessar seu carrinho... \nVocê sera redirecionado para a página de login');
+            window.location.href = 'login.html';
+        } else {
+            let nome_usuario = sessionStorage.getItem('display_name');
 
-        if (existe_pedido == null) {
+            if (nome_usuario != null) {
+                $('.a-menu-login').html('<i class="material-icons left">person_pin</i>' + nome_usuario);
+            }
+        }
+
+        if (existe_pedido == null){
             $('#div-existe-pedido').removeClass('oculta-conteudo').addClass('exibe-conteudo');
         } else {
             $('#div-existe-pedido').removeClass('exibe-conteudo').addClass('oculta-conteudo');
@@ -29,18 +39,6 @@
                     }
                 }
             }();
-        }
-
-
-        if (is_connected == 'false') {
-            alert('É necessário estar logado para acessar seu carrinho... \nVocê sera redirecionado para a página de login');
-            window.location.href = 'login.html';
-        } else {
-            let nome_usuario = sessionStorage.getItem('display_name');
-
-            if (nome_usuario != null) {
-                $('.a-menu-login').html('<i class="material-icons left">person_pin</i>' + nome_usuario);
-            }
         }
 
         let produtos = JSON.parse(sessionStorage.getItem('pedido'));
