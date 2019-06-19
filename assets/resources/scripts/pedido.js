@@ -21,7 +21,7 @@
                 verifica se existe um pedido para exibir e ocultar divs
                 **addClass - removeClass**
             */
-            if (existe_pedido == null){
+            if ((existe_pedido == null) || (existe_pedido.order_list.length == 0)){
                 $('#div-existe-pedido').removeClass('oculta-conteudo').addClass('exibe-conteudo');
             } else {
                 $('#div-existe-pedido').removeClass('exibe-conteudo').addClass('oculta-conteudo');
