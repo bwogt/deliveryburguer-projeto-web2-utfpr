@@ -1,66 +1,69 @@
 +function () {
+    'use strict';
     $(document).ready(function () {
         //ativa o sidenav mobile
         $('.sidenav').sidenav();
 
-        let is_connected = sessionStorage.getItem('logado');
-        let existe_pedido = JSON.parse(sessionStorage.getItem('pedido'));
-        let desconto = 0;
+        let isConnected = sessionStorage.getItem('logado'),
+            existePedido = JSON.parse(sessionStorage.getItem('pedido')),
+            desconto = 0;
 
         //Verifica se existe usuário conectado
-        if((is_connected == 'false') ||(is_connected == null)) {
-            alert('É necessário estar logado para acessar seu carrinho... \nVocê sera redirecionado para a página de login');
+        if ((isConnected === 'false') || (isConnected === null)) {
+            window.alert('É necessário estar logado para acessar seu carrinho...' +
+                '\nVocê sera redirecionado para a página de login');
+
             window.location.href = 'login.html';
         } else {
-            let name_user = sessionStorage.getItem('display_name');
-            if (name_user != null) {
-                $('.a-menu-login').html('<i class="material-icons left">person_pin</i>' + name_user);
+            let nameUser = sessionStorage.getItem('display_name');
+            if (nameUser !== null) {
+                $('.a-menu-login').html('<i class="material-icons left">person_pin</i>' + nameUser);
             }
-            
+
             /*
                 verifica se existe um pedido para exibir e ocultar divs
                 **addClass - removeClass**
             */
-            if ((existe_pedido == null) || (existe_pedido.order_list.length == 0)){
-                $('#div-existe-pedido').removeClass('oculta-conteudo').addClass('exibe-conteudo');
+            if ((existePedido === null) || (existePedido.orderList.length === 0)) {
+                $('#div-order-exist').removeClass('hide-content').addClass('show-content');
             } else {
-                $('#div-existe-pedido').removeClass('exibe-conteudo').addClass('oculta-conteudo');
-                $('.informacao-pedido').removeClass('oculta-conteudo').addClass('exibe-conteudo');
-                
+                $('#div-order-exist').removeClass('show-content').addClass('hide-content');
+                $('.order-information').removeClass('hide-content').addClass('show-content');
+
                 /*
                     Função aninhada auto executavel
                     Recebe um cupom de desconto
                     **confirm() - alert() - prompt()**
                 */
-                +function cupomDeDesconto() {
-                    let has_a_cupom = window.confirm('Você possui um cupom de desconto? ');
+                (function () {
+                    let hasACupom = window.confirm('Você possui um cupom de desconto? ');
 
-                    if (has_a_cupom) {
+                    if (hasACupom) {
                         let cupom = window.prompt('Digite seu cupom');
 
                         if (cupom === 'ganhei5') {
-                            window.alert('Você ganhou R$5,00 de desconto na sua compra! ')
+                            window.alert('Você ganhou R$5,00 de desconto na sua compra! ');
                             desconto = 5;
                         } else {
-                            let resposta = window.alert('Cupom inválido... ou fora da promoção');
+                            window.alert('Cupom inválido ou fora da promoção...');
                         }
                     }
-                }();
+                })();
             }
         }
 
-        let produtos = JSON.parse(sessionStorage.getItem('pedido'));
-        let total_pedido = 0;
-        let exibicao;
-        let linha_um;
+        let produtos = JSON.parse(sessionStorage.getItem('pedido')),
+            totalPedido = 0,
+            exibicao,
+            linhaUm;
 
         //Verifica a oder de adicionar do produto no pedido
         //Formata e exibe corretamente os produtos
-        function corrigeExibicaoPedido(linha_um){
-            if(exibicao == undefined){
-                exibicao = linha_um;
-            }else{
-                exibicao += '<br><br>' + linha_um;
+        function corrigeExibicaoPedido(linhaUm) {
+            if (exibicao === undefined) {
+                exibicao = linhaUm;
+            } else {
+                exibicao += '<br><br>' + linhaUm;
             }
         }
 
@@ -70,123 +73,131 @@
             Imprime o pedido
             **parseInt() - toFixed() - StringTemplate() - html()
         */
-        for (let i = 0; i < produtos.order_list.length; i++) {
-            let id_button_add = produtos.order_list[i].button_click;
+        for (let i = 0; i < produtos.orderList.length; i++) {
+            let idButtonAdd = produtos.orderList[i].buttonClick,
+                totalProduto;
 
-            let total_produto;
-
-            switch (id_button_add) {
+            switch (idButtonAdd) {
                 case '#button-add-unit-hamb1':
-                    total_produto = parseInt(produtos.order_list[i].amount) * 12.90;
-                    total_pedido += total_produto;
+                    totalProduto = parseInt(produtos.orderList[i].amount) * 12.90;
+                    totalPedido += totalProduto;
 
-                    linha_um = `Hamburguer Tradicional<br> Queijo, Alface, Pickles, Tomate, Cebola e molho especial.<br>`
-                    corrigeExibicaoPedido(linha_um);
+                    linhaUm = `Hamburguer Tradicional<br> Queijo, Alface, Pickles, Tomate,` +
+                        `Cebola e molho especial.<br>`;
+                    corrigeExibicaoPedido(linhaUm);
 
                     exibicao += `Preço unitario: R$12.90<br>`;
-                    exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
-                    exibicao += `Total R$: ${total_produto.toFixed(2)}`;
+                    exibicao += `Quantidade: ${produtos.orderList[i].amount}<br>`;
+                    exibicao += `Total R$: ${totalProduto.toFixed(2)}`;
                     break;
 
                 case '#button-add-unit-hamb2':
-                    total_produto = parseInt(produtos.order_list[i].amount) * 15.90;
-                    total_pedido += total_produto;
+                    totalProduto = parseInt(produtos.orderList[i].amount) * 15.90;
+                    totalPedido += totalProduto;
 
-                    linha_um = `Hamburguer Duplo Tradicional<br> Queijo Cheddar e molho especial.<br>`;
-                    corrigeExibicaoPedido(linha_um);
+                    linhaUm = `Hamburguer Duplo Tradicional<br> Queijo`+
+                    `Cheddar e molho especial.<br>`;
+                    
+                    corrigeExibicaoPedido(linhaUm);
 
                     exibicao += `Preço unitario: R$15.90<br>`;
-                    exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
-                    exibicao += `Total R$: ${total_produto.toFixed(2)}`;
+                    exibicao += `Quantidade: ${produtos.orderList[i].amount}<br>`;
+                    exibicao += `Total R$: ${totalProduto.toFixed(2)}`;
                     break;
 
                 case '#button-add-unit-hamb3':
-                    total_produto = parseInt(produtos.order_list[i].amount) * 20.00;
-                    total_pedido += total_produto;
+                    totalProduto = parseInt(produtos.orderList[i].amount) * 20.00;
+                    totalPedido += totalProduto;
 
-                    linha_um = `Hamburguer Triplo Tradicional<br> Queijo, Alface, Pickles, Tomate, Cebola e molho especial.<br>`;
-                    corrigeExibicaoPedido(linha_um);
+                    linhaUm = `Hamburguer Triplo Tradicional<br> Queijo, Alface, Pickles, ` +
+                        `Tomate, Cebola e molho especial.<br>`;
+
+                    corrigeExibicaoPedido(linhaUm);
 
                     exibicao += `Preço unitario: R$20.00<br>`;
-                    exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
-                    exibicao += `Total sem desconto R$: ${total_produto.toFixed(2)}`;
+                    exibicao += `Quantidade: ${produtos.orderList[i].amount}<br>`;
+                    exibicao += `Total sem desconto R$: ${totalProduto.toFixed(2)}`;
                     break;
 
                 case '#button-add-unit-drink1':
-                    total_produto = parseInt(produtos.order_list[i].amount) * 4.00;
-                    total_pedido += total_produto;
+                    totalProduto = parseInt(produtos.orderList[i].amount) * 4.00;
+                    totalPedido += totalProduto;
 
-                    linha_um = `Refrigerante<br> Lata de 350Ml.<br>`;
-                    corrigeExibicaoPedido(linha_um);
+                    linhaUm = `Refrigerante<br> Lata de 350Ml.<br>`;
+                    corrigeExibicaoPedido(linhaUm);
 
                     exibicao += `Preço unitario: R$4.00<br>`;
-                    exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
-                    exibicao += `Total R$: ${total_produto.toFixed(2)}`;
+                    exibicao += `Quantidade: ${produtos.orderList[i].amount}<br>`;
+                    exibicao += `Total R$: ${totalProduto.toFixed(2)}`;
                     break;
 
                 case '#button-add-unit-drink2':
-                    total_produto = parseInt(produtos.order_list[i].amount) * 7.00;
-                    total_pedido += total_produto;
+                    totalProduto = parseInt(produtos.orderList[i].amount) * 7.00;
+                    totalPedido += totalProduto;
 
-                    linha_um = `Refrigerante<br> Garrafa 2L.<br>`;
-                    corrigeExibicaoPedido(linha_um);
+                    linhaUm = `Refrigerante<br> Garrafa 2L.<br>`;
+                    corrigeExibicaoPedido(linhaUm);
 
                     exibicao += `Preço unitario: R$7.00<br>`;
-                    exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
-                    exibicao += `Total R$: ${total_produto.toFixed(2)}`;
+                    exibicao += `Quantidade: ${produtos.orderList[i].amount}<br>`;
+                    exibicao += `Total R$: ${totalProduto.toFixed(2)}`;
                     break;
 
                 case '#button-add-unit-drink3':
-                    total_produto = parseInt(produtos.order_list[i].amount) * 11.00;
-                    total_pedido += total_produto;
+                    totalProduto = parseInt(produtos.orderList[i].amount) * 11.00;
+                    totalPedido += totalProduto;
 
-                    linha_um = `Cerveja<br> Garrafa 1l.<br>`;
-                    corrigeExibicaoPedido(linha_um);
+                    linhaUm = `Cerveja<br> Garrafa 1l.<br>`;
+                    corrigeExibicaoPedido(linhaUm);
 
                     exibicao += `Preço unitario: R$11.00<br>`;
-                    exibicao += `Quantidade: ${produtos.order_list[i].amount}<br>`;
-                    exibicao += `Total R$: ${total_produto.toFixed(2)}`;
+                    exibicao += `Quantidade: ${produtos.orderList[i].amount}<br>`;
+                    exibicao += `Total R$: ${totalProduto.toFixed(2)}`;
                     break;
             }
             //escreve no html 
-            $('#p-produtos').html(exibicao);
+            $('#p-product-list').html(exibicao);
         }
 
-         /*
-            Verifica se existe desconto e calcula total
-            **html() - toFixed()**
-        */
-        total_pedido = total_pedido - desconto;
+        /*
+           Verifica se existe desconto e calcula total
+           **html() - toFixed()**
+       */
+        if(totalPedido < desconto){
+            totalPedido = 0.00;
+        }else{
+            totalPedido = totalPedido - desconto;
+        }
         
         /*
             Exibe o total do pedido com ou sem desconto
             **html() - toFixed()**
         */
         if (desconto > 0) {
-            $('#total-compra').html('Total com desconto: R$' + total_pedido.toFixed(2));
+            $('#h2-purchase-total').html('Total com desconto: R$' + totalPedido.toFixed(2));
         } else {
-            $('#total-compra').html('Total: R$' + total_pedido.toFixed(2));
+            $('#h2-purchase-total').html('Total: R$' + totalPedido.toFixed(2));
         }
 
         /*
             Acessa o localStorage pegar os dados do endereço do comprador
             **JSON parse() - getItem localStorage -  
         */
-        let usuario = JSON.parse(localStorage.getItem('user1'));
-        let endereco_entrega = `Cep: ${usuario.adress}, `;
-        endereco_entrega += `Número: ${usuario.adress_number}, `;
-        endereco_entrega += `Cidade: ${usuario.city}`;
+        let usuario = JSON.parse(localStorage.getItem('user1')),
+        enderecoEntrega = `Cep: ${usuario.adress}, `;
+        enderecoEntrega += `Número: ${usuario.adressNumber}, `;
+        enderecoEntrega += `Cidade: ${usuario.city}`;
 
         //exibe endereço para entrega
-        $('#p-endereco-entrega').text(endereco_entrega);
+        $('#p-shipping-address').text(enderecoEntrega);
 
         /*
             Função para exibir o botão de pagamento
             **removeClass - addClass**
         */
         $('#button-payment-money').click(function () {
-            $('#id-button-finalize-purchase').removeClass('oculta-conteudo').addClass('exibe-conteudo');
-            $('#id-form-card').removeClass('exibe-conteudo').addClass('oculta-conteudo');
+            $('#button-finalize-purchase').removeClass('hide-content').addClass('show-content');
+            $('#form-card').removeClass('show-content').addClass('hide-content');
         });
 
         /*
@@ -194,9 +205,9 @@
             **removeClass - addClass - sessionStorage**
         */
         function finalizarCompra() {
-            $('.informacao-pedido').removeClass('exibe-conteudo').addClass('oculta-conteudo');
-            $('#id-button-finalize-purchase').removeClass('exibe-conteudo').addClass('oculta-conteudo');
-            $('#div-compra-finalizada').removeClass('exibe-conteudo').addClass('exibe-conteudo');
+            $('.order-information').removeClass('show-content').addClass('hide-content');
+            $('#button-finalize-purchase').removeClass('show-content').addClass('hide-content');
+            $('#div-purchase-completed').removeClass('show-content').addClass('show-content');
             sessionStorage.removeItem('pedido');
         }
 
@@ -204,7 +215,7 @@
             Função para invocar função de finalizar compra
             **click()**
         */
-        $('#id-button-finalize-purchase').click(function () {
+        $('#button-finalize-purchase').click(function () {
             finalizarCompra();
         });
 
@@ -213,8 +224,8 @@
             **removeClass - addClass**
         */
         $('#button-payment-card').click(function () {
-            $('#id-form-card').removeClass('oculta-conteudo').addClass('exibe-conteudo');
-            $('#id-button-finalize-purchase').removeClass('exibe-conteudo').addClass('oculta-conteudo');
+            $('#form-card').removeClass('hide-content').addClass('show-content');
+            $('#button-finalize-purchase').removeClass('show-content').addClass('hide-content');
         });
 
 
@@ -222,7 +233,7 @@
             Função para evitar o envio do formulário e recarregamento da página
             **event.preventDefault()**
         */
-        $('#id-form-card').submit(function (event) {
+        $('#form-card').submit(function (event) {
             event.preventDefault();
             finalizarCompra();
         });
@@ -236,10 +247,10 @@
         $('#button-cancel-order').click(function () {
             sessionStorage.removeItem('pedido');
 
-            $('.informacao-pedido').removeClass('exibe-conteudo').addClass('oculta-conteudo');
-            $('#id-button-finalize-purchase').removeClass('exibe-conteudo').addClass('oculta-conteudo');
-            $('#id-form-card').removeClass('exibe-conteudo').addClass('oculta-conteudo');
-            $('#div-existe-pedido').removeClass('oculta-conteudo').addClass('exibe-conteudo');
+            $('.order-information').removeClass('show-content').addClass('hide-content');
+            $('#button-finalize-purchase').removeClass('show-content').addClass('hide-content');
+            $('#form-card').removeClass('show-content').addClass('hide-content');
+            $('#div-order-exist').removeClass('hide-content').addClass('show-content');
         });
 
         /*
@@ -248,6 +259,5 @@
         $('#form-button-cancel').click(function () {
             window.location.reload(true);
         });
-
     });
-}()
+}();
