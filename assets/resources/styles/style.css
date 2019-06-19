@@ -134,6 +134,11 @@ section > h1{
     margin: 20px;
 }
 
+#button-cancel-order{
+    width: 200px;
+    margin: 20px;
+}
+
 #button-finalize-purchase{
     width: 100%;
     margin-top: 30px;

@@ -1,13 +1,19 @@
 //Module Pattern 
 + function () {
-    //Utilização de Jquery
-    //espera o html ser carreado
 $(document).ready(function () {
     //ativa o sidenav mobile
     $('.sidenav').sidenav();
 
-        //exibe nome do usuário
+        /*
+            Variavel recebe o valor do sessionStorage 
+            **sessionStorage**
+        */
         let nome_usuario = sessionStorage.getItem('display_name');
+
+        /*
+            Exibe o nome do usuário caso seja diferente de null
+            **$().html**
+        */
         if (nome_usuario != null) {
             $('.a-menu-login').html('<i class="material-icons left">person_pin</i>' + nome_usuario);
         }
@@ -15,10 +21,16 @@ $(document).ready(function () {
         let msg_coupon = 'Parabéns curioso :p , você ganhou R$5,00 de desconto!\n';
         msg_coupon += 'use o cupom "ganhei5" no seu carrinho.';
         
-        //cupom de desconto exibido no console
+        /*
+            Cupom de desconto exibido no console
+            ** Temporizador setTimeOut**
+        */
         setTimeout(console.log(msg_coupon),1);
 
-        //classe que representa um pedido
+        /*
+            Classe para representar o objeto pedido
+            **Classe do ES6 (JS6)**
+        */
         class Order {
             constructor() {
                 this.order_list = [];
@@ -29,7 +41,10 @@ $(document).ready(function () {
             }
         };
 
-        //classe que representa um produto
+        /*
+            Classe para representar o objeto pedido
+            **Classe do ES6 (JS6)**
+        */
         class Product {
             constructor(id_product, button_click) {
                 this.id_product = id_product;
@@ -47,6 +62,7 @@ $(document).ready(function () {
         };
 
         //variáveis de controle do pedido
+        //variáveis para armazer id de botões
         let current_order;
         let product_unit = 0;
         let id_card_content;
@@ -54,9 +70,17 @@ $(document).ready(function () {
         let id_button_remove;
         let id_button_buy;
       
-        //exibe e oculta o conteudo do card de products
+        /*
+            Função que verifica qual botão de expandir contéudo foi clicado
+            **click() - split() - attr() - parent() - siblings() - find() - next()**
+            **JSON - getItem sessionStorage - For in - css() - text() -slideUp()**
+            **slideToggle()**  
+        */
         $('.btn-floating').click(function () {    
+            //existe no pedido
             let exists_on_request = false;
+
+            //id do botão flutuante clicado
             let id_button_floating = '#' + $(this).attr('id');
             let break_id = id_button_floating.split('-');
             
@@ -81,7 +105,6 @@ $(document).ready(function () {
                 }
             }
 
-            
             //se existir exibe os botões de remover e comprar
             if(exists_on_request){
                 $(id_button_buy).css('display', 'block');
@@ -140,8 +163,10 @@ $(document).ready(function () {
         let new_id_product = 1;
         let list_products = [];
 
-        //Identifica qual botão foi clicado
-        //Realiza uma ação referente ao botão clicado
+        /*
+            Função para incrementar quantidade, remover e comprar
+            **click() - attr() - split() - closest() - find() - push() - for in**
+        */
         $('.card-content > button').click(function () {
             let id_button = '#' + $(this).attr('id');
             let divide_button_id = id_button.split('-');
@@ -204,7 +229,10 @@ $(document).ready(function () {
             }    
         });
         
-        //Função para alterar exibição de quantidade do product
+        /*
+            Função para alterar exibição de quantidade do product
+            **css() - text() - confirm()**
+        */
         function addProduct(product) {
             $(id_button_remove).css('display', 'block');
             $(id_button_buy).css('display', 'block');
@@ -220,8 +248,12 @@ $(document).ready(function () {
             }
         };
 
-        //decrementa a quantidade exibida no card do product
-        //cancela efeitos de notificação de product no carrinho
+        /*
+            Função que decrementa a quantidade exibida no card do produto
+            Cancela efeitos de notificação de produto no carrinho (icones de sino)
+            **console.log() - JSON - For in - sessionStorage - text() - css()**
+            **html() - clearInterval()** 
+        */
         function remover(product) {
             let list_order;
             console.log('id produto atual '+product.id_product)
@@ -269,26 +301,37 @@ $(document).ready(function () {
 
         };
 
-        //Função de animação de notificação
-        //Determina o icone de sino tocando
+        /*  
+            Função de animação de notificação
+            Determina o icone de sino tocando
+            **html()**
+        */
         function animationNotificationActive() {
              $('.i-icon-cart').html('<i class="material-icons left">notifications_active</i>'+'Carrinho');
         };
 
-        //Função de animação de notificação
-        //Determina o icone de sino default
+        /*  
+            Função de animação de notificação
+            Determina o icone de sino default
+            **html()**
+        */
         function animationNotificationDisabled() {
              $('.i-icon-cart').html('<i class="material-icons left">notifications</i>'+'Carrinho');
         };
 
-        //Variáveis de controle de criação de objetos pedido e produto
+        /*
+            Variáveis de controle de criação de objetos pedido e produto
+        */
         let create_order = false;
         let is_empety_order_list = true;
         let animation = false;
         let animation_key1;
         let animation_key2;
 
-        //Cria um objeto pedido caso não exista um criado
+        /*
+            Cria um objeto pedido caso não exista um criado
+            **setInterval() - sessionStorage() JSON - For in**
+        */
         function buyProduct(product){
             let existe = false;
             if (create_order == false) {
@@ -326,10 +369,15 @@ $(document).ready(function () {
             }
         };
         
+        /*
+            Função para remover um produto da lista
+            **sessionStorage() - JSON parse -  splice() - For in**
+        */
         //Remove o product da lista de pedido
         function removeProductList(product) {
             //converte os dados salvos no sessionStorage
             let list = JSON.parse(sessionStorage.getItem('pedido'));
+           
             //verifica se existe um product no pedido com o id do product atual
             for (let i = 0; i < list.order_list.length; i++) {
                 if (list.order_list[i].id_product == product.id_product) {

@@ -114,6 +114,8 @@
                             <i class="material-icons right">attach_money</i>Dinheiro</button>
                         <button id='button-payment-card' class="waves-effect waves-light btn orange">
                             <i class="material-icons right">credit_card</i>Cartão</button>
+                        <button id='button-cancel-order' class="waves-effect waves-light btn red">
+                                <i class="material-icons right">cancel</i>Cancelar</button>
                     </div>
                 </div>
                 <div class="row">
@@ -122,15 +124,15 @@
                             <form id="id-form-card" class="oculta-conteudo">
                                 <p>
                                     Nome do titular do cartão:
-                                    <input type="text" required>
+                                    <input type="text" placeholder="Bruno Wogt" required>
                                 </p>
                                 <p>
                                     Número do cartão:
-                                    <input type="text" pattern="^\d{14}|\d{15}|\d{16}$" required>
+                                    <input type="text" placeholder = "656565656565656565656565" pattern="^\d{14}|\d{15}|\d{16}$" required>
                                 </p>
                                 <p>
                                     Código verificador:
-                                    <input type="text" pattern='^\d{3}$' required>
+                                    <input type="text" placeholder="123" pattern='^\d{3}$' required>
                                 </p>
                                 <button class="waves-effect waves-light btn green">
                                     <i class="material-icons right">check</i>Comprar</button>
