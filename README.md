@@ -16,10 +16,10 @@ antes da entrega do projeto.
 Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens riscados, os quais não foram vistos em sala de aula:
 
 **Qualidade do código**
-  - [ ] Usar um Style Guide - apresentar o uso de pelo menos 10 regras do style escolhido (sugerido AirBnb)
-  - [ ] Usar um lint - mostrar a correção de pelo menos 5 problemas informados pelo lint (sugerido JSHint - 
+  - [x] Usar um Style Guide - apresentar o uso de pelo menos 10 regras do style escolhido (sugerido AirBnb)
+  - [x] Usar um lint - mostrar a correção de pelo menos 5 problemas informados pelo lint (sugerido JSHint - 
   usar o arquivo .jshintrc disponível no moodle)
-  - [ ] Usar strict mode
+  - [x] Usar strict mode
   - [x] Usar Module Pattern
   - [x] Usar pasta assets e subpastas resources e libraries para organizar o código
   - [x] Usar let ao invés de var
