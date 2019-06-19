@@ -1,6 +1,6 @@
 # deliveryburguer-projeto-web2-utfpr
 
-Link do projeto no github pages: https://bruw.github.io/deliveryburguer-projeto-web2-utfpr/
+Github pages: https://bruw.github.io/deliveryburguer-projeto-web2-utfpr/
 
 Este projeto objetiva a elaboração de um site abrangendo os conteúdos da disciplina de Desenvolvimento para Web II, 
 do curso de Tecnologia em Sistemas para Internet (TSI) da Universidade Tecnológica Federal do Paraná (UTFPR)
@@ -46,8 +46,8 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
 
 **Eventos**
   - [ ] Evento de carregamento do documento - onload
-  - [ ] Evento de movimento do mouse
-  - [ ] Evento de teclado - usar charCode ou keyCode
+  - [x] Evento de movimento do mouse
+  - [x] Evento de teclado - usar charCode ou keyCode
   - [x] Eventos de formulário - onfocus e onblur
   - [ ] Imprimir alguma propriedade do objeto event recebido como parâmetro
 
@@ -62,7 +62,7 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
   - [x] Especificar o tratador de evento inline
   - [ ] Especificar o tratador de evento no carregamento da página HTML no modo tradicional - no onload
   - [ ] Especificar o tratador de evento no carregamento da página HTML com a função addEventListener - no onload
-  - [ ] Usar o operador this em funções tratadoras de eventos.
+  - [x] Usar o operador this em funções tratadoras de eventos.
 
 **Formulário**
   - [x] Validação de formulário com onsubmit usando os métodos tradicionais
@@ -70,7 +70,7 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
   - [x] Customizar as mensagens nos balões de mensagem
   - [ ] Usar os atributos de validação dos inputs
   - [x] Usar expressões regulares
-  - [ ] Ler e escrever em elementos input com a propriedade value
+  - [x] Ler e escrever em elementos input com a propriedade value
   - [x] Alterar o conteúdo de elementos div ou p com a propriedade innerHTML ou textContent
   - [ ] Manipulação de elemento de listagem, como checkbox, radio ou select
   - [x] Acesso aos elementos de um formulário via hierarquia (caminho) de objetos, ou seja, array forms e elements
@@ -87,11 +87,11 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
 
 **jQuery**
   - [x] Uso de seletores CSS - id, classe e tag
-  - [x] Uso de seletores hierárquicos estáticos - ancestral/descendente, pai/filho, anterior/próximo
+  - [ ] Uso de seletores hierárquicos estáticos - ancestral/descendente, pai/filho, anterior/próximo
   - [x] Uso de seletores hierárquicos dinâmicos - parent/children/next
   - [x] Efeitos fade ou slide
   - [ ] Especificar o tratador de algum evento via jQuery
-  - [ ] Manipulação do CSS via função css() e addClass()/removeClass()
+  - [x] Manipulação do CSS via função css() e addClass()/removeClass()
   - [x] Manipulação do conteúdo de um input e div usando jQuery
   - [ ] Aplicar um plugin do jQuery (por exemplo, jQuery Mask Plugin)
 
