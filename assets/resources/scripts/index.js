@@ -1,31 +1,32 @@
 //Module Pattern 
 + function () {
-$(document).ready(function () {
-    //ativa o sidenav mobile
-    $('.sidenav').sidenav();
+    'use strict';
+    $(document).ready(function () {
+        //ativa o sidenav mobile
+        $('.sidenav').sidenav();
 
         /*
             Variavel recebe o valor do sessionStorage 
             **sessionStorage**
         */
-        let nome_usuario = sessionStorage.getItem('display_name');
+        let nameUser = sessionStorage.getItem('display_name');
 
         /*
             Exibe o nome do usuário caso seja diferente de null
             **$().html**
         */
-        if (nome_usuario != null) {
-            $('.a-menu-login').html('<i class="material-icons left">person_pin</i>' + nome_usuario);
+        if (nameUser !== null) {
+            $('.a-menu-login').html('<i class="material-icons left">person_pin</i>' + nameUser);
         }
 
-        let msg_coupon = 'Parabéns curioso :p , você ganhou R$5,00 de desconto!\n';
-        msg_coupon += 'use o cupom "ganhei5" no seu carrinho.';
-        
+        let couponMenssage = 'Parabéns curioso :p , você ganhou R$5,00 de desconto!\n';
+        couponMenssage += 'use o cupom "ganhei5" no seu carrinho.';
+
         /*
             Cupom de desconto exibido no console
             ** Temporizador setTimeOut**
         */
-        setTimeout(console.log(msg_coupon),1);
+        setTimeout(console.log(couponMenssage), 1);
 
         /*
             Classe para representar o objeto pedido
@@ -33,22 +34,22 @@ $(document).ready(function () {
         */
         class Order {
             constructor() {
-                this.order_list = [];
+                this.orderList = [];
             }
 
             add(product) {
-                this.order_list.push(product);
+                this.orderList.push(product);
             }
-        };
+        }
 
         /*
             Classe para representar o objeto pedido
             **Classe do ES6 (JS6)**
         */
         class Product {
-            constructor(id_product, button_click) {
-                this.id_product = id_product;
-                this.button_click = button_click;
+            constructor(idProduct, buttonClick) {
+                this.idProduct = idProduct;
+                this.buttonClick = buttonClick;
                 this.amount = 0;
             }
 
@@ -59,74 +60,74 @@ $(document).ready(function () {
             remove() {
                 this.amount += - 1;
             }
-        };
+        }
 
         //variáveis de controle do pedido
         //variáveis para armazer id de botões
-        let current_order;
-        let product_unit = 0;
-        let id_card_content;
-        let id_button_add;
-        let id_button_remove;
-        let id_button_buy;
-      
+        let productUnit = 0,
+            currentOrder,
+            idCardContent,
+            idButtonAdd,
+            idButtonRemove,
+            idButtonBuy;
+
         /*
             Função que verifica qual botão de expandir contéudo foi clicado
             **click() - split() - attr() - parent() - siblings() - find() - next()**
             **JSON - getItem sessionStorage - For in - css() - text() -slideUp()**
             **slideToggle()**  
         */
-        $('.btn-floating').click(function () {    
+        $('.btn-floating').click(function () {
             //existe no pedido
-            let exists_on_request = false;
+            let existsOnRequest = false;
 
             //id do botão flutuante clicado
-            let id_button_floating = '#' + $(this).attr('id');
-            let break_id = id_button_floating.split('-');
-            
+            let idButtonFloating = '#' + $(this).attr('id'),
+                breakId = idButtonFloating.split('-');
+
             //id´s do contéudo e dos botões de cada product
-            id_card_content = '#' + $(this).parent().siblings().attr('id');
-            id_button_add= '#' + $(id_card_content).find('button').attr('id');
-            id_button_remove = '#' + $(id_button_add).next().attr('id');
-            id_button_buy = '#' + $(id_button_remove).next().attr('id');
-            
+            idCardContent = '#' + $(this).parent().siblings().attr('id');
+            idButtonAdd = '#' + $(idCardContent).find('button').attr('id');
+            idButtonRemove = '#' + $(idButtonAdd).next().attr('id');
+            idButtonBuy = '#' + $(idButtonRemove).next().attr('id');
+
             //pedido armazenado no sessionStorage
-            let order_in_session_storage= JSON.parse(sessionStorage.getItem('pedido'));
+            let orderInSessionStorage = JSON.parse(sessionStorage.getItem('pedido'));
 
             //verifica se o product existe no pedido
-            if((order_in_session_storage === null) || (order_in_session_storage.order_list.length === 0)){
-                product_unit = 0;
-            }else{
-                for(let i in order_in_session_storage.order_list){
-                    if(order_in_session_storage.order_list[i].button_click == id_button_add){
-                        product_unit = order_in_session_storage.order_list[i].amount;
-                        exists_on_request = true;
+            if ((orderInSessionStorage === null) || (orderInSessionStorage.orderList.length === 0)) {
+                productUnit = 0;
+            } else {
+                for (let i in orderInSessionStorage.orderList) {
+                    if (orderInSessionStorage.orderList[i].buttonClick === idButtonAdd) {
+                        productUnit = orderInSessionStorage.orderList[i].amount;
+                        existsOnRequest = true;
                     }
                 }
             }
 
             //se existir exibe os botões de remover e comprar
-            if(exists_on_request){
-                $(id_button_buy).css('display', 'block');
-                $(id_button_remove).css('display', 'block');    
-            }else{
+            if (existsOnRequest) {
+                $(idButtonBuy).css('display', 'block');
+                $(idButtonRemove).css('display', 'block');
+            } else {
                 //se não existe quantidade torna-se zero e oculta-se os botões de remover e comprar
-                product_unit = 0;
-                $(id_button_buy).css('display', 'none');
-                $(id_button_remove).css('display', 'none');
+                productUnit = 0;
+                $(idButtonBuy).css('display', 'none');
+                $(idButtonRemove).css('display', 'none');
             }
-           
-           //armazena o primeiro filho do card_content atual
-           let aux_id_card_content = $(id_card_content).find(' > p')[1];
-           $(aux_id_card_content).text('Seu pedido: ' + product_unit);
-           
-           //Procura pelo botão flutuante que foi clicado
-           //Oculta divs abertas e exibe a que foi clicada
-            switch (break_id[2]) {
+
+            //armazena o primeiro filho do card_content atual
+            let auxIdCardContent = $(idCardContent).find(' > p')[1];
+            $(auxIdCardContent).text('Seu pedido: ' + productUnit);
+
+            //Procura pelo botão flutuante que foi clicado
+            //Oculta divs abertas e exibe a que foi clicada
+            switch (breakId[2]) {
                 case 'hamb1':
                     $('.card-content').slideUp('fast');
                     $('#card-content-hamb1').slideToggle('fast');
-                   break;
+                    break;
 
                 case 'hamb2':
                     $('.card-content').slideUp('fast');
@@ -158,95 +159,64 @@ $(document).ready(function () {
             }
         });
 
-        //Variavéis de controle do produto
-        let product;
-        let new_id_product = 1;
-        let list_products = [];
+        let animation = false,
+            animationKey1,
+            animationKey2;
+
+        /*  
+            Função de animação de notificação
+            Determina o icone de sino tocando
+            **html()**
+        */
+        function animationNotificationActive() {
+            $('.a-icon-cart').html('<i class="material-icons left">'+
+            'notifications_active</i>' + 'Carrinho');
+        }
+
+        /*  
+            Função de animação de notificação
+            Determina o icone de sino default
+            **html()**
+        */
+        function animationNotificationDisabled() {
+            $('.a-icon-cart').html('<i class="material-icons left">notifications</i>' + 'Carrinho');
+        }
 
         /*
-            Função para incrementar quantidade, remover e comprar
-            **click() - attr() - split() - closest() - find() - push() - for in**
-        */
-        $('.card-content > button').click(function () {
-            let id_button = '#' + $(this).attr('id');
-            let divide_button_id = id_button.split('-');
-            let there_is_product = false;
-            
-            //div pai dos botões (adicionar, remover, comprar)
-            id_card_content = '#' + $(this).closest('div').attr('id');
+           Função para remover um produto da lista
+           **sessionStorage() - JSON parse -  splice() - For in**
+       */
+        //Remove o product da lista de pedido
+        function removeProductList(product) {
+            //converte os dados salvos no sessionStorage
+            let list = JSON.parse(sessionStorage.getItem('pedido'));
 
-            switch(divide_button_id[1]){
-                case 'add':
-                    id_button_add = id_button;
-                    id_button_remove = '#' + $(id_button_add).find('+button').attr('id');
-                    id_button_buy = '#' + $(id_button_remove).find('+button').attr('id');
-                    id_card_content += '> +p';
+            //verifica se existe um product no pedido com o id do product atual
+            for (let i = 0; i < list.orderList.length; i++) {
+                if (list.orderList[i].idProduct === product.idProduct) {
+                    currentOrder.orderList.splice(i, 1);
+                }
+            }
+        }
 
-                    if(list_products.length === 0){
-                        product = new Product(new_id_product, id_button_add);
-                        list_products.push(product);
-                        there_is_product = true;
-                        new_id_product++;
-                    }else{
-                        for(i in list_products){
-                            if(list_products[i].button_click === id_button_add){
-                                there_is_product = true;
-                                product = list_products[i];
-                            }
-                        }
-                    }
-                    
-                    if(there_is_product){
-                        addProduct(product);
-                    }else{
-                        product = new Product(new_id_product, id_button_add);
-                        list_products.push(product);
-                        addProduct(product);
-                        new_id_product++;
-                    }
-
-                    break;
-                    case 'remove':
-                    id_button_remove = id_button;
-                    id_card_content += '> +p';
-                    
-                    for(let i in list_products){
-                        if(list_products[i].button_click == id_button_add){
-                            product = list_products[i];
-                        }
-                    }
-
-                    remover(product);
-                    break;
-
-                case 'buy':
-                    id_button_buy = id_button;
-                    buyProduct(product);
-                    break;
-                
-                default:
-                    break;
-            }    
-        });
-        
         /*
             Função para alterar exibição de quantidade do product
             **css() - text() - confirm()**
         */
         function addProduct(product) {
-            $(id_button_remove).css('display', 'block');
-            $(id_button_buy).css('display', 'block');
-            product_unit++;
+            $(idButtonRemove).css('display', 'block');
+            $(idButtonBuy).css('display', 'block');
+            productUnit++;
 
-            if (product_unit <= 6) {
-                $(id_card_content).text('Seu pedido: ' + product_unit);
+            if (productUnit <= 6) {
+                $(idCardContent).text('Seu pedido: ' + productUnit);
                 product.add();
             }
             else {
-                product_unit = 6;
-                window.confirm('Limite máximo atingido... (6 unidades)')
+                productUnit = 6;
+                window.confirm('Limite máximo atingido... (6 unidades)');
             }
-        };
+        }
 
         /*
             Função que decrementa a quantidade exibida no card do produto
@@ -255,135 +225,172 @@ $(document).ready(function () {
             **html() - clearInterval()** 
         */
         function remover(product) {
-            let list_order;
-            console.log('id produto atual '+product.id_product)
-            
-            if (product_unit > 0) {
-                product_unit--;
-                
-                if(current_order == undefined){
+            let listOrder;
+            console.log('id produto atual ' + product.idProduct);
+
+            if (productUnit > 0) {
+                productUnit--;
+
+                if (currentOrder === undefined) {
                     product.remove();
-                }else{
-                   for(let i in current_order.order_list){
-                        if(current_order.order_list[i].button_click == id_button_add){
+                } else {
+                    for (let i in currentOrder.orderList) {
+                        if (currentOrder.orderList[i].buttonClick === idButtonAdd) {
                             product.remove();
-                            list_order = JSON.parse(sessionStorage.getItem('pedido'));
-                            list_order.order_list[i].amount = product_unit;
-                            current_order.order_list[i].amount = product_unit;
-                    
-                            sessionStorage.setItem('pedido', JSON.stringify(list_order));
+                            listOrder = JSON.parse(sessionStorage.getItem('pedido'));
+                            listOrder.orderList[i].amount = productUnit;
+                            currentOrder.orderList[i].amount = productUnit;
+
+                            sessionStorage.setItem('pedido', JSON.stringify(listOrder));
                         }
                     }
                 }
-                $(id_card_content).text('Seu pedido: ' + product_unit);
+                $(idCardContent).text('Seu pedido: ' + productUnit);
             }
 
-            if (product_unit <= 0) {
-                $(id_button_buy).css('display', 'none');
-                $(id_button_remove).css('display', 'none');
-                $(id_card_content).text('Seu pedido: ' + product_unit);
+            if (productUnit <= 0) {
+                $(idButtonBuy).css('display', 'none');
+                $(idButtonRemove).css('display', 'none');
+                $(idCardContent).text('Seu pedido: ' + productUnit);
 
-                if (current_order != undefined) {
+                if (currentOrder !== undefined) {
                     removeProductList(product);
-                    sessionStorage.setItem('pedido', JSON.stringify(current_order));
+                    sessionStorage.setItem('pedido', JSON.stringify(currentOrder));
                 }
 
-                list_order = JSON.parse(sessionStorage.getItem('pedido'));
-                
-                if(list_order.order_list.length == 0){
-                    clearInterval(animation_key1);
-                    clearInterval(animation_key2);
+                listOrder = JSON.parse(sessionStorage.getItem('pedido'));
+
+                if (listOrder.orderList.length === 0) {
+                    clearInterval(animationKey1);
+                    clearInterval(animationKey2);
                     animation = false;
-                    
-                    $('.i-icon-cart').html('<i class="material-icons left">shopping_cart</i>'+'Carrinho');
+
+                    $('.a-icon-cart').html('<i class="material-icons left">' +
+                        'shopping_cart</i>' + 'Carrinho');
                 }
             }
 
-        };
-
-        /*  
-            Função de animação de notificação
-            Determina o icone de sino tocando
-            **html()**
-        */
-        function animationNotificationActive() {
-             $('.i-icon-cart').html('<i class="material-icons left">notifications_active</i>'+'Carrinho');
-        };
-
-        /*  
-            Função de animação de notificação
-            Determina o icone de sino default
-            **html()**
-        */
-        function animationNotificationDisabled() {
-             $('.i-icon-cart').html('<i class="material-icons left">notifications</i>'+'Carrinho');
-        };
+        }
 
         /*
-            Variáveis de controle de criação de objetos pedido e produto
-        */
-        let create_order = false;
-        let is_empety_order_list = true;
-        let animation = false;
-        let animation_key1;
-        let animation_key2;
+               Variáveis de controle de criação de objetos pedido e produto
+           */
+        let createOrder = false,
+            isEmpetyOrderList = true;
 
         /*
             Cria um objeto pedido caso não exista um criado
             **setInterval() - sessionStorage() JSON - For in**
         */
-        function buyProduct(product){
+        function buyProduct(product) {
             let existe = false;
-            if (create_order == false) {
-                current_order = new Order();
-                create_order = true;
+
+            if (!createOrder) {
+                currentOrder = new Order();
+                createOrder = true;
             }
-           
+
             //Modifica o icone no menu de carrinho
-            if (animation == false) {
-                animation_key1 = setInterval(animationNotificationActive, 500);
-                animation_key2 = setInterval(animationNotificationDisabled, 1000);
+            if (!animation) {
+                animationKey1 = setInterval(animationNotificationActive, 500);
+                animationKey2 = setInterval(animationNotificationDisabled, 1000);
                 animation = true;
             }
 
-            if (is_empety_order_list) {
-                current_order.add(product);
-                sessionStorage.setItem('pedido', JSON.stringify(current_order));
-                is_empety_order_list = false;
+            if (isEmpetyOrderList) {
+                currentOrder.add(product);
+                sessionStorage.setItem('pedido', JSON.stringify(currentOrder));
+                isEmpetyOrderList = false;
+
             } else {
-                for(let i in current_order.order_list){
-                    if(current_order.order_list[i].id_product == product.id_product){
+                for (let i in currentOrder.orderList) {
+                    if (currentOrder.orderList[i].idProduct === product.idProduct) {
                         removeProductList(product);
-                        current_order.add(product);
+                        currentOrder.add(product);
                         existe = true;
                     }
                 }
 
-                if(existe == false){
-                    current_order.add(product);
+                if (!existe) {
+                    currentOrder.add(product);
                     existe = false;
                 }
 
                 //armazena o pedido no sesseionStorage;
-                sessionStorage.setItem('pedido', JSON.stringify(current_order));
+                sessionStorage.setItem('pedido', JSON.stringify(currentOrder));
             }
-        };
-        
+        }
+
+        //Variavéis de controle do produto
+        let newIdProduct = 1,
+            product,
+            listProducts = [];
+
         /*
-            Função para remover um produto da lista
-            **sessionStorage() - JSON parse -  splice() - For in**
+            Função para incrementar quantidade, remover e comprar
+            **click() - attr() - split() - closest() - find() - push() - for in**
         */
-        //Remove o product da lista de pedido
-        function removeProductList(product) {
-            //converte os dados salvos no sessionStorage
-            let list = JSON.parse(sessionStorage.getItem('pedido'));
-           
-            //verifica se existe um product no pedido com o id do product atual
-            for (let i = 0; i < list.order_list.length; i++) {
-                if (list.order_list[i].id_product == product.id_product) {
-                    current_order.order_list.splice(i, 1);
-                }
-            } 
-        };
+        $('.card-content > button').click(function () {
+            let idButton = '#' + $(this).attr('id'),
+                divideButtonId = idButton.split('-'),
+                thereIsProduct = false;
+
+            //div pai dos botões (adicionar, remover, comprar)
+            idCardContent = '#' + $(this).closest('div').attr('id');
+
+            switch (divideButtonId[1]) {
+                case 'add':
+                    idButtonAdd = idButton;
+                    idButtonRemove = '#' + $(idButtonAdd).find('+button').attr('id');
+                    idButtonBuy = '#' + $(idButtonRemove).find('+button').attr('id');
+                    idCardContent += '> +p';
+
+                    if (listProducts.length === 0) {
+                        product = new Product(newIdProduct, idButtonAdd);
+                        listProducts.push(product);
+                        thereIsProduct = true;
+                        newIdProduct++;
+
+                    } else {
+                        for (let i in listProducts) {
+                            if (listProducts[i].buttonClick === idButtonAdd) {
+                                thereIsProduct = true;
+                                product = listProducts[i];
+                            }
+                        }
+                    }
+
+                    if (thereIsProduct) {
+                        addProduct(product);
+                    } else {
+                        product = new Product(newIdProduct, idButtonAdd);
+                        listProducts.push(product);
+                        addProduct(product);
+                        newIdProduct++;
+                    }
+
+                    break;
+                case 'remove':
+                    idButtonRemove = idButton;
+                    idCardContent += '> +p';
+
+                    for (let i in listProducts) {
+                        if (listProducts[i].buttonClick === idButtonAdd) {
+                            product = listProducts[i];
+                        }
+                    }
+
+                    remover(product);
+                    break;
+
+                case 'buy':
+                    idButtonBuy = idButton;
+                    buyProduct(product);
+                    break;
+
+                default:
+                    break;
+            }
+        });
     });
 }();

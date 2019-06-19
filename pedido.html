@@ -29,7 +29,7 @@
                         </li>
                         <li>
                             <a href="pedido.html">
-                                <i id="i-icon-cart" class="material-icons left">shopping_cart</i>Carrinho
+                                <i id="a-icon-cart" class="material-icons left">shopping_cart</i>Carrinho
                             </a>
                         </li>
                         <li>
@@ -47,7 +47,7 @@
                         </li>
                         <li>
                             <a href="pedido.html">
-                                <i id="i-icon-cart" class="material-icons left">shopping_cart</i>Carrinho
+                                <i id="a-icon-cart" class="material-icons left">shopping_cart</i>Carrinho
                             </a>
                         </li>
                         <li>
@@ -64,7 +64,7 @@
 
     <main>
         <section>
-            <div id="div-existe-pedido" class="container oculta-conteudo">
+            <div id="div-order-exist" class="container hide-content">
                 <div class="row">
                     <div class="col s12">
                         <h1>Seu carrinho está vazio :(</h1>
@@ -74,41 +74,41 @@
         </section>
 
         <section>
-            <div class="container informacao-pedido oculta-conteudo">
+            <div class="container order-information hide-content">
                 <div class="row">
                     <div class="col s12">
                         <h1>Pedido</h1>
-                        <p id='p-produtos'></p>
+                        <p id='p-product-list'></p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section>
-            <div class="container informacao-pedido oculta-conteudo">
+            <div class="container order-information hide-content">
                 <div class="row">
                     <div class="col s12">
-                        <h2 id="total-compra">Total: R$</h2>
+                        <h2 id="h2-purchase-total">Total: R$</h2>
                     </div>
                 </div>
             </div>
         </section>
 
         <section>
-            <div id="div-endereco-entrega" class="container informacao-pedido oculta-conteudo">
+            <div class="container order-information hide-content">
                 <div class="row">
                     <div class="col s12">
                         <h1>Endereço de Entrega</h1>
-                        <p id="p-endereco-entrega"></p>
+                        <p id="p-shipping-address"></p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section>
-            <div class="container informacao-pedido oculta-conteudo">
+            <div class="container order-information hide-content">
                 <div class="row">
-                    <div id="div-meio-pagamento" class="col s12">
+                    <div class="col s12">
                         <h1>Meio de Pagamento</h1>
                         <button id='button-payment-money' class="waves-effect waves-light btn green">
                             <i class="material-icons right">attach_money</i>Dinheiro</button>
@@ -121,10 +121,10 @@
                 <div class="row">
                     <div class="col s12">
                         <div>
-                            <form id="id-form-card" class="oculta-conteudo">
+                            <form id="form-card" class="hide-content">
                                 <p>
                                     Nome do titular do cartão:
-                                    <input type="text" placeholder="Bruno Wogt" required>
+                                    <input type="text" placeholder="Darth Vaider" required>
                                 </p>
                                 <p>
                                     Número do cartão:
@@ -149,14 +149,14 @@
         <div class="container">
             <div class="row">
                 <div class="col s12">
-                    <button id="id-button-finalize-purchase" class="oculta-conteudo waves-effect waves-light btn blue">
+                    <button id="button-finalize-purchase" class="hide-content waves-effect waves-light btn blue">
                         <i class="material-icons right">check</i>Finalizar Compra</button>
                 </div>
             </div>
         </div>
 
         <section>
-            <div id="div-compra-finalizada" class="container oculta-conteudo">
+            <div id="div-purchase-completed" class="container hide-content">
                 <div class="row">
                     <div class="col s12 m12">
                         <h1>Obrigado por comprar conosco! Seu pedido já está em rota de entrega :p</h1>
