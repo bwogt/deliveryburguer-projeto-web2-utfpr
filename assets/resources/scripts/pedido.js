@@ -1,10 +1,12 @@
-+function () {
+(function () {
     'use strict';
     $(document).ready(function () {
         //ativa o sidenav mobile materialize
         $('.sidenav').sidenav();
         //ativa o selected materialize
         $('select').formSelect();
+
+        $
 
         let isConnected = sessionStorage.getItem('logado'),
             existePedido = JSON.parse(sessionStorage.getItem('pedido')),
@@ -334,4 +336,4 @@
             }
         });
     });
-}();
+})();
