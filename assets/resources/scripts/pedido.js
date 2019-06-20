@@ -1,8 +1,10 @@
 +function () {
     'use strict';
     $(document).ready(function () {
-        //ativa o sidenav mobile
+        //ativa o sidenav mobile materialize
         $('.sidenav').sidenav();
+        //ativa o selected materialize
+        $('select').formSelect();
 
         let isConnected = sessionStorage.getItem('logado'),
             existePedido = JSON.parse(sessionStorage.getItem('pedido')),
@@ -228,14 +230,50 @@
             $('#button-finalize-purchase').removeClass('show-content').addClass('hide-content');
         });
 
+        /*
+            Função para validar select de mês do cartão
+            **val() - alert()**
+        */
+        function validSelectMothCard(){
+            let selectMoth = $('#select-month').val();
+           
+            if(selectMoth === null || selectMoth < 0){
+                window.alert('Selecione o mês de validade do seu cartão...');
+                return false;
+
+            } else{
+                return true;
+            }
+            
+        }
+
+        /*
+            Função para validar select de ano do cartão
+            **val() - alert()**
+        */
+        function validSelectYearCard(){
+            let selectYear = $('#select-year').val();
+           
+            if(selectYear === null || selectYear < 0){
+                window.alert('Selecione o ano de validade do seu cartão...');
+                return false;
+
+            } else{
+                return true;
+            }
+            
+        }
 
         /*
             Função para evitar o envio do formulário e recarregamento da página
+            Invoca as funções de validação do cartão de credito
             **event.preventDefault()**
         */
         $('#form-card').submit(function (event) {
             event.preventDefault();
-            finalizarCompra();
+                if(validSelectMothCard() && validSelectYearCard()){
+                    finalizarCompra();
+                }
         });
 
         /*
@@ -258,6 +296,42 @@
         */
         $('#form-button-cancel').click(function () {
             window.location.reload(true);
+        });
+
+        /*
+            Validação do input nome
+            **validação html5**
+        */
+        $('#input-name-in-card').on('invalid', function () {
+            if (this.validity.valueMissing) {
+                this.setCustomValidity('Digite seu Nome completo, Inicio em maiúsculo');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+
+        /*
+            Validação do input número do cartão
+            **validação html5**
+        */
+        $('#input-number-card').on('invalid', function () {
+            if (this.validity.valueMissing) {
+                this.setCustomValidity('Mínimo 14 digitos, máximo 16');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+
+        /*
+            Validação do input código verificador do cartão
+            **validação html5**
+        */
+        $('#input-verification-code').on('invalid', function () {
+            if (this.validity.valueMissing) {
+                this.setCustomValidity('Código de 3 digitos presente atrás do cartão');
+            } else {
+                this.setCustomValidity('');
+            }
         });
     });
 }();

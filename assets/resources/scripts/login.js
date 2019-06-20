@@ -5,7 +5,7 @@
     $(document).ready(function () {
         $('.sidenav').sidenav();
     });
-
+    
     //Função para retornar o id do elemento
     function $id(id) {
         return document.getElementById(id);
@@ -142,7 +142,7 @@
             contAt = 0,
             valido = true;
 
-        if (this.value === '' || null) {
+        if (this.value.length === 0) {
             valido = false;
         }
 
@@ -182,7 +182,7 @@
         **Validação tradicional - querySelector - setAtribute - focus - onblur**
     */
     document.querySelector('input[name="input-login-password"]').onblur = function () {
-        if (this.value === '' || null) {
+        if (this.value.length === 0) {
             this.focus();
             this.setAttribute('style', 'border-bottom: 1px solid red');
         }
@@ -297,6 +297,7 @@
     /*
         Mensagem customizadas para erros de padrões no fórmulario de cadastro de usuário
         **querySelector - addEventListener - valueMissing**
+        **validação html5**
     */
     document.querySelector('input[name="input-name-user"]').addEventListener('invalid', function () {
         if (this.validity.valueMissing) {
@@ -311,6 +312,7 @@
     /*
         Mensagem customizadas para erros de padrões no fórmulario de cadastro de usuário
         **querySelector - addEventListener - valueMissing**
+        **validação html5**
     */
     document.querySelector('input[name="input-adress-user"]').addEventListener('invalid', function () {
         if (this.validity.valueMissing) {
@@ -323,6 +325,7 @@
     /*
         Mensagem customizadas para erros de padrões no fórmulario de cadastro de usuário
         **querySelector - addEventListener - valueMissing**
+        **validação html5**
     */
     document.querySelector('input[name="input-adress-number-user"]').addEventListener('invalid', function () {
         if (this.validity.valueMissing) {
@@ -335,6 +338,7 @@
     /*
         Mensagem customizadas para erros de padrões no fórmulario de cadastro de usuário
         **querySelector - addEventListener - valueMissing**
+        **validação html5**
     */
     document.querySelector('input[name="input-city-user"]').addEventListener('invalid', function () {
         if (this.validity.valueMissing) {
@@ -349,6 +353,7 @@
     /*
         Mensagem customizadas para erros de padrões no fórmulario de cadastro de usuário
         **querySelector - addEventListener - valueMissing**
+        **validação html5**
     */
     document.querySelector('input[name="input-email-adress"]').addEventListener('invalid', function () {
         if (this.validity.valueMissing) {
@@ -363,6 +368,7 @@
     /*
         Mensagem customizadas para erros de padrões no fórmulario de cadastro de usuário
         **querySelector - addEventListener - valueMissing**
+        **validação html5**
     */
     document.querySelector('input[name="input-register-password"]').addEventListener('invalid', function () {
         if (this.validity.valueMissing) {
