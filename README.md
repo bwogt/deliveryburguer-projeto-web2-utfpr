@@ -66,7 +66,7 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
 
 **Formulário**
   - [x] Validação de formulário com onsubmit usando os métodos tradicionais
-  - [ ] Validação de formulário com HTML5 API
+  - [x] Validação de formulário com HTML5 API
   - [x] Customizar as mensagens nos balões de mensagem
   - [ ] Usar os atributos de validação dos inputs
   - [x] Usar expressões regulares
