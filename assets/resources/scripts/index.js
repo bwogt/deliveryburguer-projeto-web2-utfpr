@@ -4,7 +4,7 @@
     $(document).ready(function () {
         //ativa o sidenav mobile
         $('.sidenav').sidenav();
-
+        
         /*
             Variavel recebe o valor do sessionStorage 
             **sessionStorage**

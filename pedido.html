@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/libraries/materialize/materialize/css/materialize.css">
     <link rel="stylesheet" href="assets/resources/styles/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/resources/images/favicon-entrega.ico">
     <title>Pedidos</title>
 </head>
 
@@ -115,37 +116,74 @@
                         <button id='button-payment-card' class="waves-effect waves-light btn orange">
                             <i class="material-icons right">credit_card</i>Cartão</button>
                         <button id='button-cancel-order' class="waves-effect waves-light btn red">
-                                <i class="material-icons right">cancel</i>Cancelar</button>
+                            <i class="material-icons right">cancel</i>Cancelar</button>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s12">
-                        <div>
-                            <form id="form-card" class="hide-content">
-                                <p>
-                                    Nome do titular do cartão:
-                                    <input type="text" placeholder="Darth Vaider" required>
-                                </p>
-                                <p>
-                                    Número do cartão:
-                                    <input type="text" placeholder = "656565656565656565656565" pattern="^\d{14}|\d{15}|\d{16}$" required>
-                                </p>
-                                <p>
-                                    Código verificador:
-                                    <input type="text" placeholder="123" pattern='^\d{3}$' required>
-                                </p>
-                                <button class="waves-effect waves-light btn green">
-                                    <i class="material-icons right">check</i>Comprar</button>
-                                <button id="form-button-cancel" class="waves-effect waves-light btn red">
-                                    <i class="material-icons right">cancel</i>Cancelar</button>
-                                </p>
-                            </form>
-                        </div>
+                    <div>
+                        <form id="form-card" class="hide-content">
+                            <p>
+                                Nome do titular do cartão:
+                                <input id="input-name-in-card" type="text" placeholder="Darth Vaider"
+                                    pattern="^([A-Z]([a-z]|[á-ú]){1,15}\s)+(([A-Z]|[a-z])([a-z]|[á-ú]){1,15}\s?)+$"
+                                    required>
+                            </p>
+                            <p>
+                                Número do cartão:
+                                <input id="input-number-card" type="text" placeholder="656565656565656565656565"
+                                    pattern="^\d{14}|\d{15}|\d{16}$" required>
+                            </p>
+                            <p>Validade do cartão:
+                            <div class="col s12 m6 selected-expiring-date-card">
+                                <label>Mês de validade</label>
+                                <select name="select-month" id="select-month">
+                                    <option value="" disabled selected required>Selecione</option>
+                                    <option value="1">Janeiro</option>
+                                    <option value="2">Fevereiro</option>
+                                    <option value="3">Março</option>
+                                    <option value="4">Abril</option>
+                                    <option value="5">Maio</option>
+                                    <option value="6">Junho</option>
+                                    <option value="7">Julho</option>
+                                    <option value="8">Agosto</option>
+                                    <option value="9">Setembro</option>
+                                    <option value="10">Outubro</option>
+                                    <option value="11">Novembro</option>
+                                    <option value="12">Dezembro</option>
+                                </select>
+                            </div>
+                            <div class="col s12 m6 selected-expiring-date-card">
+                                <label>Ano de validade</label>
+                                <select name="select-year" id="select-year">
+                                        <option value="" disabled selected required>Selecione</option>
+                                        <option value="1">2020</option>
+                                        <option value="2">2021</option>
+                                        <option value="3">2022</option>
+                                        <option value="4">2023</option>
+                                        <option value="5">2024</option>
+                                        <option value="6">2025</option>
+                                        <option value="7">2026</option>
+                                        <option value="8">2027</option>
+                                </select>
+                            </div>
+                            </p>
+                            <p>
+                                Código verificador:
+                                <input id="input-verification-code" type="text" placeholder="123" pattern='^\d{3}$'
+                                    required>
+                            </p>
+                            <button class="waves-effect waves-light btn green">
+                                <i class="material-icons right">check</i>Comprar</button>
+                            <button id="form-button-cancel" class="waves-effect waves-light btn red">
+                                <i class="material-icons right">cancel</i>Cancelar</button>
+                            </p>
+                        </form>
                     </div>
                 </div>
             </div>
+            </div>
         </section>
-        
+
         <div class="container">
             <div class="row">
                 <div class="col s12">
