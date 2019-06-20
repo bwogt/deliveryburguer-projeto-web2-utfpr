@@ -1,5 +1,5 @@
 //Module Pattern 
-+ function () {
+(function () {
     'use strict';
     $(document).ready(function () {
         //ativa o sidenav mobile
@@ -393,4 +393,4 @@
             }
         });
     });
-}();
+})();

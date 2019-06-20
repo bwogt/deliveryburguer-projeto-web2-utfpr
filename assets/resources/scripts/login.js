@@ -1,9 +1,10 @@
 //Module Pattern
-+ function () {
+(function () {
     //ativa o sidenav mobile
     'use strict';
     $(document).ready(function () {
         $('.sidenav').sidenav();
+        $('input[name="input-adress-user"]').mask('00000-000');
     });
     
     //Função para retornar o id do elemento
@@ -316,7 +317,7 @@
     */
     document.querySelector('input[name="input-adress-user"]').addEventListener('invalid', function () {
         if (this.validity.valueMissing) {
-            this.setCustomValidity('Seu CEP deve conter 8 dígitos, ex: 85070000 ou 85070-000');
+            this.setCustomValidity('Seu CEP deve conter 8 dígitos, ex: 85070-000');
         } else {
             this.setCustomValidity('');
         }
@@ -377,4 +378,4 @@
             this.setCustomValidity('');
         }
     });
-}();
+})();
