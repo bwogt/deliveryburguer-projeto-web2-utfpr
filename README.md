@@ -72,7 +72,7 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
   - [x] Usar expressões regulares
   - [x] Ler e escrever em elementos input com a propriedade value
   - [x] Alterar o conteúdo de elementos div ou p com a propriedade innerHTML ou textContent
-  - [ ] Manipulação de elemento de listagem, como checkbox, radio ou select
+  - [x] Manipulação de elemento de listagem, como checkbox, radio ou select
   - [x] Acesso aos elementos de um formulário via hierarquia (caminho) de objetos, ou seja, array forms e elements
 
 **Objetos Nativos**
