@@ -332,6 +332,7 @@
             switch (divideButtonId[1]) {
                 case 'add':
                     idButtonAdd = idButton;
+                   
                     idButtonRemove = '#' + $(idButtonAdd).find('+button').attr('id');
                     idButtonBuy = '#' + $(idButtonRemove).find('+button').attr('id');
                     idCardContent += '> +p';
