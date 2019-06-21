@@ -2,6 +2,15 @@
     margin-bottom: 40px;
 }
 
+#button-modal1{
+    margin-left: 10px;
+    width: 300px;
+}
+
+#div-modal-user-data{
+    display: none;
+}
+
 .hide-content{
     display: none;
 }
@@ -13,6 +22,11 @@
 /*display default div usuário logado*/
 #div-current-user{
     display: none;
+}
+
+#button-logoff{
+    width: 300px;
+    margin-left: 10px;
 }
 
 /*display default div login*/

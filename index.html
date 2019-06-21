@@ -13,7 +13,7 @@
     <title>Início</title>
 </head>
 
-<body>
+<body onload="discountCoupon()">
     <div class="navbar">
         <nav class="black">
             <div class="container">
@@ -39,8 +39,8 @@
                                 <i class="material-icons left">person_pin</i>Entrar
                             </a>
                         </li>
-                        <li>
                     </ul>
+
                     <ul class="sidenav" id="mobile-demo">
                         <li>
                             <a href="index.html">
@@ -57,7 +57,6 @@
                                 <i class="material-icons left">person_pin</i>Entrar
                             </a>
                         </li>
-                        <li>
                     </ul>
                 </div>
             </div>
@@ -65,21 +64,31 @@
     </div>
 
     <main>
-        <div class="container">
-            <section>
-                <h1>Hamburguers</h1>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <h1>Hamburguers</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
                 <div class="row">
                     <div class="col s12 m6 l4">
                         <div class="card">
                             <div class="card-image">
                                 <p>Hamburguer tradicional R$12.90</p>
                                 <img src="assets/resources/images/hb-tradicional.png"
-                                    alt="Imagem de um hamburguer tradicional">
+                                    alt="Hamburguer tradicional">
                                 <button id="button-floating-hamb1"
                                     class="btn-floating halfway-fab waves-effect waves-light red">
                                     <i class="material-icons">arrow_downward</i>
                                 </button>
                             </div>
+
                             <div id="card-content-hamb1" class="card-content">
                                 <p>Hamburguer Tradicional, Queijo, Alface, Pickles, Tomate, Cebola e molho especial.</p>
                                 <p>Seu pedido: 0 </p>
@@ -101,12 +110,13 @@
                         <div class="card">
                             <div class="card-image">
                                 <p>Cheese Burger R$15.90</p>
-                                <img src="assets/resources/images/hb-cheedar.png" alt="Imagem de uma Cheese burguer">
+                                <img src="assets/resources/images/hb-cheedar.png" alt="Cheese burguer">
                                 <button id="button-floating-hamb2"
                                     class="btn-floating halfway-fab waves-effect waves-light red">
                                     <i class="material-icons">arrow_downward</i>
                                 </button>
                             </div>
+                            
                             <div id="card-content-hamb2" class="card-content">
                                 <p>Duplo Hamburguer Tradicional, Queijo Cheddar e molho especial.</p>
                                 <p>Seu pedido: 0 </p>
@@ -128,11 +138,12 @@
                         <div class="card">
                             <div class="card-image">
                                 <p>Hamburguer Triplo R$20.00</p>
-                                <img src="assets/resources/images/hb-triplo.png" alt="Imagem de uma hamburguer duplo">
+                                <img src="assets/resources/images/hb-triplo.png" alt="Hamburguer duplo">
                                 <a id="button-floating-hamb3"
                                     class="btn-floating halfway-fab waves-effect waves-light red">
                                     <i class="material-icons">arrow_downward</i></a>
                             </div>
+                            
                             <div id="card-content-hamb3" class="card-content">
                                 <p>Triplo Hamburguer Tradicional, Queijo, Alface, Pickles, Tomate, Cebola e molho
                                     especial.
@@ -152,21 +163,33 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
+            
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <h1>Bebidas</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <section>
-                <h1>Bebidas</h1>
+        <section>
+            <div class="container">
                 <div class="row">
                     <div class="col s12 m6 l4">
                         <div class="card">
                             <div class="card-image">
                                 <p>Refrigerante Lata R$4.00</p>
                                 <img src="assets/resources/images/refri-lata.jpg"
-                                    alt="Imagem de uma lata de refrigerante">
+                                    alt="Lata de refrigerante">
                                 <a id="button-floating-drink1"
                                     class="btn-floating halfway-fab waves-effect waves-light red">
                                     <i class="material-icons">arrow_downward</i></a>
                             </div>
+
                             <div id="card-content-drink1" class="card-content">
                                 <p>Lata de 350Ml.</p>
                                 <p>Seu pedido: 0 </p>
@@ -183,17 +206,18 @@
                             </div>
                         </div>
                     </div>
-
+                    
                     <div class="col s12 m6 l4">
                         <div class="card">
                             <div class="card-image">
                                 <p>Refrigerante 2L R$7.00</p>
                                 <img src="assets/resources/images/refri-garrafa.jpg"
-                                    alt="Imagem de uma garrafa de refrigerante">
+                                    alt="Garrafa de refrigerante">
                                 <a id="button-floating-drink2"
                                     class="btn-floating halfway-fab waves-effect waves-light red">
                                     <i class="material-icons">arrow_downward</i></a>
                             </div>
+
                             <div id="card-content-drink2" class="card-content">
                                 <p>Garrafa 2L.</p>
                                 <p>Seu pedido: 0 </p>
@@ -216,11 +240,12 @@
                             <div class="card-image">
                                 <p>Cerveja Litrão R$11.00</p>
                                 <img src="assets/resources/images/cerveja-litrao.jpg"
-                                    alt="Imagem de uma garrafa de cerveja">
+                                    alt="Garrafa de cerveja">
                                 <a id="button-floating-drink3"
                                     class="btn-floating halfway-fab waves-effect waves-light red">
                                     <i class="material-icons">arrow_downward</i></a>
                             </div>
+                            
                             <div id="card-content-drink3" class="card-content">
                                 <p> Garrafa 1L.</p>
                                 <p>Seu pedido: 0 </p>
@@ -238,8 +263,8 @@
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
 
     <section>
@@ -254,6 +279,17 @@
     <script src="assets/libraries/materialize/materialize/js/materialize.js"></script>
     <script src="assets/resources/scripts/index.js"></script>
     <script>
+        /*
+            Cupom de desconto exibido no console
+            ** Evento onload**
+        */
+        let discountCoupon = function(){
+            let couponMenssage = 'Parabéns curioso :p , você ganhou R$5,00 de desconto!\n';
+            couponMenssage += 'use o cupom "ganhei5" no seu carrinho.';
+
+            console.log(couponMenssage);
+        }
+
         /*
             Função de animação na logo
             **evento inline - setTimeout() - innerHTML()**
