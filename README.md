@@ -76,9 +76,9 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
   - [x] Acesso aos elementos de um formulário via hierarquia (caminho) de objetos, ou seja, array forms e elements
 
 **Objetos Nativos**
-  - [ ] Usar pelo menos 3 métodos de manipulação de array
+  - [x] Usar pelo menos 3 métodos de manipulação de array
   - [x] Usar laço de repetição (for..in ou for..of ou forEach)
-  - [ ] Usar pelo menos 3 métodos para manipulação de string
+  - [x] Usar pelo menos 3 métodos para manipulação de string
 
 **Objetos**
   - [x] Criar objeto usando função construtora ou notação literal
