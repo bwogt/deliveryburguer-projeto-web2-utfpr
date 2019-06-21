@@ -109,12 +109,15 @@
     let banKey = function (e){
         if ((e.keyCode > 21) && (e.keyCode < 48)) {
             e.preventDefault();
+            console.log('Código da tecla na tabela ASCII: '+e.keyCode);
         } else {
             if ((e.keyCode > 57) && (e.keyCode < 112)) {
                 e.preventDefault();
+                console.log('Código da tecla na tabela ASCII: '+e.keyCode);
             } else {
                 if (e.keyCode > 123) {
                     e.preventDefault();
+                    console.log('Código da tecla na tabela ASCII: '+e.keyCode);
                 }
             }
         }

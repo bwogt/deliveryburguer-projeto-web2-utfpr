@@ -6,8 +6,6 @@
         //ativa o selected materialize
         $('select').formSelect();
 
-        $
-
         let isConnected = sessionStorage.getItem('logado'),
             existePedido = JSON.parse(sessionStorage.getItem('pedido')),
             desconto = 0;
@@ -197,11 +195,11 @@
 
         /*
             Função para exibir o botão de pagamento
-            **removeClass - addClass**
+            **removeClass - addClass - seletor tag**
         */
         $('#button-payment-money').click(function () {
             $('#button-finalize-purchase').removeClass('hide-content').addClass('show-content');
-            $('#form-card').removeClass('show-content').addClass('hide-content');
+            $('form').removeClass('show-content').addClass('hide-content');
         });
 
         /*
@@ -225,10 +223,10 @@
 
         /*
             Função exibir div´s de pagamento com cartão
-            **removeClass - addClass**
+            **removeClass - addClass - seletor tag**
         */
         $('#button-payment-card').click(function () {
-            $('#form-card').removeClass('hide-content').addClass('show-content');
+            $('form').removeClass('hide-content').addClass('show-content');
             $('#button-finalize-purchase').removeClass('show-content').addClass('hide-content');
         });
 
@@ -269,9 +267,10 @@
         /*
             Função para evitar o envio do formulário e recarregamento da página
             Invoca as funções de validação do cartão de credito
-            **event.preventDefault()**
-        */
-        $('#form-card').submit(function (event) {
+            **event.preventDefault() - seletor tag**
+         */
+
+        $('form').submit(function (event) {
             event.preventDefault();
                 if(validSelectMothCard() && validSelectYearCard()){
                     finalizarCompra();
@@ -282,14 +281,14 @@
             Oculta div´s de informações do cliente
             Oculta botões 
             Exibe div de carrinho vazio
-            **addClass - removeClass - removeItem SessionStorage**
+            **addClass - removeClass - removeItem SessionStorage - seletor tag**
         */
         $('#button-cancel-order').click(function () {
             sessionStorage.removeItem('pedido');
 
             $('.order-information').removeClass('show-content').addClass('hide-content');
             $('#button-finalize-purchase').removeClass('show-content').addClass('hide-content');
-            $('#form-card').removeClass('show-content').addClass('hide-content');
+            $('form').removeClass('show-content').addClass('hide-content');
             $('#div-order-exist').removeClass('hide-content').addClass('show-content');
         });
 
