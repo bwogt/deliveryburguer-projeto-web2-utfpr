@@ -37,7 +37,7 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
 **Funções**
   - [ ] Função anônima com argumento
   - [x] Função anônima sem argumento
-  - [ ] Função anônima com retorno
+  - [x] Função anônima com retorno
   - [x] Função auto-executável
   - [x] Função com nome
   - [x] Função aninhada/local - declarar uma função dentro de outra
@@ -45,7 +45,7 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
   - [x] Função Flecha - Arrow Function
 
 **Eventos**
-  - [ ] Evento de carregamento do documento - onload
+  - [x] Evento de carregamento do documento - onload
   - [x] Evento de movimento do mouse
   - [x] Evento de teclado - usar charCode ou keyCode
   - [x] Eventos de formulário - onfocus e onblur
