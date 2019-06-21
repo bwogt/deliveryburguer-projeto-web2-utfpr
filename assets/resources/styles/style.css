@@ -1,20 +1,21 @@
-.selected-expiring-date-card{
-    margin-bottom: 40px;
-}
 
+/*Tamanaho e margem do botão do modal 1*/
 #button-modal1{
     margin-left: 10px;
     width: 300px;
 }
 
+/*Oculta div modal por padrão*/
 #div-modal-user-data{
     display: none;
 }
 
+/*Oculta a div em que for adicionado*/
 .hide-content{
     display: none;
 }
 
+/*Exibe a div em que for adicionado*/
 .show-content{
     display: block;
 }
@@ -24,6 +25,7 @@
     display: none;
 }
 
+/*Tamanho e margem do botão de logoff*/
 #button-logoff{
     width: 300px;
     margin-left: 10px;
@@ -34,54 +36,24 @@
     display: none;
 }
 
+/*Orientação do titulo da página de login*/
+#title-pag-login{
+    text-align: left;
+}
+
+/*margem do botão de enviar no login*/
+#enviar-login{
+    margin-right: 10px;
+}
+
 /*display default div de cadastro*/
 #div-create-account{
-    display: none;
-}
-
-/*Botão de adicionar no carrinho*/
-.btn.remove{
-    display: none;
-}
-
-/*Botão de adicionar no carrinho*/
-.btn.buy{
     display: none;
 }
 
 /*Por padrão o contéudo dos cards são ocultos*/
 .card-content{
     display: none;
-}
-/*Tamanho e margem do card de pedido*/
-.card.horizontal{
-    width: 300px;
-    margin-left: 5%;
-    margin-right: 20%;
-}
-
-/*Tamanho e margem do botão de remover pedido*/
-.card-action > button{
-    width: 130%;
-    text-align: left;
-    margin-left: 0px;
-}
-
-/*Total dos pedidos*/
-#h2-purchase-total{
-    color: green;
-    font-style: italic;
-    font-weight: bold;
-}
-/*Font e estilo dos cabeçalhos h1*/
-h1{
-    font-family: 'Franklin Gothic Medium';
-    font-style: italic;
-}
-
-section > h1{
-    font-size: 50px;
-    text-align: center;
 }
 
 /*Centraliza os cards dentro do container*/
@@ -93,7 +65,7 @@ section > h1{
     font-size: auto;
 }
 
-/*Cor de fundo, cor do texto e espaçamento dos preços*/
+/*Background do preço e espaçamento dos preços*/
 .card-image > p{
     background-color: black;
     color: white;
@@ -103,14 +75,8 @@ section > h1{
     text-align: center;
 }
 
-/*Seletor do elemento irmão da primeira ocorrencia da tag p*/
+/*Seletor do elemento irmão da primeira ocorrencia da tag p dentro do card*/
 .card-content p:last-of-type{
-    font-style: italic;
-    margin-top: 15%;
-    font-weight: bold;
-}
-
-.card-content p:nth-last-child(2){
     font-style: italic;
     margin-top: 15%;
     font-weight: bold;
@@ -123,40 +89,65 @@ section > h1{
     margin-bottom: 2%;
 }
 
-/*margim do botão de enviar no login*/
-#enviar-login{
-   margin-right: 10px;
+/*Tamanho e margem do botão de remover pedido*/
+.card-action > button{
+    width: 130%;
+    text-align: left;
+    margin-left: 0px;
 }
 
+/*Botão de remover produto*/
+.btn.remove{
+    display: none;
+}
+
+/*Botão de comprar produto*/
+.btn.buy{
+    display: none;
+}
+
+/*Orientação dos titulos no carrinho*/
+.order-information h1{
+    text-align: left;
+}
+
+/*Formatação da exibição dos produtos no carrinho*/
 #p-product-list{
     font-size: 20px;
     font-style: italic;
 }
 
-#p-produtos span{
-   color: red
-}
-
+/*Formatação exibição do endereço de entrega no carrinho*/
 #p-shipping-address{
     font-size: 30px;
     margin: 20px;
     font-style: italic;
 }
+
+/*Botão de pagamento em dinheiro no carrinho*/
 #button-payment-money{
     width: 200px;
     margin: 20px;
 }
 
+/*Botão de pagamento no cartão do carrinho*/
 #button-payment-card{
     width: 200px;
     margin: 20px;
 }
 
+/*Classe que define a margem das divs do cartão de credito*/
+.selected-expiring-date-card{
+    margin-bottom: 40px;
+}
+
+/*Botão cancelar pedido*/
 #button-cancel-order{
     width: 200px;
     margin: 20px;
 }
 
+/*Botão de finaliar a compra*/
 #button-finalize-purchase{
     width: 100%;
     margin-top: 30px;
@@ -164,16 +155,7 @@ section > h1{
     text-align: center;
 }
 
-#div-carrinho-vazio{
-    display: none;
-}
-
-#div-purchase-completed  h1{
-    text-align: center;
-    margin: 15px;
-    font-size: 50px;
-}
-
+/*Imagem exibida no fim da compra*/
 #div-purchase-completed  img{
     text-align: center;
     margin-left: 27%;
@@ -181,46 +163,29 @@ section > h1{
     width: 40%;
 }
 
+/*Mensagem exibida no final da compra*/
 #div-purchase-completed  h1{
     text-align: center;
     margin: 15px;
     font-size: 50px;
 }
 
+/*Botão de finalizar compra em dinheiro*/
 #button-finalize-purchase{
     width: 100%;
 }
-.carrinho-inicio{
-    display: none;
-}
 
-.carrinho-inicio-vazio{
-    display: none;
-    text-align: center;
-}
-
+/*Margem superior do rodapé*/
 footer{
     margin-top: 80px;
 }
 
+/*Tamanho dos icones no footer*/
 footer > i {
     padding-left: 20px;
 }
 
-#div-purchase-completed > h1{
-    text-align: center;
-}
-
-#div-purchase-completed > img{
-    width: 40%;
-    margin-left: 30%;
-}
-
-#div-existe-pedido h1{
-    text-align: center;
-    font-size: 50px;
-}
-
+/*Tamanho dos botões de login*/
 .buttons-form-login{
     width: 300px;
     margin-bottom: 15px;
@@ -228,15 +193,28 @@ footer > i {
     text-align: center;
 }
 
+/*Total dos pedidos*/
+#h2-purchase-total{
+    color: green;
+    font-style: italic;
+    font-weight: bold;
+}
 
-/*css do materialize para manter o rodape no fim*/
+/*Font e estilo dos cabeçalhos h1*/
+h1{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium';
+    font-style: italic;
+}
+
+/*css do materialize para manter o rodape no fim da página*/
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
 }
 
-/*css do materialize para manter o rodape no fim*/
+/*css do materialize para manter o rodape no fim da página*/
 main {
     flex: 1 0 auto;
 }
