@@ -49,7 +49,7 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
   - [x] Evento de movimento do mouse
   - [x] Evento de teclado - usar charCode ou keyCode
   - [x] Eventos de formulário - onfocus e onblur
-  - [ ] Imprimir alguma propriedade do objeto event recebido como parâmetro
+  - [x] Imprimir alguma propriedade do objeto event recebido como parâmetro
 
 **Acesso aos elementos DOM do HTML**
   - [ ] Via referência DOM pelo id do elemento HTML
