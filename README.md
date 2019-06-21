@@ -35,7 +35,7 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
   - [x] setTimeout
   
 **Funções**
-  - [ ] Função anônima com argumento
+  - [x] Função anônima com argumento
   - [x] Função anônima sem argumento
   - [x] Função anônima com retorno
   - [x] Função auto-executável
