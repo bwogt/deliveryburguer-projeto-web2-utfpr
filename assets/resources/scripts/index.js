@@ -19,15 +19,6 @@
             $('.a-menu-login').html('<i class="material-icons left">person_pin</i>' + nameUser);
         }
 
-        let couponMenssage = 'Parabéns curioso :p , você ganhou R$5,00 de desconto!\n';
-        couponMenssage += 'use o cupom "ganhei5" no seu carrinho.';
-
-        /*
-            Cupom de desconto exibido no console
-            ** Temporizador setTimeOut**
-        */
-        setTimeout(console.log(couponMenssage), 1);
-
         /*
             Classe para representar o objeto pedido
             **Classe do ES6 (JS6)**

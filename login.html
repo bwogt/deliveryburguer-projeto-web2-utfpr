@@ -38,8 +38,8 @@
                                 <i class="material-icons left">person_pin</i>Entrar
                             </a>
                         </li>
-                        <li>
                     </ul>
+                    
                     <ul class="sidenav" id="mobile-demo">
                         <li>
                             <a href="index.html">
@@ -56,101 +56,143 @@
                                 <i class="material-icons left">person_pin</i>Entrar
                             </a>
                         </li>
-                        <li>
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
     <main>
-        <div class="container">
-            <h1 id="title-pag-login"></h1>
-            <div class="row">
-                <div class="col s12">
-                    <div id="div-current-user">
-                        <button id="button-logoff" class="waves-effect waves-light btn red buttons-form-login"><i
-                                class="material-icons right">clear</i>Sair</button>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <h1 id="title-pag-login"></h1>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <div id="div-login">
-                        <form>
-                            <i class="material-icons">email</i>
-                            Email:<input type="text" name="input-login-email" placeholder="teste@gmail.com"><br>
-                            <i class="material-icons">enhanced_encryption</i>
-                            Senha: <input type="password" name="input-login-password"><br>
-                            <button id="button-login" class="waves-effect waves-light btn green buttons-form-login"><i
-                                    class="material-icons right">blankcheck_circle</i>Entrar</button>
-                            <button id="button-new-account"
-                                class="waves-effect waves-light btn orange buttons-form-login"><i
-                                    class="material-icons right">person_add</i>Criar uma conta</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <section>
+            <div id="div-modal-user-data" class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <!-- Modal Trigger -->
+                        <button id="button-modal1" data-target="modal1" class="btn modal-trigger green">Informações do
+                            usuário
+                        </button>
 
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <div id="div-create-account">
-                        <form id="form-create-user">
-                            <p><i class="material-icons">warning</i> ATENÇÃO, Todos os campos são de preenchimento
-                                obrigatório!</p><br>
-                            <p>
-                                <i class="material-icons">person</i>Nome
-                                Completo: <input type="text" name="input-name-user" placeholder="Fernanda de Paula"
-                                    pattern="^([A-Z]([a-z]|[á-ú]){1,15}\s)+(([A-Z]|[a-z])([a-z]|[á-ú]){1,15}\s?)+$"
-                                    required>
-                            </p>
-                            <p>
-                                <i class="material-icons">location_on</i>CEP:
-                                <input type="text" name="input-adress-user" placeholder="85070700"
-                                    pattern="^\d{5}-?\d{3}$" required>
-                            </p>
-                            <p>
-                                <i class="material-icons">markunread_mailbox</i>Número da residência:
-                                <input type="number" name="input-adress-number-user" placeholder="1024" min="1"
-                                    max="10000" required>
-                            </p>
-                            <p>
-                                <i class="material-icons">location_city</i>Cidade:
-                                <input type="text" name="input-city-user" placeholder="Guarapuava"
-                                    pattern="^([A-Z]([a-z]|[á-ú]){5,15}\s?)|([A-Z]([a-z]|[á-ú]){1,15}\s)(([A-Z]|[a-z])([a-z]|[á-ú]){1,15}\s?)*"
-                                    required>
-                            </p>
-                            <p>
-                                <i class="material-icons">email</i>Email:
-                                <input type="email" name="input-email-adress" placeholder="exemplo@exemplo.com"
-                                    pattern="^[a-z]{2,20}\d?@[a-z]{0,6}.com(.?[a-z]{0,4}?)$" required>
-                            </p>
-                            <p>
-                                <i class="material-icons">enhanced_encryption</i>Senha:
-                                <input type="password" name="input-register-password" pattern="^\d{4,8}$" required>
-                            </p>
-                            <button id="button-create-new-account"
-                                class="waves-effect waves-light btn blue buttons-form-login"><i
-                                    class="material-icons right">blankcheck_circle</i>Cadastrar</button>
-                            <button id="button-cancel-new-account"
-                                class="waves-effect waves-light btn red buttons-form-login"><i
-                                    class="material-icons right">cancel</i>Cancelar</button>
-                        </form>
+                        <!-- Modal Structure -->
+                        <div id="modal1" class="modal">
+                            <div class="modal-content">
+                                <h4>Informações do usuário</h4>
+                                <p id="p-information-user"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Fechar</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <div id="div-current-user">
+                            <button id="button-logoff" class="waves-effect waves-light btn red buttons-form-login">
+                                <i class="material-icons right">clear</i>Sair
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <div id="div-login">
+                            <form>
+                                <i class="material-icons">email</i>
+                                Email:<input type="text" name="input-login-email" placeholder="teste@gmail.com"><br>
+                                <i class="material-icons">enhanced_encryption</i>
+                                Senha: <input type="password" name="input-login-password"><br>
+                                <button id="button-login"
+                                    class="waves-effect waves-light btn green buttons-form-login"><i
+                                        class="material-icons right">blankcheck_circle</i>Entrar</button>
+                                <button id="button-new-account"
+                                    class="waves-effect waves-light btn orange buttons-form-login"><i
+                                        class="material-icons right">person_add</i>Criar uma conta</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <div id="div-create-account">
+                            <form id="form-create-user">
+                                <p><i class="material-icons">warning</i> ATENÇÃO, Todos os campos são de preenchimento
+                                    obrigatório!</p><br>
+                                <p>
+                                    <i class="material-icons">person</i>Nome
+                                    Completo: <input type="text" name="input-name-user" placeholder="Fernanda de Paula"
+                                        pattern="^([A-Z]([a-z]|[á-ú]){1,15}\s)+(([A-Z]|[a-z])([a-z]|[á-ú]){1,15}\s?)+$"
+                                        required>
+                                </p>
+                                <p>
+                                    <i class="material-icons">location_on</i>CEP:
+                                    <input type="text" name="input-adress-user" placeholder="85070700"
+                                        pattern="^\d{5}-?\d{3}$" required>
+                                </p>
+                                <p>
+                                    <i class="material-icons">markunread_mailbox</i>Número da residência:
+                                    <input type="number" name="input-adress-number-user" placeholder="1024" min="1"
+                                        max="10000" required>
+                                </p>
+                                <p>
+                                    <i class="material-icons">location_city</i>Cidade:
+                                    <input type="text" name="input-city-user" placeholder="Guarapuava"
+                                        pattern="^([A-Z]([a-z]|[á-ú]){5,15}\s?)|([A-Z]([a-z]|[á-ú]){1,15}\s)(([A-Z]|[a-z])([a-z]|[á-ú]){1,15}\s?)*"
+                                        required>
+                                </p>
+                                <p>
+                                    <i class="material-icons">email</i>Email:
+                                    <input type="email" name="input-email-adress" placeholder="exemplo@exemplo.com"
+                                        pattern="^[a-z]{2,20}\d?@[a-z]{0,6}.com(.?[a-z]{0,4}?)$" required>
+                                </p>
+                                <p>
+                                    <i class="material-icons">enhanced_encryption</i>Senha:
+                                    <input type="password" name="input-register-password" pattern="^\d{4,8}$" required>
+                                </p>
+                                <button id="button-create-new-account"
+                                    class="waves-effect waves-light btn blue buttons-form-login"><i
+                                        class="material-icons right">blankcheck_circle</i>Cadastrar</button>
+                                <button id="button-cancel-new-account"
+                                    class="waves-effect waves-light btn red buttons-form-login"><i
+                                        class="material-icons right">cancel</i>Cancelar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="section black white-text center">
-        <i class="material-icons">local_phone</i>+55 (42)99999-9999
-        <i class="material-icons">email</i>atendimento@deliveryburguer.com
-        <p>© DeliveryBurguer 2019</p>
-    </footer>
+    <section>
+        <footer class="section black white-text center">
+            <i class="material-icons">local_phone</i>+55 (42)99999-9999
+            <i class="material-icons">email</i>atendimento@deliveryburguer.com
+            <p>© DeliveryBurguer 2019</p>
+        </footer>
+    </section>
     <script src="assets/libraries/jquery/jquery-3.4.1.min.js"></script>
     <script src="assets/libraries/materialize/materialize/js/materialize.js"></script>
     <script src="assets/libraries/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>

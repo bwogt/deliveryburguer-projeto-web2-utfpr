@@ -38,8 +38,8 @@
                                 <i class="material-icons left">person_pin</i>Entrar
                             </a>
                         </li>
-                        <li>
                     </ul>
+
                     <ul class="sidenav" id="mobile-demo">
                         <li>
                             <a href="index.html">
@@ -56,7 +56,6 @@
                                 <i class="material-icons left">person_pin</i>Entrar
                             </a>
                         </li>
-                        <li>
                     </ul>
                 </div>
             </div>
@@ -119,8 +118,13 @@
                             <i class="material-icons right">cancel</i>Cancelar</button>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container order-information hide-content">
                 <div class="row">
-                    <div>
+                    <div class="col s12">
                         <form id="form-card" class="hide-content">
                             <p>
                                 Nome do titular do cartão:
@@ -134,27 +138,27 @@
                                     pattern="^\d{14}|\d{15}|\d{16}$" required>
                             </p>
                             <p>Validade do cartão:
-                            <div class="col s12 m6 selected-expiring-date-card">
-                                <label>Mês de validade</label>
-                                <select name="select-month" id="select-month">
-                                    <option value="" disabled selected required>Selecione</option>
-                                    <option value="1">Janeiro</option>
-                                    <option value="2">Fevereiro</option>
-                                    <option value="3">Março</option>
-                                    <option value="4">Abril</option>
-                                    <option value="5">Maio</option>
-                                    <option value="6">Junho</option>
-                                    <option value="7">Julho</option>
-                                    <option value="8">Agosto</option>
-                                    <option value="9">Setembro</option>
-                                    <option value="10">Outubro</option>
-                                    <option value="11">Novembro</option>
-                                    <option value="12">Dezembro</option>
-                                </select>
-                            </div>
-                            <div class="col s12 m6 selected-expiring-date-card">
-                                <label>Ano de validade</label>
-                                <select name="select-year" id="select-year">
+                                <div class="col s12 m6 selected-expiring-date-card">
+                                    <label>Mês de validade</label>
+                                    <select name="select-month" id="select-month">
+                                        <option value="" disabled selected required>Selecione</option>
+                                        <option value="1">Janeiro</option>
+                                        <option value="2">Fevereiro</option>
+                                        <option value="3">Março</option>
+                                        <option value="4">Abril</option>
+                                        <option value="5">Maio</option>
+                                        <option value="6">Junho</option>
+                                        <option value="7">Julho</option>
+                                        <option value="8">Agosto</option>
+                                        <option value="9">Setembro</option>
+                                        <option value="10">Outubro</option>
+                                        <option value="11">Novembro</option>
+                                        <option value="12">Dezembro</option>
+                                    </select>
+                                </div>
+                                <div class="col s12 m6 selected-expiring-date-card">
+                                    <label>Ano de validade</label>
+                                    <select name="select-year" id="select-year">
                                         <option value="" disabled selected required>Selecione</option>
                                         <option value="1">2020</option>
                                         <option value="2">2021</option>
@@ -164,8 +168,8 @@
                                         <option value="6">2025</option>
                                         <option value="7">2026</option>
                                         <option value="8">2027</option>
-                                </select>
-                            </div>
+                                    </select>
+                                </div>
                             </p>
                             <p>
                                 Código verificador:
@@ -180,7 +184,6 @@
                         </form>
                     </div>
                 </div>
-            </div>
             </div>
         </section>
 
@@ -198,7 +201,7 @@
                 <div class="row">
                     <div class="col s12 m12">
                         <h1>Obrigado por comprar conosco! Seu pedido já está em rota de entrega :p</h1>
-                        <img src="assets/resources/images/entrega.jpg" alt="">
+                        <img src="assets/resources/images/entrega.jpg" alt="Motoboy">
                     </div>
                 </div>
             </div>
@@ -206,11 +209,14 @@
 
     </main>
 
-    <footer class="section black white-text center">
-        <i class="material-icons">local_phone</i>+55 (42)99999-9999
-        <i class="material-icons">email</i>atendimento@deliveryburguer.com
-        <p>© DeliveryBurguer 2019</p>
-    </footer>
+    <section>
+        <footer class="section black white-text center">
+            <i class="material-icons">local_phone</i>+55 (42)99999-9999
+            <i class="material-icons">email</i>atendimento@deliveryburguer.com
+            <p>© DeliveryBurguer 2019</p>
+        </footer>
+    </section>
+    
     <script src="assets/libraries/jquery/jquery-3.4.1.min.js"></script>
     <script src="assets/libraries/materialize/materialize/js/materialize.js"></script>
     <script src="assets/resources/scripts/pedido.js"></script>

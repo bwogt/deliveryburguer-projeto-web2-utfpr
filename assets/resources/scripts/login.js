@@ -4,6 +4,7 @@
     'use strict';
     $(document).ready(function () {
         $('.sidenav').sidenav();
+        $('.modal').modal();
         $('input[name="input-adress-user"]').mask('00000-000');
     });
     
@@ -33,6 +34,7 @@
         $id('div-create-account').style.display = 'none';
         clearInputsForms();
         $id('div-login').style.display = 'block';
+        $id('div-modal-user-data').style.display = 'none';
         $id('title-pag-login').innerHTML = 'Acesse sua conta';
     };
 
@@ -43,6 +45,7 @@
     let screenCurrentUser = (userOnline) => {
         $id('div-login').style.display = 'none';
         $id('div-current-user').style.display = 'block';
+        $id('div-modal-user-data').style.display = 'block';
         $id('title-pag-login').innerHTML = 'Usuário: ' + userOnline;
     };
 
@@ -100,9 +103,10 @@
     
     /*
         Só aceita números
+        Função anônima com argumento
         **Event** 
     */
-    function banKey(e){
+    let banKey = function (e){
         if ((e.keyCode > 21) && (e.keyCode < 48)) {
             e.preventDefault();
         } else {
@@ -114,30 +118,30 @@
                 }
             }
         }
-    }
+    };
 
     /*
         Não permite letras e caracteres especiais no input senha do login
-        **Evento de onkeydown - uso de querySelector** 
+        **Evento de onkeydown - getElementsByName** 
     */
-    document.querySelector('input[name="input-login-password"]').onkeydown = function (e) {
+    document.getElementsByName('input-login-password')[0].onkeydown = function (e) {
         banKey(e);
     };
 
     /*
         Não permite letras e caracteres especiais no cadatro da senha
-        **Evento de onkeydown - uso de querySelector** 
+        **Evento de onkeydown - uso de getElementsByName** 
     */
-    document.querySelector('input[name="input-register-password"]').onkeydown = function (e) {
+   document.getElementsByName('input-register-password')[0].onkeydown = function (e) {
         banKey(e);
     };
 
     /* 
         Validação do input email na tela de login
-        **Validação tradicional - querySelector - evento blur**
+        **Validação tradicional - getElementsByName - evento blur**
         **indexOf - StringTemplate - alert - setAttribute**
     */
-    document.querySelector('input[name="input-login-email"]').onblur = function () {
+    document.getElementsByName('input-login-email')[0].onblur = function () {
         let valor = this.value,
             firstCom = valor.indexOf('.com'),
             contAt = 0,
@@ -180,9 +184,9 @@
 
     /*
         Validação do input de senha da tela de login
-        **Validação tradicional - querySelector - setAtribute - focus - onblur**
+        **Validação tradicional - getElementsByName - setAtribute - focus - onblur**
     */
-    document.querySelector('input[name="input-login-password"]').onblur = function () {
+    document.getElementsByName('input-login-password')[0].onblur = function () {
         if (this.value.length === 0) {
             this.focus();
             this.setAttribute('style', 'border-bottom: 1px solid red');
@@ -240,9 +244,9 @@
         //modifica o estado do login 
         sessionStorage.setItem('logado', false);
         sessionStorage.removeItem('pedido');
-
+        screenLogin();
         //recarrega a página
-        window.location.reload(true);
+       // window.location.reload(true);
     };
 
     /*  
@@ -378,4 +382,28 @@
             this.setCustomValidity('');
         }
     });
+
+    /*
+        Informações do usuário cadastrado
+        **Função anônima com retorno**
+    */
+    let userInformation = function(){
+        let user = JSON.parse(localStorage.getItem('user1'));
+        let displayText = `Nome: ${user.name}<br>`;
+        displayText += `Cep: ${user.adress}<br>`;
+        displayText += `Número da residência: ${user.adressNumber}<br>`;
+        displayText += `Cidade: ${user.city}<br>`;
+        displayText += `Email: ${user.email}`;
+        return displayText;
+    };
+
+    /*
+        Exibe os dados no modal quando o botão é clicado
+        **innerHTML**
+    */
+    $id('button-modal1').onclick = function(){
+        let dataUser = userInformation();
+        $id('p-information-user').innerHTML = dataUser;
+    };
+
 })();
