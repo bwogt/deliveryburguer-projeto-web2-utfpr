@@ -40,9 +40,9 @@
 
     /*
         Tela de usuário atual
-        **Arrow function com passagem de parâmetro**
+        **Função anônima com argumento**
     */
-    let screenCurrentUser = (userOnline) => {
+    let screenCurrentUser = function(userOnline){
         $id('div-login').style.display = 'none';
         $id('div-current-user').style.display = 'block';
         $id('div-modal-user-data').style.display = 'block';
@@ -247,9 +247,9 @@
         //modifica o estado do login 
         sessionStorage.setItem('logado', false);
         sessionStorage.removeItem('pedido');
-        screenLogin();
+       
         //recarrega a página
-       // window.location.reload(true);
+        window.location.reload(true);
     };
 
     /*  
