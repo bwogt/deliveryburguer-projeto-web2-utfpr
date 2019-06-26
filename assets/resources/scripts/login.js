@@ -146,32 +146,37 @@
     */
     document.getElementsByName('input-login-email')[0].onblur = function () {
         let valor = this.value,
-            firstCom = valor.indexOf('.com'),
+            firstPoint = valor.indexOf('.'),
+            firstAt = valor.indexOf('@'),
             contAt = 0,
             valido = true;
 
         if (this.value.length === 0) {
             valido = false;
-        }
+        }else{
+            if(firstPoint === -1 || firstAt === -1){
+                valido = false;
+            }else{
+                for (let i = firstAt; i < valor.length; i++) {
+                    if (valor[i] === '@') {
+                        contAt++;
+                    }
+                }
+        
+                if ((contAt === 0) || (contAt > 1)) {
+                    valido = false;
+                }
 
-        for (let i = 0; i < valor.length; i++) {
-            if (valor[i] === '@') {
-                contAt++;
+                if(firstPoint < 7){
+                    valido = false;
+                }
             }
-        }
-
-        if ((contAt === 0) || (contAt > 1)) {
-            valido = false;
-        }
-
-        if (!((valor.charAt(valor.length - 4) === '.') && (firstCom === valor.length - 4))) {
-            valido = false;
         }
 
         if (!valido) {
             this.value = 'example@example.com';
             let mensagem = `Campo email não pode ser vazio\nSeu email precisa conter um "@"\n` +
-                `Seu email precisa conter um ".com" no final`;
+                `Seu email deve conter no mínimo um "."`;
 
             window.alert(mensagem);
 
@@ -366,8 +371,8 @@
     document.querySelector('input[name="input-email-adress"]').addEventListener('invalid', function () {
         if (this.validity.valueMissing) {
             this.setCustomValidity('Informe um email valido igual ao do exemplo');
-            this.value = 'Deve ser minúsculo conter um @ no meio e ".com" '+ 
-            'no fim, ex: teste@teste.com';
+            this.value = 'Deve ser minúsculo, conter um "@" e pelo menos um "." '+ 
+            ', ex: teste@teste.com';
         } else {
             this.setCustomValidity('');
         }
