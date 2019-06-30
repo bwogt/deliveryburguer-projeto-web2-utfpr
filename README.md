@@ -60,8 +60,8 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
 
 **Tratadores de Evento**
   - [x] Especificar o tratador de evento inline
-  - [ ] Especificar o tratador de evento no carregamento da página HTML no modo tradicional - no onload
-  - [ ] Especificar o tratador de evento no carregamento da página HTML com a função addEventListener - no onload
+  - [x] Especificar o tratador de evento no carregamento da página HTML no modo tradicional - no onload
+  - [x] Especificar o tratador de evento no carregamento da página HTML com a função addEventListener - no onload
   - [x] Usar o operador this em funções tratadoras de eventos.
 
 **Formulário**
