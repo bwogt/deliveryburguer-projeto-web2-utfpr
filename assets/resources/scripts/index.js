@@ -1,6 +1,17 @@
 //Module Pattern 
+'use strict';
 (function () {
-    'use strict';
+    /*
+        Cupom de desconto exibido no console
+        ** Evento onload**
+    */
+    window.onload = function(){
+        let couponMenssage = 'Parabéns curioso :p , você ganhou R$5,00 de desconto!\n';
+        couponMenssage += 'use o cupom "ganhei5" no seu carrinho.';
+
+        console.log(couponMenssage);
+    };
+
     $(document).ready(function () {
         //ativa o sidenav mobile
         $('.sidenav').sidenav();
@@ -64,11 +75,11 @@
 
         /*
             Função que verifica qual botão de expandir contéudo foi clicado
-            **click() - split() - attr() - parent() - siblings() - find() - next()**
+            **click() - split() - seletor estático - attr() - parent() - siblings() - find() - next()**
             **JSON - getItem sessionStorage - For in - css() - text() -slideUp()**
             **slideToggle()**  
         */
-        $('.btn-floating').click(function () {
+        $('.card-image > button').click(function () {
             //existe no pedido
             let existsOnRequest = false;
 

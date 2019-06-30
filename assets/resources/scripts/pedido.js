@@ -1,5 +1,6 @@
+//Module Pattern 
+'use strict';
 (function () {
-    'use strict';
     $(document).ready(function () {
         //ativa o sidenav mobile materialize
         $('.sidenav').sidenav();
