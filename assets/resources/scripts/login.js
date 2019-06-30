@@ -1,13 +1,45 @@
 //Module Pattern
+'use strict';
 (function () {
     //ativa o sidenav mobile
-    'use strict';
     $(document).ready(function () {
         $('.sidenav').sidenav();
         $('.modal').modal();
         $('input[name="input-adress-user"]').mask('00000-000');
     });
-    
+
+    /*
+        Exibe se houve click na página de login 
+        **addEventListener no onload**
+    */
+    window.onload = function () {
+        document.addEventListener('click', function () {
+            console.log('Click!');
+        });
+    };
+
+    let couponMessage = 'Parabéns curioso :p , você ganhou R$5,00 de desconto!\n';
+    couponMessage += 'use o cupom "ganhei5" no seu carrinho.';
+
+    /*
+     Função que escreve no console
+    */
+    function printConsole(message) {
+        console.log(message);
+    }
+
+    /*
+         Passagem da função de escrever no console como parametro
+         Quando invocado escreve algo no console
+         **Passagem de função por parametro**
+    */
+    function runPrintConsole(printConsole, message) {
+        printConsole(message);
+    }
+
+    //Execução da função de escrever cupom de desconto no console
+    runPrintConsole(printConsole, couponMessage);
+
     //Função para retornar o id do elemento
     function $id(id) {
         return document.getElementById(id);
@@ -42,7 +74,7 @@
         Tela de usuário atual
         **Função anônima com argumento**
     */
-    let screenCurrentUser = function(userOnline){
+    let screenCurrentUser = function (userOnline) {
         $id('div-login').style.display = 'none';
         $id('div-current-user').style.display = 'block';
         $id('div-modal-user-data').style.display = 'block';
@@ -69,9 +101,9 @@
 
         //verifica se tem usuário logado 
         if (userOnline !== null) {
-            document.getElementsByClassName('a-menu-login')[0].innerHTML = '<i class="material-icons left">' + 
-            'person_pin</i>' + userOnline;
-            
+            document.getElementsByClassName('a-menu-login')[0].innerHTML = '<i class="material-icons left">' +
+                'person_pin</i>' + userOnline;
+
             screenCurrentUser(userOnline);
         }
         else {
@@ -82,7 +114,7 @@
     }
 
     //Sempre que a página é carregada está função é executada
-     userIsOnline();
+    userIsOnline();
 
     /*
         Evita o envio dos formulário - Acessa o form através da tag e posição
@@ -100,24 +132,24 @@
         e.preventDefault();
     };
 
-    
+
     /*
         Só aceita números
         Função anônima com argumento
         **Event** 
     */
-    let banKey = function (e){
+    let banKey = function (e) {
         if ((e.keyCode > 21) && (e.keyCode < 48)) {
             e.preventDefault();
-            console.log('Código da tecla na tabela ASCII: '+e.keyCode);
+            console.log('Código da tecla na tabela ASCII: ' + e.keyCode);
         } else {
             if ((e.keyCode > 57) && (e.keyCode < 112)) {
                 e.preventDefault();
-                console.log('Código da tecla na tabela ASCII: '+e.keyCode);
+                console.log('Código da tecla na tabela ASCII: ' + e.keyCode);
             } else {
                 if (e.keyCode > 123) {
                     e.preventDefault();
-                    console.log('Código da tecla na tabela ASCII: '+e.keyCode);
+                    console.log('Código da tecla na tabela ASCII: ' + e.keyCode);
                 }
             }
         }
@@ -135,7 +167,7 @@
         Não permite letras e caracteres especiais no cadatro da senha
         **Evento de onkeydown - uso de getElementsByName** 
     */
-   document.getElementsByName('input-register-password')[0].onkeydown = function (e) {
+    document.getElementsByName('input-register-password')[0].onkeydown = function (e) {
         banKey(e);
     };
 
@@ -153,21 +185,21 @@
 
         if (this.value.length === 0) {
             valido = false;
-        }else{
-            if(firstPoint === -1 || firstAt === -1){
+        } else {
+            if (firstPoint === -1 || firstAt === -1) {
                 valido = false;
-            }else{
+            } else {
                 for (let i = firstAt; i < valor.length; i++) {
                     if (valor[i] === '@') {
                         contAt++;
                     }
                 }
-        
+
                 if ((contAt === 0) || (contAt > 1)) {
                     valido = false;
                 }
 
-                if(firstPoint < 7){
+                if (firstPoint < 7) {
                     valido = false;
                 }
             }
@@ -252,7 +284,7 @@
         //modifica o estado do login 
         sessionStorage.setItem('logado', false);
         sessionStorage.removeItem('pedido');
-       
+
         //recarrega a página
         window.location.reload(true);
     };
@@ -315,8 +347,8 @@
     document.querySelector('input[name="input-name-user"]').addEventListener('invalid', function () {
         if (this.validity.valueMissing) {
             this.setCustomValidity('Digite seu nome completo utilizando as regras do exemplo');
-            this.value = 'Use Maiúsculo nas iniciais ex: [J]osé, e minúsculo em conectores '+
-            'ex: [de]/[dos], ex: José Fernando, José de Paula';
+            this.value = 'Use Maiúsculo nas iniciais ex: [J]osé, e minúsculo em conectores ' +
+                'ex: [de]/[dos], ex: José Fernando, José de Paula';
         } else {
             this.setCustomValidity('');
         }
@@ -371,8 +403,8 @@
     document.querySelector('input[name="input-email-adress"]').addEventListener('invalid', function () {
         if (this.validity.valueMissing) {
             this.setCustomValidity('Informe um email valido igual ao do exemplo');
-            this.value = 'Deve ser minúsculo, conter um "@" e pelo menos um "." '+ 
-            ', ex: teste@teste.com';
+            this.value = 'Deve ser minúsculo, conter um "@" e pelo menos um "." ' +
+                ', ex: teste@teste.com';
         } else {
             this.setCustomValidity('');
         }
@@ -395,7 +427,7 @@
         Informações do usuário cadastrado
         **Função anônima com retorno**
     */
-    let userInformation = function(){
+    let userInformation = function () {
         let user = JSON.parse(localStorage.getItem('user1'));
         let displayText = `Nome: ${user.name}<br>`;
         displayText += `Cep: ${user.adress}<br>`;
@@ -409,7 +441,7 @@
         Exibe os dados no modal quando o botão é clicado
         **innerHTML**
     */
-    $id('button-modal1').onclick = function(){
+    $id('button-modal1').onclick = function () {
         let dataUser = userInformation();
         $id('p-information-user').innerHTML = dataUser;
     };

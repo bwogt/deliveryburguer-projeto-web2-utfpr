@@ -13,7 +13,7 @@
     <title>Início</title>
 </head>
 
-<body onload="discountCoupon()">
+<body>
     <div class="navbar">
         <nav class="black">
             <div class="container">
@@ -139,9 +139,10 @@
                             <div class="card-image">
                                 <p>Hamburguer Triplo R$20.00</p>
                                 <img src="assets/resources/images/hb-triplo.png" alt="Hamburguer duplo">
-                                <a id="button-floating-hamb3"
+                                <button id="button-floating-hamb3"
                                     class="btn-floating halfway-fab waves-effect waves-light red">
-                                    <i class="material-icons">arrow_downward</i></a>
+                                    <i class="material-icons">arrow_downward</i>
+                                </button>
                             </div>
                             
                             <div id="card-content-hamb3" class="card-content">
@@ -185,9 +186,10 @@
                                 <p>Refrigerante Lata R$4.00</p>
                                 <img src="assets/resources/images/refri-lata.jpg"
                                     alt="Lata de refrigerante">
-                                <a id="button-floating-drink1"
+                                <button id="button-floating-drink1"
                                     class="btn-floating halfway-fab waves-effect waves-light red">
-                                    <i class="material-icons">arrow_downward</i></a>
+                                    <i class="material-icons">arrow_downward</i>
+                                </button>
                             </div>
 
                             <div id="card-content-drink1" class="card-content">
@@ -213,9 +215,10 @@
                                 <p>Refrigerante 2L R$7.00</p>
                                 <img src="assets/resources/images/refri-garrafa.jpg"
                                     alt="Garrafa de refrigerante">
-                                <a id="button-floating-drink2"
+                                <button id="button-floating-drink2"
                                     class="btn-floating halfway-fab waves-effect waves-light red">
-                                    <i class="material-icons">arrow_downward</i></a>
+                                    <i class="material-icons">arrow_downward</i>
+                                </button> 
                             </div>
 
                             <div id="card-content-drink2" class="card-content">
@@ -241,9 +244,10 @@
                                 <p>Cerveja Litrão R$11.00</p>
                                 <img src="assets/resources/images/cerveja-litrao.jpg"
                                     alt="Garrafa de cerveja">
-                                <a id="button-floating-drink3"
+                                <button id="button-floating-drink3"
                                     class="btn-floating halfway-fab waves-effect waves-light red">
-                                    <i class="material-icons">arrow_downward</i></a>
+                                    <i class="material-icons">arrow_downward</i>
+                                </button>
                             </div>
                             
                             <div id="card-content-drink3" class="card-content">
@@ -279,17 +283,6 @@
     <script src="assets/libraries/materialize/materialize/js/materialize.js"></script>
     <script src="assets/resources/scripts/index.js"></script>
     <script>
-        /*
-            Cupom de desconto exibido no console
-            ** Evento onload**
-        */
-        let discountCoupon = function(){
-            let couponMenssage = 'Parabéns curioso :p , você ganhou R$5,00 de desconto!\n';
-            couponMenssage += 'use o cupom "ganhei5" no seu carrinho.';
-
-            console.log(couponMenssage);
-        }
-
         /*
             Função de animação na logo
             **evento inline - setTimeout() - innerHTML()**
