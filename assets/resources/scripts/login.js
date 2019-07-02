@@ -439,9 +439,9 @@
 
     /*
         Exibe os dados no modal quando o botão é clicado
-        **innerHTML**
+        **Acesso via referência DOM pelo id do elemento HTML - innerHTML**
     */
-    $id('button-modal1').onclick = function () {
+    buttonModal.onclick = function () {
         let dataUser = userInformation();
         $id('p-information-user').innerHTML = dataUser;
     };

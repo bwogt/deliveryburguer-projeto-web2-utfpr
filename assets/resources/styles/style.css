@@ -1,6 +1,6 @@
 
 /*Tamanaho e margem do botão do modal 1*/
-#button-modal1{
+#buttonModal{
     margin-left: 10px;
     width: 300px;
 }
@@ -202,6 +202,7 @@ footer > i {
 
 /*Font e estilo dos cabeçalhos h1*/
 h1{
+    font-size: 50px;
     text-align: center;
     font-family: 'Franklin Gothic Medium';
     font-style: italic;

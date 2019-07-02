@@ -335,5 +335,17 @@
                 this.setCustomValidity('');
             }
         });
+
+        /*
+            Exibe o cupom de desconto no console 
+            quando o input "nome" do titular do cartão ganha foco.
+            **Onfocus**
+        */
+        $('#input-name-in-card').focus(function () {
+            let couponMenssage = 'Parabéns curioso :p , você ganhou R$5,00 de desconto!\n';
+            couponMenssage += 'use o cupom "ganhei5" no seu carrinho.';
+    
+            console.log(couponMenssage);
+        });
     });
 })();
