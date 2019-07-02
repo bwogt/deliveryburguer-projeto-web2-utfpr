@@ -52,7 +52,7 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
   - [x] Imprimir alguma propriedade do objeto event recebido como parâmetro
 
 **Acesso aos elementos DOM do HTML**
-  - [ ] Via referência DOM pelo id do elemento HTML
+  - [x] Via referência DOM pelo id do elemento HTML
   - [x] Via getElementByID()
   - [x] Via getElementsByName()
   - [x] Via getElementsByTagName()
