@@ -18,7 +18,16 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
 **Qualidade do código**
   - [x] Usar um Style Guide - apresentar o uso de pelo menos 10 regras do style escolhido (sugerido AirBnb)
       <ul>
-          <li>teste</li>
+          <li>Sintaxe literal para criação de Array;</li>
+          <li>Uso de Array push();</li>
+          <li>Usar aspas simples;</li>
+          <li>Múltiplas linhas String maiores de 80 caracteres;</li>
+          <li>Uso de (.)ponto para acessar propriedade;</li>
+          <li>Uso do let em declaração de variáveis;</li>
+          <li>Uso de apenas um let para múltiplas variáveis; </li>
+          <li>Declarar variáveis que você não vai estipular valor por último;</li>
+          <li>Use === e !== ao invés de == e !=;</li>
+          <li>Declaração de nome no padrão camelCase em funções, objeto e variáveis</li>
       </ul>
   - [x] Usar um lint - mostrar a correção de pelo menos 5 problemas informados pelo lint (sugerido JSHint - 
   usar o arquivo .jshintrc disponível no moodle)
