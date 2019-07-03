@@ -31,6 +31,13 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
       </ul>
   - [x] Usar um lint - mostrar a correção de pelo menos 5 problemas informados pelo lint (sugerido JSHint - 
   usar o arquivo .jshintrc disponível no moodle)
+      <ul>
+          <li>Nome de variáveis não estavam no padrão camelCase;</li>
+          <li>Não usou o modo ‘use strict’;</li>
+          <li>Faltou ‘;’</li>
+          <li>Função invocada antes de ser declarada;</li>
+          <li>Aspas simples;</li>
+      </ul>
   - [x] Usar strict mode
   - [x] Usar Module Pattern
   - [x] Usar pasta assets e subpastas resources e libraries para organizar o código
