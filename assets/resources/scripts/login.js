@@ -31,7 +31,7 @@
     /*
          Passagem da função de escrever no console como parametro
          Quando invocado escreve algo no console
-         **Passagem de função por parametro**
+         **Passagem de uma função como parâmetro**
     */
     function runPrintConsole(printConsole, message) {
         printConsole(message);
@@ -47,7 +47,7 @@
 
     /*
         Função para limpar inputs dos forms da tela de login
-        **Arrow function - querySeletorAll**
+        **Função Flecha - Arrow Function - querySeletorAll**
     */
     let clearInputsForms = () => {
         let inputsForms = document.querySelectorAll('input');
@@ -59,7 +59,7 @@
 
     /*
         Tela de Login
-        **Função anônima - getElementById**
+        **Função anônima sem argumento - getElementById**
     */
     let screenLogin = function () {
         $id('div-current-user').style.display = 'none';
@@ -136,6 +136,7 @@
     /*
         Só aceita números
         Função anônima com argumento
+        ** Evento de teclado - usar charCode ou keyCode**
         **Event** 
     */
     let banKey = function (e) {
