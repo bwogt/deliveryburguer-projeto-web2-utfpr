@@ -17,6 +17,7 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
 
 **Qualidade do código**
   - [x] Usar um Style Guide - apresentar o uso de pelo menos 10 regras do style escolhido (sugerido AirBnb)
+      ()teste
   - [x] Usar um lint - mostrar a correção de pelo menos 5 problemas informados pelo lint (sugerido JSHint - 
   usar o arquivo .jshintrc disponível no moodle)
   - [x] Usar strict mode
