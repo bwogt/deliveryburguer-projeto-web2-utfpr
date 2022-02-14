@@ -125,3 +125,7 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
 <div align="center">
   <img src="![5](https://user-images.githubusercontent.com/48563663/153901932-379b8a2e-5672-4251-ac2f-94e6d6c448ae.png)" width="700px"/>
 </div> 
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/48563663/131581076-40ec97ce-3037-465e-9196-143e011da1d5.jpeg" width="280px"> 
+</div>
