@@ -121,3 +121,7 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
 
 **Bônus:**
   - [ ] Implementação funcional (parcial) do backend em ExpressJS na plataforma Node e requisições AJAX.
+
+<div align="center">
+  <img src="![5](https://user-images.githubusercontent.com/48563663/153901932-379b8a2e-5672-4251-ac2f-94e6d6c448ae.png)" width="700px"/>
+</div> 
