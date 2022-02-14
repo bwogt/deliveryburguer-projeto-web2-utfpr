@@ -128,4 +128,7 @@ Implementar os itens (tópicos) apresentados a seguir, com exceção dos itens r
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/48563663/153903171-eed93157-6c14-4b1a-8228-49eb61bebab6.png" width="280px"> 
+  <img src="https://user-images.githubusercontent.com/48563663/153903357-f12db650-510f-4df3-ae8d-54f4c5372900.png" width="280px"> 
+  <img src="https://user-images.githubusercontent.com/48563663/153903470-a00d06aa-f0d2-4aa2-9951-a763080150c1.png" width="280px"> 
+  <img src="https://user-images.githubusercontent.com/48563663/153903544-6c2ed8e1-5192-4fd3-afe8-e3cf8cdd067c.png" width="280px"> 
 </div>
